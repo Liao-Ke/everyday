@@ -1,8 +1,8 @@
 name: 生成每日故事
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
   schedule:
-  - cron: '0 00 * * *'
+  - cron: '0 23 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
