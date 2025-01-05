@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar';
-import { 
-  GitChangelog, 
-  GitChangelogMarkdownSection, 
+import {
+  GitChangelog,
+  GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog/vite'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,18 +10,18 @@ export default defineConfig({
   description: "根据金山每日一句使用AI生成的小故事",
   lang: 'zh-CN',
   lastUpdated: true,
-  cleanUrls: true,
-  vite: { 
-    plugins: [ 
-      GitChangelog({ 
+  cleanUrls: false,
+  vite: {
+    plugins: [
+      GitChangelog({
         // 填写在此处填写您的仓库链接
-        repoURL: () => 'https://github.com/nolebase/integrations', 
-      }), 
+        repoURL: () => 'https://github.com/nolebase/integrations',
+      }),
       GitChangelogMarkdownSection({
-        sections:{
-          disableContributors:true
+        sections: {
+          disableContributors: true
         }
-      }), 
+      }),
     ],
   },
   themeConfig: {
@@ -67,7 +67,7 @@ export default defineConfig({
     sidebarMenuLabel: '目录',
     returnToTopLabel: '返回顶部',
     // https://vitepress.dev/reference/default-theme-config
-   
+
 
     sidebar: generateSidebar({
       // VitePress Sidebar's options here...
