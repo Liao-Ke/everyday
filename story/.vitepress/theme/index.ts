@@ -38,7 +38,9 @@ export const Theme: ThemeConfig = {
     })
   },
   enhanceApp({ app }) {
-    app.use(NolebaseGitChangelogPlugin)  
+    app.use(NolebaseGitChangelogPlugin,{
+      commitsRelativeTime: true
+    })  
   },
 }
 export default Theme
