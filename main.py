@@ -153,6 +153,18 @@ def convert_path(path):
     return new_path
 
 
+def modify_link(file_path, text):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    for i, line in enumerate(lines):
+        if 'link:' in line:
+            parts = line.split('link: ')
+            parts[1] = text
+            lines[i] = '      link: ' + text + '\n'
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.writelines(lines)
+
+
 # 按装订区域中的绿色按钮以运行脚本。
 if __name__ == '__main__':
     load_dotenv()
@@ -167,3 +179,4 @@ if __name__ == '__main__':
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})")
 
     save_to_md_file(story, f"./story/{get_today_info()}.md")
+    modify_link("./story/index.md",f"/{get_today_info()}.md")
