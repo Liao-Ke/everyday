@@ -1,0 +1,17 @@
+
+
+
+.medium-zoom-overlay {
+  z-index: 30;
+}
+
+.medium-zoom-image {
+  z-index: 9999 !important;
+  /* 给的值是21，但是实测盖不住，直接999 */
+}
+.group:has([role='button']) .VPSidebarItem.level-0 .items {
+  padding-left: 16px !important;
+  border-left: 1px solid var(--vp-c-divider);
+  border-radius: 2px;
+  transition: background-color 0.25s;
+}
