@@ -179,4 +179,4 @@ if __name__ == '__main__':
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})")
 
     save_to_md_file(story, f"./story/{get_today_info()}.md")
-    modify_link("./story/index.md",f"/{get_today_info()}.md")
+    modify_link("./story/index.md", f"/{get_today_info()}.md")

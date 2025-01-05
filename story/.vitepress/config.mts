@@ -15,7 +15,7 @@ export default defineConfig({
     plugins: [
       GitChangelog({
         // 填写在此处填写您的仓库链接
-        repoURL: () => 'https://github.com/nolebase/integrations',
+        repoURL: () => 'https://github.com/Liao-Ke/everyday',
       }),
       GitChangelogMarkdownSection({
         sections: {
@@ -77,7 +77,7 @@ export default defineConfig({
     }),
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/Liao-Ke/everyday' }
     ]
   },
   markdown: {
