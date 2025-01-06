@@ -9,7 +9,7 @@ export default defineConfig({
   title: "每日故事",
   description: "根据金山每日一句使用AI生成的小故事",
   lang: 'zh-CN',
-  lastUpdated: true,
+  lastUpdated: false,
   cleanUrls: false,
   vite: {
     plugins: [
@@ -19,7 +19,8 @@ export default defineConfig({
       }),
       GitChangelogMarkdownSection({
         sections: {
-          disableContributors: true
+          disableContributors: true,
+          disableChangelog: true,
         }
       }),
     ],
