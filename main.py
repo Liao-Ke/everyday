@@ -65,9 +65,8 @@ def get_jinshan():
 def chat_ai(msg, api_key):
     client = ZhipuAI(api_key=api_key)  # 请填写您自己的APIKey
 
-    prompt = """
-请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown 格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数最少 800 字的故事。
-"""
+    prompt = ("请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown "
+              "格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数尽可能多（远超 800 字）的故事。")
     try:
 
         response = client.chat.completions.create(
@@ -171,7 +170,7 @@ if __name__ == '__main__':
     # save_to_md_file(chat_ai("你的生活不会因偶然变好，而是因改变变好。", os.environ.get("API_KEY")), f"./test/{get_today_info()}.md")
     jinshan = get_jinshan()
 
-    img_path = download_image(jinshan.get('fenxiang_img'), './story/imgages')
+    img_path = download_image(jinshan.get('fenxiang_img'), './story/images')
 
     story = chat_ai(jinshan.get('note'), os.environ.get("API_KEY"))
     story = ensure_first_line_is_h1(story)
