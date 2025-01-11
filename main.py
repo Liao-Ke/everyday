@@ -31,7 +31,7 @@ def get_today_info():
     # 获取星期几，0表示星期一，6表示星期日
     weekday = today.weekday()
     weekday_names = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-    date_time_str = today.strftime("%Y年/%m月/%d日/")
+    date_time_str = today.strftime("%Y年/%m月/%d日")
     time_str = today.strftime("%H:%M:%S")
     return f"{date_time_str}/{weekday_names[weekday]} {time_str}"
 
@@ -144,8 +144,8 @@ def download_image(url, save_dir):
     response.raise_for_status()  # 如果请求失败，则引发 HTTPError 异常
 
     # 生成一个唯一的文件名，避免文件名冲突
-    file_name = f"{uuid.uuid4().hex}.jpg"  # 默认使用 .jpg 扩展名，你可以根据需要修改
-    file_path = os.path.join(save_dir, file_name)
+    unique_file_name = f"{uuid.uuid4().hex}.jpg"  # 默认使用 .jpg 扩展名，你可以根据需要修改
+    file_path = os.path.join(save_dir, unique_file_name)
 
     # 将图片数据写入文件
     with open(file_path, 'wb') as file:
@@ -184,5 +184,6 @@ if __name__ == '__main__':
 
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})")
 
-    save_to_md_file(story, f"./story/{get_today_info()}.md")
-    modify_link("./story/index.md", f"/{get_today_info()}.md")
+    file_name = f"{get_today_info()}.md"
+    save_to_md_file(story, f"./story/{file_name}")
+    modify_link("./story/index.md", f"/{file_name}")
