@@ -25,6 +25,24 @@ export default defineConfig({
       }),
     ],
   },
+  transformHead({ assets }) {
+    // 相应地调整正则表达式以匹配字体
+    const myFontFile = assets.find(file => /jinkai\.\w+\.ttf/)
+    if (myFontFile) {
+      return [
+        [
+          'link',
+          {
+            rel: 'preload',
+            href: myFontFile,
+            as: 'font',
+            type: 'font/woff2',
+            crossorigin: ''
+          }
+        ]
+      ]
+    }
+  },
   themeConfig: {
     search: {
       provider: 'local',
