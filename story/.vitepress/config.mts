@@ -4,6 +4,9 @@ import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog/vite'
+
+import viteCompression from "vite-plugin-compression";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "每日故事",
@@ -22,6 +25,20 @@ export default defineConfig({
           disableContributors: true,
           disableChangelog: true,
         }
+      }),
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: "gzip",
+        ext: ".gz",
+      }),
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: "brotliCompress",
+        ext: ".br",
       }),
     ],
   },
@@ -51,8 +68,8 @@ export default defineConfig({
           root: {
             translations: {
               button: {
-                buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档'
+                buttonText: '搜索',
+                buttonAriaLabel: '搜索'
               },
               modal: {
                 noResultsText: '无法找到相关结果',
