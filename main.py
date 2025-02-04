@@ -80,7 +80,7 @@ def chat_ai(msg, api_key):
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": msg}
             ],
-            top_p=0.70,
+            # top_p=0.70,
             temperature=0.95
         )
         return response.choices[0].message.content
