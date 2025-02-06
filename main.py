@@ -1,4 +1,3 @@
-# 这是一个示例 Python 脚本。
 import os
 import uuid
 
@@ -8,6 +7,8 @@ from zhipuai import ZhipuAI
 import zhipuai
 import datetime
 from dotenv import load_dotenv
+from openai import APIError, OpenAIError
+from openai import OpenAI
 
 
 # 按 Shift+F10 执行或将其替换为您的代码。
@@ -87,6 +88,38 @@ def chat_ai(msg, api_key):
 
     except zhipuai.APIRequestFailedError:
         print('敏感词:', msg)
+    except Exception as e:
+        print('未知的异常:', e)
+
+
+def chat_ai_ds(msg, api_key):
+    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")  # 请填写您自己的APIKey
+
+    # prompt = ("请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown "
+    #           "格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数尽可能多（远超 800 字）的故事。")
+    prompt = '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
+""" 输出格式 """
+# 故事的题目
+> 故事的主题
+故事内容'''
+    try:
+
+        response = client.chat.completions.create(
+            model="deepseek-chat",  # 请填写您要调用的模型名称
+            messages=[
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": msg}
+            ],
+            # top_p=0.70,
+            # temperature=0.95
+            stream=False
+        )
+        return response.choices[0].message.content
+
+    except APIError:
+        print('API请求失败:', msg)
+    except OpenAIError:
+        print('OpenAI错误:', msg)
     except Exception as e:
         print('未知的异常:', e)
 
@@ -180,6 +213,8 @@ if __name__ == '__main__':
     img_path = download_image(jinshan.get('fenxiang_img'), './story/images')
 
     story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"))
+
+    # story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"))
     story = ensure_first_line_is_h1(story)
 
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})")

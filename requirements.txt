@@ -1,3 +1,4 @@
 requests~=2.32.3
 zhipuai~=2.1.5.20241204
 python-dotenv~=0.21.0
+openai~=1.61.1
