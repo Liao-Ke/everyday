@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       API_KEY: ${{ secrets.MY_API_KEY }}
+      API_KEY_DS: ${{ secrets.MY_API_KEY_DS }}
     steps:
       - uses: actions/checkout@v4
         with:
