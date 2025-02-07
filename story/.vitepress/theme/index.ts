@@ -10,6 +10,8 @@ import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 import "./styles/my.css"
 
+import ReasoningChainRenderer from '../components/ReasoningChainRenderer.vue'
+
 import { 
   NolebaseGitChangelogPlugin 
 } from '@nolebase/vitepress-plugin-git-changelog/client'
@@ -40,7 +42,8 @@ export const Theme: ThemeConfig = {
   enhanceApp({ app }) {
     app.use(NolebaseGitChangelogPlugin,{
       commitsRelativeTime: true
-    })  
+    })  ,
+    app.component('ReasoningChainRenderer',ReasoningChainRenderer /* ... */)
   },
 }
 export default Theme
