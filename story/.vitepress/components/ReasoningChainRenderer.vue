@@ -35,6 +35,11 @@ const toggleShow = () => {
     /* background-color: #f9f9f9; */
 /* } */
 
+.dark .chain-title{
+    background-color: rgb(73, 73, 73);
+    color: rgb(228 228 231);
+}
+
 .chain-title {
     color: #333;
     cursor: pointer;
@@ -54,6 +59,11 @@ const toggleShow = () => {
     align-items: center;
     line-height: 18px;
 }
+
+.dark .chain-title:hover{
+    background-color: rgb(82 82 82);
+}
+
 .chain-title:hover{
     background-color: #ededed;
 }
