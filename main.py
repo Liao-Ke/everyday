@@ -88,8 +88,8 @@ def chat_ai(msg, api_key):
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": msg}
             ],
-            # top_p=0.70,
-            temperature=0.95
+            top_p=0.70,
+            # temperature=0.95
         )
         return response.choices[0].message.content
 
@@ -228,7 +228,7 @@ if __name__ == '__main__':
 
     story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"))
     story = ensure_first_line_is_h1(story)
-    story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})")
+    story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})\n")
 
     file_name = f"{get_today_info()}.md"
     save_to_md_file(story, f"./story/{file_name}")
