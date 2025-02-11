@@ -109,6 +109,7 @@ export default defineConfig({
       // VitePress Sidebar's options here...
       documentRootPath: '/story',
       useTitleFromFileHeading: true,
+      useTitleFromFrontmatter:true,
       collapsed: true,
     }),
 
