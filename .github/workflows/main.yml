@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
-      - uses: szenius/set-timezone@v1.0 # 设置执行环境的时区
+      - uses: szenius/set-timezone@v2.0 # 设置执行环境的时区
         with:
           timezoneLinux: "Asia/Shanghai"
       - name: start
