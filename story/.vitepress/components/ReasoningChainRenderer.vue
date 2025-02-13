@@ -93,6 +93,9 @@ const toggleShow = () => {
     font-size: 14px;
 
 }
+.dark .chain-steps .chain-separator{
+    border-color: #4e4e56;
+}
 
 .chain-steps .chain-separator {
     border-left: 2px solid #e5e5e5;
