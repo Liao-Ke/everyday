@@ -21,7 +21,8 @@
 }
 
 :root {
-  --vp-font-family-base: "jinkaiFont"
+  --vp-font-family-base: "jinkaiFont";
+  --vp-sidebar-width: 343px;
 }
 .content {
   font-size: 18px; /* 你可以根据需要调整这个值 */

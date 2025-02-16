@@ -9,11 +9,20 @@ import viteCompression from "vite-plugin-compression";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "每日故事",
-  description: "根据金山每日一句使用AI生成的小故事",
+  title: '每日AI生成小故事 - 基于金山每日一句',
+  description: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。',
   lang: 'zh-CN',
   lastUpdated: false,
   cleanUrls: false,
+  head: [
+    ['meta', { property: 'og:title', content: '每日AI生成小故事 - 基于金山每日一句' }],
+    ['meta', { property: 'og:description', content: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。' }],
+    ['meta', { property: 'og:image', content: 'path/to/social-media-image.jpg' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: '每日AI生成小故事 - 基于金山每日一句' }],
+    ['meta', { name: 'twitter:description', content: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。' }],
+    ['meta', { name: 'twitter:image', content: 'path/to/social-media-image.jpg' }]
+  ],
   vite: {
     plugins: [
       GitChangelog({
@@ -44,7 +53,7 @@ export default defineConfig({
   },
   transformHead({ assets }) {
     // 相应地调整正则表达式以匹配字体
-    const myFontFile = assets.find(file => /jinkai\.\w+\.ttf/)
+    const myFontFile = assets.find(file => /jinkai\.\w+\.ttf/.test(file))
     if (myFontFile) {
       return [
         [
