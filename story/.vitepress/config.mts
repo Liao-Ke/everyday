@@ -9,7 +9,7 @@ import viteCompression from "vite-plugin-compression";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: '每日AI生成小故事 - 基于金山每日一句',
+  title: '每日 AI 小故事',
   description: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。',
   lang: 'zh-CN',
   lastUpdated: false,
@@ -62,7 +62,7 @@ export default defineConfig({
             rel: 'preload',
             href: myFontFile,
             as: 'font',
-            type: 'font/woff2',
+            type: 'font/ttf',
             crossorigin: ''
           }
         ]
