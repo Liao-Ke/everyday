@@ -1,14 +1,14 @@
 import DefaultTheme from  'vitepress/theme-without-fonts'
 
 
-import MyLayout from './MyLayout.vue'
 import type { Theme as ThemeConfig } from 'vitepress'
-import { h } from 'vue'
+// import { h } from 'vue'
 
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 import "./styles/my.css"
+import Layout from './Layout.vue';
 
 import ReasoningChainRenderer from '../components/ReasoningChainRenderer.vue'
 
@@ -33,12 +33,8 @@ export const Theme: ThemeConfig = {
       () => nextTick(() => initZoom())
     );
   },
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // 其他的配置...
-      'not-found':()=>h(MyLayout)
-    })
-  },
+  Layout: Layout,
+  
   enhanceApp({ app }) {
     app.use(NolebaseGitChangelogPlugin,{
       commitsRelativeTime: true
