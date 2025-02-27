@@ -2,13 +2,12 @@ import os
 import uuid
 
 import requests
-
-from zhipuai import ZhipuAI
 import zhipuai
-import datetime
 from dotenv import load_dotenv
 from openai import APIConnectionError, APIError
 from openai import OpenAI
+from zhipuai import ZhipuAI
+import datetime
 
 
 # 按 Shift+F10 执行或将其替换为您的代码。
@@ -218,6 +217,47 @@ def modify_link(file_path, text):
         f.writelines(lines)
 
 
+def process_string(original_str, first_content, last_content, log_file_path):
+    original_lines = original_str.splitlines()
+    original_line_count = len(original_lines)
+
+    delete_first = False
+    delete_last = False
+
+    # 检查是否需要删除第一行和最后一行
+    if original_line_count >= 1:
+        if original_lines[0] == first_content:
+            delete_first = True
+        if original_lines[-1] == last_content:
+            delete_last = True
+
+    # 处理删除操作
+    new_lines = original_lines.copy()
+    if delete_first and len(new_lines) >= 1:
+        new_lines = new_lines[1:]
+    if delete_last and len(new_lines) >= 1:
+        new_lines = new_lines[:-1]
+
+    # 生成处理后的字符串
+    processed_str = '\n'.join(new_lines)
+
+    # 生成日志条目
+    log_entries = []
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    if delete_first:
+        log_entries.append(f"[{timestamp}] 删除了第一行: '{first_content}'")
+    if delete_last:
+        log_entries.append(f"[{timestamp}] 删除了最后一行: '{last_content}'")
+
+    # 将日志写入文件
+    if log_entries:
+        with open(log_file_path, 'a', encoding='utf-8') as log_file:
+            for entry in log_entries:
+                log_file.write(entry + '\n')
+
+    return processed_str
+
+
 # 按装订区域中的绿色按钮以运行脚本。
 if __name__ == '__main__':
     load_dotenv()
@@ -226,11 +266,13 @@ if __name__ == '__main__':
 
     img_path = download_image(jinshan.get('fenxiang_img'), './story/images')
 
+    file_name = f"{get_today_info()}.md"
+
     story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"))
+    story = process_string(story, "```markdown", "```", f"{file_name}.log")
     story = ensure_first_line_is_h1(story)
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})\n")
 
-    file_name = f"{get_today_info()}.md"
     save_to_md_file(story, f"./story/{file_name}")
     modify_link("./story/index.md", f"/{file_name}")
 
