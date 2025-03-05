@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: "今日故事"
-      link: /2025年/03月/05日/星期三 07:17:47.md
+      link: /2025年/03月/06日/星期四 07:19:33.md
 
 features:
   - title: 特色功能 A
