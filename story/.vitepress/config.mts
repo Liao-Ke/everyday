@@ -70,6 +70,9 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    nav:[
+      {text: '神奇小故事', link: 'https://ruozhi.pages.dev/' },
+    ],
     search: {
       provider: 'local',
       options: {
