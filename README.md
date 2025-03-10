@@ -79,5 +79,7 @@ everyday/
 - 智慧之源：[金山词霸每日一句](https://open.iciba.com/index.php?c=wiki)
 - 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn)
 - 时空建筑师：[Vitepress](https://vitepress.dev)
+- 自动化工程师：[GitHub Actions](https://github.com/features/actions)
+- 魔法绽放平台：[帽子云](https://maoziyun.com/)
 
 *让每个平凡的日子，都有不平凡的故事✨*
