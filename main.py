@@ -249,11 +249,14 @@ def process_string(original_str, first_content, last_content, log_file_path):
     if delete_last:
         log_entries.append(f"[{timestamp}] 删除了最后一行: '{last_content}'")
 
-    # 将日志写入文件
-    if log_entries:
-        with open(log_file_path, 'a', encoding='utf-8') as log_file:
-            for entry in log_entries:
-                log_file.write(entry + '\n')
+        # 将日志写入文件（自动创建目录）
+        if log_entries:
+            log_dir = os.path.dirname(log_file_path)
+            if log_dir:  # 确保目录路径非空
+                os.makedirs(log_dir, exist_ok=True)
+            with open(log_file_path, 'a', encoding='utf-8') as log_file:
+                for entry in log_entries:
+                    log_file.write(entry + '\n')
 
     return processed_str
 
