@@ -46,6 +46,9 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #not-found>
       <MyLayout/>
     </template>
+    <template #doc-footer-before>
+      内容由 AI 生成，请仔细甄别
+    </template>
     </DefaultTheme.Layout>
 </template>
 
@@ -72,5 +75,11 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 .VPSwitchAppearance .check {
   transform: none !important;
+}
+.VPDocFooter[data-v-29ec59c0] {
+text-align: center;
+color: rgb(163, 163, 163);
+font-size: 12px;
+margin-top: 32px;
 }
 </style>
