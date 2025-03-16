@@ -1,13 +1,17 @@
+import json
 import os
-import uuid
-
+# import uuid
+# import platform
 import requests
 import zhipuai
 from dotenv import load_dotenv
 from openai import APIConnectionError, APIError
 from openai import OpenAI
 from zhipuai import ZhipuAI
+import time
+import uuid
 import datetime
+import sys
 
 
 # 按 Shift+F10 执行或将其替换为您的代码。
@@ -69,8 +73,14 @@ def get_jinshan():
         return None
 
 
-def chat_ai(msg, api_key):
+def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
     client = ZhipuAI(api_key=api_key)  # 请填写您自己的APIKey
+
+    # 生成会话ID（如果未提供）
+    session_id = session_id or str(uuid.uuid4())
+
+    # 初始化计时器
+    start_time = time.time()
 
     # prompt = ("请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown "
     #           "格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数尽可能多（远超 800 字）的故事。")
@@ -90,16 +100,122 @@ def chat_ai(msg, api_key):
             # top_p=0.70,
             # temperature=0.95
         )
-        return response.choices[0].message.content
+        # 获取响应内容
+        reasoning_content = "(非推理模型)"
+        response_content = response.choices[0].message.content or ""
+        # 记录响应耗时
+        response_time = time.time() - start_time
 
-    except zhipuai.APIRequestFailedError:
-        print('敏感词:', msg)
+        # 保存完整的对话记录（包含原始响应）
+        save_chat_metadata(
+            user_input=msg,
+            ai_response={
+                "reasoning": reasoning_content,
+                "content": response_content
+            },
+            response_time=response_time,
+            session_id=session_id,
+            raw_data=response.to_dict()
+        )
+
+        return response_content
+
+    except zhipuai.APIRequestFailedError as e:
+        error_msg = f"敏感词:{msg} \n{str(e)}"
+        print(error_msg)
+        log_error(error_msg)
+        return "服务暂时不可用，请稍后重试(敏感词)"
     except Exception as e:
-        print('未知的异常:', e)
+        error_msg = f"系统错误: {str(e)}"
+        print(error_msg)
+        log_error(error_msg)
+        return "服务暂时不可用，请稍后重试"
 
 
-def chat_ai_ds(msg, api_key):
+# def get_prompt() -> str:
+#     """返回动态生成的提示词"""
+#     return f'''作为专业作家，请根据主题创作故事。要求：
+#     - 当前时间：{datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
+#     - 严格按格式输出：
+#     # 标题
+#     > 主题
+#     故事内容（远超800字）
+#     - 保持逻辑严密、情节曲折'''
+
+
+def save_chat_metadata(user_input: str, ai_response: dict, response_time: float, session_id: str, raw_data: dict):
+    """修复后的元数据保存"""
+    metadata = {
+        "session_id": session_id,
+        "timestamp": datetime.datetime.now().isoformat(),
+        "response_time": round(response_time, 3),
+        "interaction": {
+            "user": user_input,
+            "assistant": ai_response
+        },
+        "system_metrics": {
+            "platform": os.name,
+            "python_version": sys.version.split()[0]
+        },
+        "raw_data": raw_data
+
+    }
+
+    # 使用固定路径测试
+    _save_to_json(metadata, "chat_logs/story_records.json")
+
+
+def log_error(error_msg: str):
+    """独立的错误日志记录"""
+    error_entry = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "error": error_msg,
+        "level": "ERROR"
+    }
+    _save_to_json(error_entry, "error_logs/ai_errors.json")
+
+
+def _save_to_json(data: dict, filename: str):
+    """修复后的通用存储方法"""
+    try:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+        existing = []
+
+        # 更健壮的文件读取方式
+        if os.path.exists(filename) and os.path.getsize(filename) > 0:
+            try:
+                with open(filename, 'r', encoding='utf-8') as f:
+                    existing = json.load(f)
+            except json.JSONDecodeError as e:
+                print(f"检测到损坏日志文件，尝试修复: {str(e)}")
+                # 备份损坏文件
+                corrupted_name = f"{filename}.corrupted_{datetime.datetime.now().timestamp()}"
+                os.rename(filename, corrupted_name)
+
+        # 追加新数据
+        existing.append(data)
+
+        # 原子写入操作
+        temp_file = f"{filename}.tmp"
+        with open(temp_file, 'w', encoding='utf-8') as f:
+            json.dump(existing, f, indent=2, ensure_ascii=False)
+
+        os.replace(temp_file, filename)
+
+    except Exception as e:
+        print(f"严重错误: 数据保存失败 - {str(e)}")
+        # 这里可以添加将错误数据暂存到内存的逻辑
+
+
+def chat_ai_ds(msg: str, api_key: str, session_id: str = None) -> tuple:
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")  # 请填写您自己的APIKey
+
+    # 生成会话ID（如果未提供）
+    session_id = session_id or str(uuid.uuid4())
+
+    # 初始化计时器
+    start_time = time.time()
 
     # prompt = ("请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown "
     #           "格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数尽可能多（远超 800 字）的故事。")
@@ -126,14 +242,37 @@ def chat_ai_ds(msg, api_key):
             # temperature=1.5,
             stream=False
         )
-        return response.choices[0].message.reasoning_content, response.choices[0].message.content
+
+        # 获取响应内容
+        reasoning_content = response.choices[0].message.reasoning_content or ""
+        response_content = response.choices[0].message.content or ""
+        # 记录响应耗时
+        response_time = time.time() - start_time
+
+        # 保存完整的对话记录（包含原始响应）
+        save_chat_metadata(
+            user_input=msg,
+            ai_response={
+                "reasoning": reasoning_content,
+                "content": response_content
+            },
+            response_time=response_time,
+            session_id=session_id,
+            raw_data=response.to_dict()
+        )
+
+        return reasoning_content, response_content
 
     except (APIConnectionError, APIError) as e:
-        print(f'API错误: {e}')
+        error_msg = f"API错误: {str(e)}"
+        print(error_msg)
+        log_error(error_msg)  # 建议添加独立的错误日志
         return "思考失败", "服务暂时不可用，请稍后重试"
 
     except Exception as e:
-        print(f'未知错误: {e}')
+        error_msg = f"系统错误: {str(e)}"
+        print(error_msg)
+        log_error(error_msg)
         return "思考失败", "生成失败，请联系管理员"
 
 
@@ -249,14 +388,14 @@ def process_string(original_str, first_content, last_content, log_file_path):
     if delete_last:
         log_entries.append(f"[{timestamp}] 删除了最后一行: '{last_content}'")
 
-        # 将日志写入文件（自动创建目录）
-        if log_entries:
-            log_dir = os.path.dirname(log_file_path)
-            if log_dir:  # 确保目录路径非空
-                os.makedirs(log_dir, exist_ok=True)
-            with open(log_file_path, 'a', encoding='utf-8') as log_file:
-                for entry in log_entries:
-                    log_file.write(entry + '\n')
+    # 将日志写入文件（自动创建目录）
+    if log_entries:
+        log_dir = os.path.dirname(log_file_path)
+        if log_dir:  # 确保目录路径非空
+            os.makedirs(log_dir, exist_ok=True)
+        with open(log_file_path, 'a', encoding='utf-8') as log_file:
+            for entry in log_entries:
+                log_file.write(entry + '\n')
 
     return processed_str
 
@@ -280,10 +419,10 @@ if __name__ == '__main__':
     modify_link("./story/index.md", f"/{file_name}")
 
     # DeepSeek
-    reasoning_content, ds_story = chat_ai_ds(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"))
+    ds_reasoning_content, ds_story = chat_ai_ds(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"))
 
     ds_story = insert_content_in_first_line(ds_story, f"<ReasoningChainRenderer>\n"
-                                                      f"{reasoning_content}"
+                                                      f"{ds_reasoning_content}"
                                                       f"\n</ReasoningChainRenderer>\n")
 
     file_name = f"{get_today_info()}.md"
