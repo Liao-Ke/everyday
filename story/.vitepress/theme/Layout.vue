@@ -76,10 +76,10 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 .VPSwitchAppearance .check {
   transform: none !important;
 }
-.VPDocFooter[data-v-29ec59c0] {
+.VPDoc footer.VPDocFooter {
 text-align: center;
 color: rgb(163, 163, 163);
 font-size: 12px;
-margin-top: 32px;
+margin-top: 8px;
 }
 </style>
