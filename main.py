@@ -411,7 +411,7 @@ if __name__ == '__main__':
     file_name = f"{get_today_info()}.md"
 
     story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"))
-    story = process_string(story, "```markdown", "```", f"{file_name}.log")
+    story = process_string(story, "```markdown", "```", f"./story/{file_name}.log")
     story = ensure_first_line_is_h1(story)
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})\n")
 
