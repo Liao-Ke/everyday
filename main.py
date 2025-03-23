@@ -3,11 +3,11 @@ import os
 # import uuid
 # import platform
 import requests
-import zhipuai
+# import zhipuai
 from dotenv import load_dotenv
 from openai import APIConnectionError, APIError
 from openai import OpenAI
-from zhipuai import ZhipuAI
+# from zhipuai import ZhipuAI
 import time
 import uuid
 import datetime
@@ -73,8 +73,11 @@ def get_jinshan():
         return None
 
 
-def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
-    client = ZhipuAI(api_key=api_key)  # 请填写您自己的APIKey
+def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
+            model_name: str = "glm-4-flash",
+            api_base_url: str = "https://open.bigmodel.cn/api/paas/v4/"
+            ) -> str:
+    client = OpenAI(api_key=api_key, base_url=api_base_url)  # 请填写您自己的APIKey
 
     # 生成会话ID（如果未提供）
     session_id = session_id or str(uuid.uuid4())
@@ -84,20 +87,20 @@ def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
 
     # prompt = ("请根据我提供的一句话，以 Markdown 格式的一级标题为这个故事起标题，在标题下方以 Markdown "
     #           "格式引用该句话。充分释放创意，不限风格、叙事视角、角色、场景、情感基调，创作一个深度贴合该句含义，情节跌宕起伏、扣人心弦且逻辑缜密，字数尽可能多（远超 800 字）的故事。")
-    prompt = '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
-""" 输出格式 """
-# 故事的题目
-> 故事的主题
-故事内容'''
+    #     prompt = '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
+    # """ 输出格式 """
+    # # 故事的题目
+    # > 故事的主题
+    # 故事内容'''
 
     messages = [
-        {"role": "system", "content": prompt},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": msg}
     ]
     try:
 
         response = client.chat.completions.create(
-            model="glm-4-flash",  # 请填写您要调用的模型名称
+            model=model_name,  # 请填写您要调用的模型名称
             messages=messages
             # top_p=0.70,
             # temperature=0.95
@@ -117,30 +120,39 @@ def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
 
         return response_content
 
-    except zhipuai.APIRequestFailedError as e:
-        error_msg = f"敏感词:{msg} \n{str(e)}"
+    except (APIConnectionError, APIError) as e:
+        error_msg = f"API错误: {str(e)}"
         print(error_msg)
-        log_error(error_msg)
-        return "服务暂时不可用，请稍后重试(敏感词)"
+        log_error(error_msg)  # 建议添加独立的错误日志
+        return "服务暂时不可用，请稍后重试"
+
     except Exception as e:
         error_msg = f"系统错误: {str(e)}"
         print(error_msg)
         log_error(error_msg)
-        return "服务暂时不可用，请稍后重试"
+        return "生成失败，请联系管理员"
 
 
-# def get_prompt() -> str:
-#     """返回动态生成的提示词"""
-#     return f'''作为专业作家，请根据主题创作故事。要求：
-#     - 当前时间：{datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
-#     - 严格按格式输出：
-#     # 标题
-#     > 主题
-#     故事内容（远超800字）
-#     - 保持逻辑严密、情节曲折'''
+def get_prompt(key):
+    prompts = {
+        'deepsek_story': '''作为专业作家，请根据主题创作故事。要求：
+    - 严格按格式输出：
+    # 标题
+    > 主题
+    故事内容（远超800字）
+    - 保持逻辑严密、情节曲折''',
+        "zhipu_story": '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
+# """ 输出格式 """
+# # 故事的题目
+# > 故事的主题
+# 故事内容'''
+
+    }
+    default_prompt = 'The requested prompt is not available. Please use a valid key.'
+    return prompts.get(key, default_prompt)
 
 
-def save_chat_metadata(messages:  list[dict[str, str] | dict[str, str]], response_time: float, session_id: str,
+def save_chat_metadata(messages: list[dict[str, str] | dict[str, str]], response_time: float, session_id: str,
                        response_data: dict):
     """修复后的元数据保存"""
     metadata = {
@@ -203,8 +215,10 @@ def _save_to_json(data: dict, filename: str):
         # 这里可以添加将错误数据暂存到内存的逻辑
 
 
-def chat_ai_ds(msg: str, api_key: str, session_id: str = None) -> tuple:
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")  # 请填写您自己的APIKey
+def chat_ai_reasoning(msg: str, api_key: str, system_prompt: str, session_id: str = None,
+                      model_name: str = "deepseek-reasoner",
+                      api_base_url: str = "https://api.deepseek.com") -> tuple:
+    client = OpenAI(api_key=api_key, base_url=api_base_url)  # 请填写您自己的APIKey
 
     # 生成会话ID（如果未提供）
     session_id = session_id or str(uuid.uuid4())
@@ -219,21 +233,21 @@ def chat_ai_ds(msg: str, api_key: str, session_id: str = None) -> tuple:
     # # 故事的题目
     # > 故事的主题
     # 故事内容'''
-    prompt = '''作为专业作家，请根据主题创作故事。要求：
-    - 严格按格式输出：
-    # 标题
-    > 主题
-    故事内容（远超800字）
-    - 保持逻辑严密、情节曲折'''
+    # prompt = '''作为专业作家，请根据主题创作故事。要求：
+    # - 严格按格式输出：
+    # # 标题
+    # > 主题
+    # 故事内容（远超800字）
+    # - 保持逻辑严密、情节曲折'''
 
     messages = [
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": msg}
-            ]
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": msg}
+    ]
     try:
 
         response = client.chat.completions.create(
-            model="deepseek-reasoner",  # 请填写您要调用的模型名称
+            model=model_name,  # 请填写您要调用的模型名称
             messages=messages,
             # top_p=0.70,
             # temperature=1.5,
@@ -403,7 +417,8 @@ if __name__ == '__main__':
 
     file_name = f"{get_today_info()}.md"
 
-    story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"))
+    story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"),
+                    system_prompt=get_prompt("zhipu_story"))
     story = process_string(story, "```markdown", "```", f"./story/{file_name}.log")
     story = ensure_first_line_is_h1(story)
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})\n")
@@ -412,7 +427,9 @@ if __name__ == '__main__':
     modify_link("./story/index.md", f"/{file_name}")
 
     # DeepSeek
-    ds_reasoning_content, ds_story = chat_ai_ds(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"))
+    ds_reasoning_content, ds_story = chat_ai_reasoning(f"我提供的主题是：{jinshan.get('note')}",
+                                                       os.environ.get("API_KEY_DS"),
+                                                       system_prompt=get_prompt("deepsek_story"))
 
     ds_story = insert_content_in_first_line(ds_story, f"<ReasoningChainRenderer>\n"
                                                       f"{ds_reasoning_content}"
