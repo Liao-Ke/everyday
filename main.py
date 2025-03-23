@@ -89,33 +89,30 @@ def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
 # 故事的题目
 > 故事的主题
 故事内容'''
+
+    messages = [
+        {"role": "system", "content": prompt},
+        {"role": "user", "content": msg}
+    ]
     try:
 
         response = client.chat.completions.create(
             model="glm-4-flash",  # 请填写您要调用的模型名称
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": msg}
-            ],
+            messages=messages
             # top_p=0.70,
             # temperature=0.95
         )
         # 获取响应内容
-        reasoning_content = "(非推理模型)"
         response_content = response.choices[0].message.content or ""
         # 记录响应耗时
         response_time = time.time() - start_time
 
         # 保存完整的对话记录（包含原始响应）
         save_chat_metadata(
-            user_input=msg,
-            ai_response={
-                "reasoning": reasoning_content,
-                "content": response_content
-            },
+            messages=messages,
             response_time=response_time,
             session_id=session_id,
-            raw_data=response.to_dict()
+            response_data=response.to_dict()
         )
 
         return response_content
@@ -143,21 +140,19 @@ def chat_ai(msg: str, api_key: str, session_id: str = None) -> str:
 #     - 保持逻辑严密、情节曲折'''
 
 
-def save_chat_metadata(user_input: str, ai_response: dict, response_time: float, session_id: str, raw_data: dict):
+def save_chat_metadata(messages:  list[dict[str, str] | dict[str, str]], response_time: float, session_id: str,
+                       response_data: dict):
     """修复后的元数据保存"""
     metadata = {
         "session_id": session_id,
         "timestamp": datetime.datetime.now().isoformat(),
         "response_time": round(response_time, 3),
-        "interaction": {
-            "user": user_input,
-            "assistant": ai_response
-        },
+        "messages": messages,
         "system_metrics": {
             "platform": os.name,
             "python_version": sys.version.split()[0]
         },
-        "raw_data": raw_data
+        "response_data": response_data
 
     }
 
@@ -230,14 +225,16 @@ def chat_ai_ds(msg: str, api_key: str, session_id: str = None) -> tuple:
     > 主题
     故事内容（远超800字）
     - 保持逻辑严密、情节曲折'''
+
+    messages = [
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": msg}
+            ]
     try:
 
         response = client.chat.completions.create(
             model="deepseek-reasoner",  # 请填写您要调用的模型名称
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": msg}
-            ],
+            messages=messages,
             # top_p=0.70,
             # temperature=1.5,
             stream=False
@@ -251,14 +248,10 @@ def chat_ai_ds(msg: str, api_key: str, session_id: str = None) -> tuple:
 
         # 保存完整的对话记录（包含原始响应）
         save_chat_metadata(
-            user_input=msg,
-            ai_response={
-                "reasoning": reasoning_content,
-                "content": response_content
-            },
+            messages=messages,
             response_time=response_time,
             session_id=session_id,
-            raw_data=response.to_dict()
+            response_data=response.to_dict()
         )
 
         return reasoning_content, response_content
