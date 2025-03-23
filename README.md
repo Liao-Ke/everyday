@@ -27,11 +27,13 @@ pip install -r requirements.txt
 1. 获取AI通行证：
    - [DeepSeek API密钥](https://platform.deepseek.com/api_keys)
    - [智谱清言API密钥](https://bigmodel.cn/usercenter/proj-mgmt/apikeys)
+   - [Kimi API密钥](https://platform.moonshot.cn/console/api-keys)
 
 2. 创建魔法卷轴（.env文件）：
 ```env
 API_KEY=您的智谱密钥
 API_KEY_DS=您的DeepSeek密钥
+API_KEY_KIMI=您的Kimi密钥
 ```
 
 ### 启动故事熔炉
@@ -77,7 +79,7 @@ everyday/
 
 **🌌 特别鸣谢**
 - 智慧之源：[金山词霸每日一句](https://open.iciba.com/index.php?c=wiki)
-- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn)
+- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn) & [Kimi](https://platform.moonshot.cn)
 - 时空建筑师：[Vitepress](https://vitepress.dev)
 - 自动化工程师：[GitHub Actions](https://github.com/features/actions)
 - 魔法绽放平台：[帽子云](https://maoziyun.com/)
