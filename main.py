@@ -145,8 +145,13 @@ def get_prompt(key):
 # """ 输出格式 """
 # # 故事的题目
 # > 故事的主题
-# 故事内容'''
+# 故事内容''',
+        "Kimi": '''"请根据用户提供的思考过程，深入分析用户的问题，并提供详细的解答或建议。"
 
+建议：
+1. 明确用户的思考过程，包括用户提出的问题、背景信息、以及用户已经考虑过的解决方案。
+2. 提供具体的分析步骤，解释如何从用户的思考过程中推导出问题的核心。
+3. 给出针对性的建议或解答，帮助用户更好地理解或解决其问题。'''
     }
     default_prompt = 'The requested prompt is not available. Please use a valid key.'
     return prompts.get(key, default_prompt)
@@ -437,3 +442,16 @@ if __name__ == '__main__':
 
     file_name = f"{get_today_info()}.md"
     save_to_md_file(ds_story, f"./story/{file_name}")
+
+    # Kimi
+    kimi_story = chat_ai(f"""{get_prompt("deepsek_story")}
+
+我提供的主题是：{jinshan.get('note')}
+
+{ds_reasoning_content}
+""", os.environ.get("API_KEY_KIMI"),
+                         system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
+                         model_name="kimi-latest")
+
+    file_name = f"{get_today_info()}.md"
+    save_to_md_file(kimi_story, f"./story/{file_name}")
