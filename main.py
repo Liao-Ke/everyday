@@ -75,7 +75,8 @@ def get_jinshan():
 
 def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
             model_name: str = "glm-4-flash",
-            api_base_url: str = "https://open.bigmodel.cn/api/paas/v4/"
+            api_base_url: str = "https://open.bigmodel.cn/api/paas/v4/",
+            **kwargs
             ) -> str:
     client = OpenAI(api_key=api_key, base_url=api_base_url)  # 请填写您自己的APIKey
 
@@ -101,7 +102,8 @@ def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
 
         response = client.chat.completions.create(
             model=model_name,  # 请填写您要调用的模型名称
-            messages=messages
+            messages=messages,
+            **kwargs
             # top_p=0.70,
             # temperature=0.95
         )
@@ -151,7 +153,22 @@ def get_prompt(key):
 建议：
 1. 明确用户的思考过程，包括用户提出的问题、背景信息、以及用户已经考虑过的解决方案。
 2. 提供具体的分析步骤，解释如何从用户的思考过程中推导出问题的核心。
-3. 给出针对性的建议或解答，帮助用户更好地理解或解决其问题。'''
+3. 给出针对性的建议或解答，帮助用户更好地理解或解决其问题。''',
+        "deepseek_v3_story": '''请你作为专业作家，根据给定的主题创作一个引人入胜的故事，严格遵循以下格式和规则：  
+
+# （自拟一个符合故事内容的标题）
+
+> （在此处插入用户提供的主题） 
+
+故事内容（2000字以上，确保情节完整、描写细腻）  
+- 保持逻辑严密，情节曲折，避免平铺直叙  
+- 风格多变（可尝试悬疑、奇幻、科幻、现实等不同风格）  
+- 角色塑造立体，情感丰富，对话自然  
+- 可加入反转、伏笔、象征等文学手法增强可读性  
+- 结局可开放，也可封闭，但需符合故事逻辑  
+
+请确保故事流畅、文笔优美，并符合用户设定的主题及字数要求。   
+'''
     }
     default_prompt = 'The requested prompt is not available. Please use a valid key.'
     return prompts.get(key, default_prompt)
@@ -450,8 +467,19 @@ if __name__ == '__main__':
 
 {ds_reasoning_content}
 """, os.environ.get("API_KEY_KIMI"),
-                         system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
-                         model_name="kimi-latest")
+                        system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
+                        model_name="kimi-latest")
 
     file_name = f"{get_today_info()}.md"
     save_to_md_file(kimi_story, f"./story/{file_name}")
+
+    # DeepSeek-V3
+    ds_v3s_story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"),
+                           system_prompt=get_prompt("deepseek_v3_story"), api_base_url="https://api.deepseek.com",
+                           model_name="deepseek-chat",
+                           max_tokens=8192,
+                           temperature=1.5
+                           )
+
+    file_name = f"{get_today_info()}.md"
+    save_to_md_file(ds_v3s_story, f"./story/{file_name}")
