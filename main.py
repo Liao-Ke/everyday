@@ -98,12 +98,15 @@ def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": msg}
     ]
+
+    request_params = {"model": model_name,  # 请填写您要调用的模型名称
+                      "messages": messages,
+                      "stream": False,
+                      **kwargs}
     try:
 
         response = client.chat.completions.create(
-            model=model_name,  # 请填写您要调用的模型名称
-            messages=messages,
-            **kwargs
+            **request_params
             # top_p=0.70,
             # temperature=0.95
         )
@@ -114,7 +117,7 @@ def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
 
         # 保存完整的对话记录（包含原始响应）
         save_chat_metadata(
-            messages=messages,
+            request_params=request_params,
             response_time=response_time,
             session_id=session_id,
             response_data=response.to_dict()
@@ -137,7 +140,7 @@ def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
 
 def get_prompt(key):
     prompts = {
-        'deepsek_story': '''作为专业作家，请根据主题创作故事。要求：
+        'deepseek_story': '''作为专业作家，请根据主题创作故事。要求：
     - 严格按格式输出：
     # 标题
     > 主题
@@ -174,14 +177,15 @@ def get_prompt(key):
     return prompts.get(key, default_prompt)
 
 
-def save_chat_metadata(messages: list[dict[str, str] | dict[str, str]], response_time: float, session_id: str,
+def save_chat_metadata(request_params: dict[str, list[dict[str, str] | dict[str, str]] | str], response_time: float,
+                       session_id: str,
                        response_data: dict):
     """修复后的元数据保存"""
     metadata = {
         "session_id": session_id,
         "timestamp": datetime.datetime.now().isoformat(),
         "response_time": round(response_time, 3),
-        "messages": messages,
+        "request_params": request_params,
         "system_metrics": {
             "platform": os.name,
             "python_version": sys.version.split()[0]
@@ -239,7 +243,8 @@ def _save_to_json(data: dict, filename: str):
 
 def chat_ai_reasoning(msg: str, api_key: str, system_prompt: str, session_id: str = None,
                       model_name: str = "deepseek-reasoner",
-                      api_base_url: str = "https://api.deepseek.com") -> tuple:
+                      api_base_url: str = "https://api.deepseek.com",
+                      **kwargs) -> tuple:
     client = OpenAI(api_key=api_key, base_url=api_base_url)  # 请填写您自己的APIKey
 
     # 生成会话ID（如果未提供）
@@ -259,21 +264,21 @@ def chat_ai_reasoning(msg: str, api_key: str, system_prompt: str, session_id: st
     # - 严格按格式输出：
     # # 标题
     # > 主题
-    # 故事内容（远超800字）
+    # 故事内容（远超800个字）
     # - 保持逻辑严密、情节曲折'''
 
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": msg}
     ]
+    request_params = {"model": model_name,  # 请填写您要调用的模型名称
+                      "messages": messages,
+                      "stream": False,
+                      **kwargs}
     try:
 
         response = client.chat.completions.create(
-            model=model_name,  # 请填写您要调用的模型名称
-            messages=messages,
-            # top_p=0.70,
-            # temperature=1.5,
-            stream=False
+            **request_params
         )
 
         # 获取响应内容
@@ -284,7 +289,7 @@ def chat_ai_reasoning(msg: str, api_key: str, system_prompt: str, session_id: st
 
         # 保存完整的对话记录（包含原始响应）
         save_chat_metadata(
-            messages=messages,
+            request_params=request_params,
             response_time=response_time,
             session_id=session_id,
             response_data=response.to_dict()
@@ -451,7 +456,7 @@ if __name__ == '__main__':
     # DeepSeek
     ds_reasoning_content, ds_story = chat_ai_reasoning(f"我提供的主题是：{jinshan.get('note')}",
                                                        os.environ.get("API_KEY_DS"),
-                                                       system_prompt=get_prompt("deepsek_story"))
+                                                       system_prompt=get_prompt("deepseek_story"))
 
     ds_story = insert_content_in_first_line(ds_story, f"<ReasoningChainRenderer>\n"
                                                       f"{ds_reasoning_content}"
@@ -461,14 +466,14 @@ if __name__ == '__main__':
     save_to_md_file(ds_story, f"./story/{file_name}")
 
     # Kimi
-    kimi_story = chat_ai(f"""{get_prompt("deepsek_story")}
+    kimi_story = chat_ai(f"""{get_prompt("deepseek_story")}
 
 我提供的主题是：{jinshan.get('note')}
 
 {ds_reasoning_content}
 """, os.environ.get("API_KEY_KIMI"),
-                        system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
-                        model_name="kimi-latest")
+                         system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
+                         model_name="kimi-latest")
 
     file_name = f"{get_today_info()}.md"
     save_to_md_file(kimi_story, f"./story/{file_name}")
