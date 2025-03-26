@@ -120,6 +120,7 @@ def chat_ai(msg: str, api_key: str, system_prompt: str, session_id: str = None,
             request_params=request_params,
             response_time=response_time,
             session_id=session_id,
+            api_base_url=api_base_url,
             response_data=response.to_dict()
         )
 
@@ -179,6 +180,7 @@ def get_prompt(key):
 
 def save_chat_metadata(request_params: dict[str, list[dict[str, str] | dict[str, str]] | str], response_time: float,
                        session_id: str,
+                       api_base_url: str,
                        response_data: dict):
     """修复后的元数据保存"""
     metadata = {
@@ -186,6 +188,7 @@ def save_chat_metadata(request_params: dict[str, list[dict[str, str] | dict[str,
         "timestamp": datetime.datetime.now().isoformat(),
         "response_time": round(response_time, 3),
         "request_params": request_params,
+        "api_base_url": api_base_url,
         "system_metrics": {
             "platform": os.name,
             "python_version": sys.version.split()[0]
@@ -291,6 +294,7 @@ def chat_ai_reasoning(msg: str, api_key: str, system_prompt: str, session_id: st
         save_chat_metadata(
             request_params=request_params,
             response_time=response_time,
+            api_base_url=api_base_url,
             session_id=session_id,
             response_data=response.to_dict()
         )
