@@ -346,6 +346,23 @@ def ensure_first_line_is_h1(markdown_text):
     return '\n'.join(lines)
 
 
+def estimate_tokens(api_key, model, messages, url="https://api.moonshot.cn/v1/tokenizers/estimate-token-count"):
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    payload = {
+        "model": model,
+        "messages": messages
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    response.raise_for_status()  # 检查请求是否成功
+
+    token_data = response.json()
+    return token_data['data']['total_tokens']
+
+
 def download_image(url, save_dir):
     """
     下载图片并保存到指定目录，返回图片保存路径。
@@ -470,14 +487,22 @@ if __name__ == '__main__':
     save_to_md_file(ds_story, f"./story/{file_name}")
 
     # Kimi
-    kimi_story = chat_ai(f"""{get_prompt("deepseek_story")}
+    kimi_api_key = os.environ.get("API_KEY_KIMI")
+    kimi_model_name = "kimi-latest"
+    kimi_system_prompt = get_prompt("Kimi")
+    kimi_msg = f"""{get_prompt("deepseek_story")}
 
 我提供的主题是：{jinshan.get('note')}
-
+ 
 {ds_reasoning_content}
-""", os.environ.get("API_KEY_KIMI"),
-                         system_prompt=get_prompt("Kimi"), api_base_url="https://api.moonshot.cn/v1",
-                         model_name="kimi-latest")
+"""
+    kimi_token_count = estimate_tokens(kimi_api_key, kimi_model_name, [
+        {"role": "system", "content": kimi_system_prompt},
+        {"role": "user", "content": kimi_msg}
+    ])
+    kimi_story = chat_ai(kimi_msg, kimi_api_key,
+                         system_prompt=kimi_system_prompt, api_base_url="https://api.moonshot.cn/v1",
+                         model_name=kimi_model_name, max_tokens=8192-kimi_token_count)
 
     file_name = f"{get_today_info()}.md"
     save_to_md_file(kimi_story, f"./story/{file_name}")
