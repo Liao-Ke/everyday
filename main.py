@@ -171,8 +171,46 @@ def get_prompt(key):
 - 可加入反转、伏笔、象征等文学手法增强可读性  
 - 结局可开放，也可封闭，但需符合故事逻辑  
 
-请确保故事流畅、文笔优美，并符合用户设定的主题及字数要求。   
-'''
+请确保故事流畅、文笔优美，并符合用户设定的主题及字数要求。''',
+        "Kimi_v2": '''作为Kimi AI创意写作助手，你必须严格遵守以下准则：
+
+【核心原则】
+1. 将用户通过<think>标签提供的思考过程视为最高优先级创作依据
+2. 严格区分用户明确指示（"必须"类）和思考过程（"可能"类）的约束力层级
+
+【思考过程处理】
+3. 对<think>标签内容：
+   - 解析：提取创作方向/关键元素/潜在边界
+   - 实现：优先落实带"★"标记的核心诉求
+   - 回避：明确标注"不想出现"的元素
+4. 当<think>存在矛盾时：
+   - 时间最近优先
+   - 明确表述优先于模糊表述
+   - 通过提问确认而非自行裁决
+
+【创作执行】
+5. 严格保持：
+   - 叙事节奏（通过<think>中的节奏描述）
+   - 情绪曲线（根据<think>中的情绪标记）
+   - 文学密度（匹配<think>中的详略指示）
+6. 对未在<think>中覆盖的细节：
+   - 保持最小化补充
+   - 补充内容必须与现有<think>逻辑自洽''',
+        "deepseek_story_v2": '''请作为专业作家根据指定主题创作故事，严格遵循以下要求：
+
+1. 格式要求：
+   # 标题（体现核心冲突或主题）
+   > 主题
+   故事正文（远超800字）
+
+2. 内容要求：
+   - 包含明确转折点
+   - 埋设3处以上伏笔并在后期回收
+   - 关键情节需有前因后果闭环
+   - 人物动机需有心理描写支撑
+   - 最终结局应出人意料但合乎逻辑
+   - 风格多变（可尝试不同风格）
+   - 不需要分割线、分章节'''
     }
     default_prompt = 'The requested prompt is not available. Please use a valid key.'
     return prompts.get(key, default_prompt)
@@ -475,9 +513,10 @@ if __name__ == '__main__':
     modify_link("./story/index.md", f"/{file_name}")
 
     # DeepSeek
+    deepseek_system_prompt = get_prompt("deepseek_story")
     ds_reasoning_content, ds_story = chat_ai_reasoning(f"我提供的主题是：{jinshan.get('note')}",
                                                        os.environ.get("API_KEY_DS"),
-                                                       system_prompt=get_prompt("deepseek_story"))
+                                                       system_prompt=deepseek_system_prompt)
 
     ds_story = insert_content_in_first_line(ds_story, f"<ReasoningChainRenderer>\n"
                                                       f"{ds_reasoning_content}"
@@ -489,13 +528,14 @@ if __name__ == '__main__':
     # Kimi
     kimi_api_key = os.environ.get("API_KEY_KIMI")
     kimi_model_name = "kimi-latest"
-    kimi_system_prompt = get_prompt("Kimi")
-    kimi_msg = f"""{get_prompt("deepseek_story")}
+    kimi_system_prompt = get_prompt("Kimi_v2")
+    kimi_msg = f"""{deepseek_system_prompt}
 
-我提供的主题是：{jinshan.get('note')}
- 
+主题是：{jinshan.get('note')}
+
+<think>
 {ds_reasoning_content}
-"""
+</think>"""
     kimi_token_count = estimate_tokens(kimi_api_key, kimi_model_name, [
         {"role": "system", "content": kimi_system_prompt},
         {"role": "user", "content": kimi_msg}
