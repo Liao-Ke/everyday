@@ -28,7 +28,7 @@ pip install -r requirements.txt
    - [DeepSeek API密钥](https://platform.deepseek.com/api_keys)
    - [智谱清言API密钥](https://bigmodel.cn/usercenter/proj-mgmt/apikeys)
    - [Kimi API密钥](https://platform.moonshot.cn/console/api-keys)
-   - [豆包 API密钥](https://console.volcengine.com/)
+   - [豆包 API密钥](https://console.volcengine.com/ark)
 2. 创建魔法卷轴（.env文件）：
 ```env
 API_KEY=您的智谱密钥
