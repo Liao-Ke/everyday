@@ -10,6 +10,7 @@ jobs:
       API_KEY: ${{ secrets.MY_API_KEY }}
       API_KEY_DS: ${{ secrets.MY_API_KEY_DS }}
       API_KEY_KIMI: ${{ secrets.MY_API_KEY_KIMI }}
+      API_KEY_DOUBAO: ${{ secrets.MY_API_KEY_DOUBAO }}
     steps:
       - uses: actions/checkout@v4
         with:

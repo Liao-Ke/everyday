@@ -210,7 +210,54 @@ def get_prompt(key):
    - 人物动机需有心理描写支撑
    - 最终结局应出人意料但合乎逻辑
    - 风格多变（可尝试不同风格）
-   - 不需要分割线、分章节'''
+   - 不需要分割线、分章节''',
+        "doubao_story": '''<optimized_prompt>
+<task>创意撰写一篇符合要求的主题文章</task>
+
+<context>
+请发挥创意写一篇文章。
+要求：选准角度，确定立意，自拟有趣标题；不要套作，不得抄袭；不得泄露个人信息；不少于1500字；严格按照格式输出。
+
+输出格式：
+# 标题
+正文
+</context>
+
+<instructions>
+1. 创意确定主题：
+   - 发掘独特有趣且适合故事化表达的主题方向
+   - 选择能讲述完整故事的切入点
+   - 确保主题既新颖又有叙事深度
+
+2. 创意规划结构：
+   - 采用经典故事结构（起承转合）或创新叙事方式
+   - 设计引人入胜的情节发展
+   - 塑造鲜明的人物形象
+   - 构建完整的叙事弧线
+
+3. 创意表达内容：
+   - 用富有张力的场景描写开头
+   - 融入戏剧性冲突和转折
+   - 创造性地发展故事情节
+   - 达到不少于1500字的要求
+
+4. 完善创意细节：
+   - 拟订一个暗示故事性的标题
+   - 增强场景描写和人物刻画
+   - 确保故事连贯性和吸引力
+   - 移除任何个人信息
+
+5. 创意格式化输出：
+   - 通过段落节奏强化故事张力
+   - 确保标题前有#标记
+   - 使用对话和描写增强故事性
+</instructions>
+
+<output_format>
+# 一个引人入胜的故事标题
+文章正文内容，不少于1500字，包含完整的故事元素，格式规范且富有叙事魅力
+</output_format>
+</optimized_prompt>'''
     }
     default_prompt = 'The requested prompt is not available. Please use a valid key.'
     return prompts.get(key, default_prompt)
@@ -499,10 +546,9 @@ if __name__ == '__main__':
     # save_to_md_file(chat_ai("你的生活不会因偶然变好，而是因改变变好。", os.environ.get("API_KEY")), f"./test/{get_today_info()}.md")
     jinshan = get_jinshan()
 
+    # 智谱
     img_path = download_image(jinshan.get('fenxiang_img'), './story/images')
-
     file_name = f"{get_today_info()}.md"
-
     story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY"),
                     system_prompt=get_prompt("zhipu_story"))
     story = process_string(story, "```markdown", "```", f"./story/{file_name}.log")
@@ -514,7 +560,8 @@ if __name__ == '__main__':
 
     # DeepSeek
     deepseek_system_prompt = get_prompt("deepseek_story")
-    ds_reasoning_content, ds_story = chat_ai_reasoning(f"我提供的主题是：{jinshan.get('note')}",
+    deepseek_msg = f"我提供的主题是：{jinshan.get('note')}"
+    ds_reasoning_content, ds_story = chat_ai_reasoning(deepseek_msg,
                                                        os.environ.get("API_KEY_DS"),
                                                        system_prompt=deepseek_system_prompt)
 
@@ -525,13 +572,13 @@ if __name__ == '__main__':
     file_name = f"{get_today_info()}.md"
     save_to_md_file(ds_story, f"./story/{file_name}")
 
-    # Kimi
+    # Kimi -> DeepSeek think
     kimi_api_key = os.environ.get("API_KEY_KIMI")
     kimi_model_name = "kimi-latest"
     kimi_system_prompt = get_prompt("Kimi_v2")
     kimi_msg = f"""{deepseek_system_prompt}
 
-主题是：{jinshan.get('note')}
+    {deepseek_msg}
 
 <think>
 {ds_reasoning_content}
@@ -548,12 +595,47 @@ if __name__ == '__main__':
     save_to_md_file(kimi_story, f"./story/{file_name}")
 
     # DeepSeek-V3
-    ds_v3s_story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"),
-                           system_prompt=get_prompt("deepseek_v3_story"), api_base_url="https://api.deepseek.com",
-                           model_name="deepseek-chat",
-                           max_tokens=8192,
-                           temperature=1.5
-                           )
+    ds_v3_story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"),
+                          system_prompt=get_prompt("deepseek_v3_story"), api_base_url="https://api.deepseek.com",
+                          model_name="deepseek-chat",
+                          max_tokens=8192,
+                          temperature=1.5
+                          )
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(ds_v3s_story, f"./story/{file_name}")
+    save_to_md_file(ds_v3_story, f"./story/{file_name}")
+
+    # 豆包
+    doubao_system_prompt = get_prompt("doubao_story")
+    doubao_msg = f"主题：{jinshan.get('note')}"
+    db_reasoning_content, db_story = chat_ai_reasoning(doubao_msg,
+                                                       os.environ.get("API_KEY_DOUBAO"),
+                                                       system_prompt=doubao_system_prompt,
+                                                       api_base_url="https://ark.cn-beijing.volces.com/api/v3",
+                                                       model_name="doubao-1-5-thinking-pro-250415")
+
+    db_story = insert_content_in_first_line(db_story, f"<ReasoningChainRenderer>\n"
+                                                      f"{db_reasoning_content}"
+                                                      f"\n</ReasoningChainRenderer>\n")
+
+    file_name = f"{get_today_info()}.md"
+    save_to_md_file(db_story, f"./story/{file_name}")
+
+    # Kimi -> 豆包 think
+    kimi_msg = f"""{doubao_system_prompt}
+
+    {doubao_msg}
+
+    <think>
+    {db_reasoning_content}
+    </think>"""
+    kimi_token_count = estimate_tokens(kimi_api_key, kimi_model_name, [
+        {"role": "system", "content": kimi_system_prompt},
+        {"role": "user", "content": kimi_msg}
+    ])
+    kimi_story = chat_ai(kimi_msg, kimi_api_key,
+                         system_prompt=kimi_system_prompt, api_base_url="https://api.moonshot.cn/v1",
+                         model_name=kimi_model_name, max_tokens=8192 - kimi_token_count)
+
+    file_name = f"{get_today_info()}.md"
+    save_to_md_file(kimi_story, f"./story/{file_name}")
