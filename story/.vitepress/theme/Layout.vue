@@ -46,6 +46,9 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #not-found>
       <MyLayout/>
     </template>
+    <template #doc-before>
+      <WordCount />
+    </template>
     <template #doc-footer-before>
       内容由 AI 生成，请仔细甄别
     </template>

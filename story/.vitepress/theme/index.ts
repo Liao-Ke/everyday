@@ -11,6 +11,7 @@ import "./styles/my.css"
 import Layout from './Layout.vue';
 
 import ReasoningChainRenderer from '../components/ReasoningChainRenderer.vue'
+import WordCount from '../components/WordCount.vue'
 
 import { 
   NolebaseGitChangelogPlugin 
@@ -40,6 +41,7 @@ export const Theme: ThemeConfig = {
       commitsRelativeTime: true
     })  ,
     app.component('ReasoningChainRenderer',ReasoningChainRenderer /* ... */)
+    app.component('WordCount', WordCount)
   },
 }
 export default Theme
