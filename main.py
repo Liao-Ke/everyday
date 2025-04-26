@@ -622,20 +622,21 @@ if __name__ == '__main__':
     save_to_md_file(db_story, f"./story/{file_name}")
 
     # Kimi -> 豆包 think
-    kimi_msg = f"""{doubao_system_prompt}
 
-    {doubao_msg}
-
-    <think>
-    {db_reasoning_content}
-    </think>"""
-    kimi_token_count = estimate_tokens(kimi_api_key, kimi_model_name, [
-        {"role": "system", "content": kimi_system_prompt},
-        {"role": "user", "content": kimi_msg}
-    ])
-    kimi_story = chat_ai(kimi_msg, kimi_api_key,
-                         system_prompt=kimi_system_prompt, api_base_url="https://api.moonshot.cn/v1",
-                         model_name=kimi_model_name, max_tokens=8192 - kimi_token_count)
-
-    file_name = f"{get_today_info()}.md"
-    save_to_md_file(kimi_story, f"./story/{file_name}")
+    # kimi_msg = f"""{doubao_system_prompt}
+    #
+    # {doubao_msg}
+    #
+    # <think>
+    # {db_reasoning_content}
+    # </think>"""
+    # kimi_token_count = estimate_tokens(kimi_api_key, kimi_model_name, [
+    #     {"role": "system", "content": kimi_system_prompt},
+    #     {"role": "user", "content": kimi_msg}
+    # ])
+    # kimi_story = chat_ai(kimi_msg, kimi_api_key,
+    #                      system_prompt=kimi_system_prompt, api_base_url="https://api.moonshot.cn/v1",
+    #                      model_name=kimi_model_name, max_tokens=8192 - kimi_token_count)
+    #
+    # file_name = f"{get_today_info()}.md"
+    # save_to_md_file(kimi_story, f"./story/{file_name}")
