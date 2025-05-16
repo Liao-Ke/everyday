@@ -6,7 +6,7 @@
 [![每日故事在线预览](https://img.shields.io/badge/🌏%20在线体验-点击访问-ff69b4)](https://story.maozi.io/)
 
 ## ✨ 项目特色
-- **智能续写引擎**：基于DeepSeek/智谱清言双AI引擎，将金句拓展成跌宕起伏的微型小说
+- **智能续写引擎**：基于DeepSeek/智谱清言等多个AI引擎，将金句拓展成跌宕起伏的微型小说
 - **时空胶囊式存储**：采用`年/月/日`三维归档系统，自动生成时光隧道般的故事索引
 - **沉浸式文档站点**：内置精美Vitepress知识库，支持实时故事画廊浏览（[在线预览](https://story.maozi.io/)）
 - **云端自动化**：GitHub Actions每日定时生成故事，打造永不间断的文学瀑布流
@@ -80,7 +80,7 @@ everyday/
 
 **🌌 特别鸣谢**
 - 智慧之源：[金山词霸每日一句](https://open.iciba.com/index.php?c=wiki)
-- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn) & [Kimi](https://platform.moonshot.cn)
+- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn) & [Kimi](https://platform.moonshot.cn) & [豆包](https://console.volcengine.com/ark)
 - 时空建筑师：[Vitepress](https://vitepress.dev)
 - 自动化工程师：[GitHub Actions](https://github.com/features/actions)
 - 魔法绽放平台：[帽子云](https://maoziyun.com/)
