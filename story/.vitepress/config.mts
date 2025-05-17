@@ -1,10 +1,5 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar';
-import {
-  GitChangelog,
-  GitChangelogMarkdownSection,
-} from '@nolebase/vitepress-plugin-git-changelog/vite'
-
 import viteCompression from "vite-plugin-compression";
 
 // https://vitepress.dev/reference/site-config
@@ -25,16 +20,6 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      GitChangelog({
-        // 填写在此处填写您的仓库链接
-        repoURL: () => 'https://github.com/Liao-Ke/everyday',
-      }),
-      GitChangelogMarkdownSection({
-        sections: {
-          disableContributors: true,
-          disableChangelog: true,
-        }
-      }),
       viteCompression({
         verbose: true,
         disable: false,

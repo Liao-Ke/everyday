@@ -13,10 +13,6 @@ import Layout from './Layout.vue';
 import ReasoningChainRenderer from '../components/ReasoningChainRenderer.vue'
 import WordCount from '../components/WordCount.vue'
 
-import { 
-  NolebaseGitChangelogPlugin 
-} from '@nolebase/vitepress-plugin-git-changelog/client'
-import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 export const Theme: ThemeConfig = {
   extends: DefaultTheme,
   setup() {
@@ -37,9 +33,6 @@ export const Theme: ThemeConfig = {
   Layout: Layout,
   
   enhanceApp({ app }) {
-    app.use(NolebaseGitChangelogPlugin,{
-      commitsRelativeTime: true
-    })  ,
     app.component('ReasoningChainRenderer',ReasoningChainRenderer /* ... */)
     app.component('WordCount', WordCount)
   },
