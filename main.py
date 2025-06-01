@@ -147,6 +147,13 @@ def get_prompt(key):
     > 主题
     故事内容（远超800字）
     - 保持逻辑严密、情节曲折''',
+        "deepseek_story_v1.1": '''作为专业作家，请根据主题创作故事。要求：
+    - 严格按格式输出：
+    # 标题
+    > 主题
+    故事内容（远超800字）
+    - 保持逻辑严密、情节曲折
+    - 文体不限（比如诗歌、记叙文、小说、散文、戏剧、议论文，说明文等）''',
         "zhipu_story": '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
 """ 输出格式 """
 # 故事的题目
@@ -559,7 +566,7 @@ if __name__ == '__main__':
     modify_link("./story/index.md", f"/{file_name}")
 
     # DeepSeek
-    deepseek_system_prompt = get_prompt("deepseek_story")
+    deepseek_system_prompt = get_prompt("deepseek_story_v1.1")
     deepseek_msg = f"我提供的主题是：{jinshan.get('note')}"
     ds_reasoning_content, ds_story = chat_ai_reasoning(deepseek_msg,
                                                        os.environ.get("API_KEY_DS"),
