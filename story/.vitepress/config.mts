@@ -61,6 +61,10 @@ export default defineConfig({
     nav:[
       {text: '神奇小故事', link: 'https://ruozhi.pages.dev/' },
     ],
+    editLink: {
+      "text":"编辑此页",
+      pattern: 'https://github.com/Liao-Ke/everyday/edit/master/story/:path'
+    },
     search: {
       provider: 'local',
       options: {
