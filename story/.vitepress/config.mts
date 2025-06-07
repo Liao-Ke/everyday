@@ -7,7 +7,7 @@ export default defineConfig({
   title: '每日 AI 小故事',
   description: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。',
   lang: 'zh-CN',
-  lastUpdated: false,
+  lastUpdated: true,
   cleanUrls: false,
   sitemap: {
     hostname: 'https://story.maozi.io'
