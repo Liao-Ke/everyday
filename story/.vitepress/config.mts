@@ -10,7 +10,14 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: false,
   sitemap: {
-    hostname: 'https://story.maozi.io'
+    hostname: 'https://story.maozi.io',
+    xslUrl: '/sitemap.xsl',
+    xmlns: { // 修剪 XML 命名空间
+      news: false, // 设为 false 可省略新闻的 XML 命名空间
+      xhtml: true,
+      image: false,
+      video: false
+    }
   },
   head: [
     ['meta', { property: 'og:title', content: '每日AI生成小故事 - 基于金山每日一句' }],

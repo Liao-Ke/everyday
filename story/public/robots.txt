@@ -1,0 +1,10 @@
+# robots.txt for Everyday Story Generator
+
+# 允许所有爬虫访问
+User-agent: *
+
+# 允许访问所有页面
+Disallow: 
+
+# 网站地图路径（假设你有网站地图，可根据实际情况修改）
+Sitemap: https://story.maozi.io/sitemap.xml
