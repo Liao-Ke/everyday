@@ -6,6 +6,9 @@ hero:
   name: "每日故事"
   text: "根据金山每日一句使用AI生成的小故事"
   tagline: "用故事丰富你的生活"
+  image:
+    src: /favicon.ico
+    alt: "每日故事"
   actions:
     - theme: brand
       text: "今日故事"

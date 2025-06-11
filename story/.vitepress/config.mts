@@ -22,6 +22,7 @@ export default defineConfig({
   head: [
     ['meta', { property: 'og:title', content: '每日AI生成小故事 - 基于金山每日一句' }],
     ['meta', { property: 'og:description', content: '根据金山每日一句使用AI生成的小故事，每日更新，提供独特阅读体验，用户可分享互动，共同打造故事社区。' }],
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     // ['meta', { property: 'og:image', content: 'path/to/social-media-image.jpg' }],
     // ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: '每日AI生成小故事 - 基于金山每日一句' }],
