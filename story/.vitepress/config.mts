@@ -117,13 +117,25 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
 
 
-    sidebar: generateSidebar({
+    sidebar: generateSidebar([{
       // VitePress Sidebar's options here...
       documentRootPath: '/story',
+      scanStartPath:"词云",
+      resolvePath:"/词云/",
+      basePath:"/词云/",
       useTitleFromFileHeading: true,
       useTitleFromFrontmatter:true,
       collapsed: true,
-    }),
+    },{
+      // VitePress Sidebar's options here...
+      documentRootPath: '/story',
+      scanStartPath:"故事",
+      resolvePath:"/故事/",
+      basePath:"/故事/",
+      useTitleFromFileHeading: true,
+      useTitleFromFrontmatter:true,
+      collapsed: true,
+    }]),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Liao-Ke/everyday' }

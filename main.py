@@ -12,6 +12,8 @@ import time
 import uuid
 import datetime
 import sys
+from ruamel.yaml import YAML
+from io import StringIO
 
 
 # 按 Shift+F10 执行或将其替换为您的代码。
@@ -690,16 +692,83 @@ def convert_path(path):
     return new_path
 
 
-def modify_link(file_path, text):
+# def modify_link(file_path, text):
+#     with open(file_path, 'r', encoding='utf-8') as f:
+#         lines = f.readlines()
+#     for i, line in enumerate(lines):
+#         if 'link:' in line:
+#             parts = line.split('link: ')
+#             parts[1] = text
+#             lines[i] = '      link: ' + text + '\n'
+#     with open(file_path, 'w', encoding='utf-8') as f:
+#         f.writelines(lines)
+
+def modify_frontmatter(file_path, key_path, new_value):
+    """
+    修改Markdown文件中的YAML front matter配置项
+
+    参数:
+    file_path (str): Markdown文件路径
+    key_path (str): 配置项路径（点分隔格式，如"hero.name"）
+    new_value: 新的配置值
+    """
+    yaml = YAML()
+    yaml.preserve_quotes = True  # 保留引号格式
+    yaml.width = 120  # 避免长文本自动换行
+    yaml.indent(mapping=2, sequence=4, offset=2)  # 保持缩进风格
+
+    # 读取文件内容
     with open(file_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    for i, line in enumerate(lines):
-        if 'link:' in line:
-            parts = line.split('link: ')
-            parts[1] = text
-            lines[i] = '      link: ' + text + '\n'
-    with open(file_path, 'w', encoding='utf-8') as f:
-        f.writelines(lines)
+        content = f.read().splitlines()
+
+    # 定位front matter起始和结束位置
+    start_idx = None
+    end_idx = None
+    for i, line in enumerate(content):
+        if line.strip() == '---':
+            if start_idx is None:
+                start_idx = i
+            else:
+                end_idx = i
+                break
+
+    if start_idx is None or end_idx is None:
+        raise ValueError("未找到有效的YAML front matter")
+
+    # 解析YAML内容
+    yaml_content = '\n'.join(content[start_idx + 1:end_idx])
+    data = yaml.load(yaml_content)
+
+    # 递归查找并修改配置项
+    keys = key_path.split('.')
+    current = data
+    for key in keys[:-1]:
+        if key.isdigit() and isinstance(current, list):
+            key = int(key)
+        current = current[key]
+
+    # 设置新值
+    last_key = keys[-1]
+    if last_key.isdigit() and isinstance(current, list):
+        last_key = int(last_key)
+    current[last_key] = new_value
+
+    # 将更新后的YAML写入字符串流
+    stream = StringIO()
+    yaml.dump(data, stream)
+    stream.seek(0)
+    updated_yaml = stream.getvalue().splitlines()
+
+    # 重建文件内容
+    new_content = content[:start_idx] + ['---'] + updated_yaml + ['---'] + content[end_idx + 1:]
+
+    # 写入文件（使用临时文件避免数据丢失）
+    temp_path = file_path + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(new_content))
+
+    # 替换原文件
+    os.replace(temp_path, file_path)
 
 
 def process_string(original_str, first_content, last_content, log_file_path):
@@ -761,8 +830,10 @@ if __name__ == '__main__':
     story = ensure_first_line_is_h1(story)
     story = insert_content_in_fourth_line(story, f"\n![{jinshan.get('note')}]({convert_path(img_path)})\n")
 
-    save_to_md_file(story, f"./story/{file_name}")
-    modify_link("./story/index.md", f"/{file_name}")
+    save_to_md_file(story, f"./story/故事/{file_name}")
+    # modify_link("./story/index.md", f"/{file_name}")
+    # 更新今日故事链接
+    modify_frontmatter("./story/index.md", "hero.actions.0.link", f"/{file_name}")
 
     # DeepSeek
     deepseek_system_prompt = get_prompt("deepseek_story_v2.1")
@@ -776,7 +847,7 @@ if __name__ == '__main__':
                                                       f"\n</ReasoningChainRenderer>\n")
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(ds_story, f"./story/{file_name}")
+    save_to_md_file(ds_story, f"./story/故事/{file_name}")
 
     # Kimi -> DeepSeek think
     kimi_api_key = os.environ.get("API_KEY_KIMI")
@@ -798,7 +869,7 @@ if __name__ == '__main__':
                          model_name=kimi_model_name, max_tokens=8192-kimi_token_count)
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(kimi_story, f"./story/{file_name}")
+    save_to_md_file(kimi_story, f"./story/故事/{file_name}")
 
     # DeepSeek-V3
     ds_v3_story = chat_ai(f"我提供的主题是：{jinshan.get('note')}", os.environ.get("API_KEY_DS"),
@@ -809,7 +880,7 @@ if __name__ == '__main__':
                           )
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(ds_v3_story, f"./story/{file_name}")
+    save_to_md_file(ds_v3_story, f"./story/故事/{file_name}")
 
     # 豆包
     doubao_system_prompt = get_prompt("doubao_story")
@@ -835,7 +906,7 @@ if __name__ == '__main__':
                             )
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(db_v1_5_story, f"./story/{file_name}")
+    save_to_md_file(db_v1_5_story, f"./story/故事/{file_name}")
 
     # Kimi -> 豆包 think
 
