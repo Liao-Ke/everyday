@@ -1,3 +1,5 @@
-requests~=2.32.3
+requests~=2.32.4
 python-dotenv~=0.21.0
 openai~=1.61.1
+matplotlib~=3.9.2
+wordcloud~=1.9.4
