@@ -833,7 +833,7 @@ if __name__ == '__main__':
     save_to_md_file(story, f"./story/故事/{file_name}")
     # modify_link("./story/index.md", f"/{file_name}")
     # 更新今日故事链接
-    modify_frontmatter("./story/index.md", "hero.actions.0.link", f"/{file_name}")
+    modify_frontmatter("./story/index.md", "hero.actions.0.link", f"/故事/{file_name}")
 
     # DeepSeek
     deepseek_system_prompt = get_prompt("deepseek_story_v2.1")
@@ -896,7 +896,7 @@ if __name__ == '__main__':
                                                       f"\n</ReasoningChainRenderer>\n")
 
     file_name = f"{get_today_info()}.md"
-    save_to_md_file(db_story, f"./story/{file_name}")
+    save_to_md_file(db_story, f"./story/故事/{file_name}")
 
     # 豆包1.5pro
     db_v1_5_story = chat_ai(f"“{jinshan.get('note')}”", os.environ.get("API_KEY_DOUBAO"),
