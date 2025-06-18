@@ -55,7 +55,7 @@ def generate_wordcloud(word_freq, output_path):
         width=800,
         height=600,
         background_color='white',
-        font_path='simhei.ttf'  # 如果系统中没有SimHei字体，可能需要指定其他字体路径
+        font_path='./story/.vitepress/theme/fonts/jinkai.ttf'  # 如果系统中没有SimHei字体，可能需要指定其他字体路径
     ).generate_from_frequencies(word_freq)
 
     # 保存词云图片
