@@ -104,7 +104,7 @@ def main():
 
     # 文件和目录路径
     stopwords_path = "stopwords_full.txt"
-    input_dir = "./story/"
+    input_dir = "./story/故事/"
     wordcloud_path = f"./story/images/wordcloud_{current_date}.png"
     report_path = f"./story/词云/{date_dashed}.md"
 
