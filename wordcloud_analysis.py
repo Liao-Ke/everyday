@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import Counter
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-from main import modify_frontmatter
+from main import modify_frontmatter, convert_path
 
 # 设置中文字体
 plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
@@ -139,7 +139,7 @@ def main():
     # 生成报告
     generate_report(word_freq, len(md_files), total_words, wordcloud_path, report_path)
 
-    modify_frontmatter("./story/index.md", "hero.actions.1.link", report_path.lstrip('./story'))
+    modify_frontmatter("./story/index.md", "hero.actions.1.link", convert_path(report_path))
 
     print(f"词云分析完成！")
     print(f"- 词云图片已保存至: {wordcloud_path}")
