@@ -7,4 +7,4 @@ User-agent: *
 Disallow: 
 
 # 网站地图路径（假设你有网站地图，可根据实际情况修改）
-Sitemap: https://story.maozi.io/sitemap.xml
+Sitemap: https://story-aii.pages.dev/sitemap.xml
