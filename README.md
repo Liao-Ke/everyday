@@ -3,12 +3,12 @@
 *"每个金句都值得被赋予生命"——欢迎来到文学与AI的奇妙交汇点*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Liao-Ke/everyday?tab=MIT-1-ov-file)
-[![每日故事在线预览](https://img.shields.io/badge/🌏%20在线体验-点击访问-ff69b4)](https://story.maozi.io/)
+[![每日故事在线预览](https://img.shields.io/badge/🌏%20在线体验-点击访问-ff69b4)](https://story-aii.pages.dev/)
 
 ## ✨ 项目特色
 - **智能续写引擎**：基于DeepSeek/智谱清言等多个AI引擎，将金句拓展成跌宕起伏的微型小说
 - **时空胶囊式存储**：采用`年/月/日`三维归档系统，自动生成时光隧道般的故事索引
-- **沉浸式文档站点**：内置精美Vitepress知识库，支持实时故事画廊浏览（[在线预览](https://story.maozi.io/)）
+- **沉浸式文档站点**：内置精美Vitepress知识库，支持实时故事画廊浏览（[在线预览](https://story-aii.pages.dev/)）
 - **云端自动化**：GitHub Actions每日定时生成故事，打造永不间断的文学瀑布流
 
 ## 🚀 快速开始
