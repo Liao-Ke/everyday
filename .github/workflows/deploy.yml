@@ -18,18 +18,16 @@ jobs:
             cache: 'npm' # 缓存 npm 依赖
         - name: 安装依赖
           run: npm install
-        # - name: 编译项目
-        #   run: npm run docs:build
-        - name: 查看 rsync 版本
-          run: rsync --version
-        # - name: 部署到 服务器
-        #   uses: easingthemes/ssh-deploy@v5.1.0
-        #   with:
-        #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        #     ARGS: "-rlgoDzvc -i --delete"
-        #     SOURCE: "story/.vitepress/dist/"
-        #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        #     REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-        #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        #     TARGET: ${{ secrets.REMOTE_TARGET }}
-        #     EXCLUDE: "/node_modules/"
+        - name: 编译项目
+          run: npm run docs:build
+        - name: 部署到 服务器
+          uses: easingthemes/ssh-deploy@v5.1.0
+          with:
+            SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+            ARGS: "-rlgoDzvc -i --delete"
+            SOURCE: "story/.vitepress/dist/"
+            REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+            REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+            REMOTE_USER: ${{ secrets.REMOTE_USER }}
+            TARGET: ${{ secrets.REMOTE_TARGET }}
+            EXCLUDE: "/node_modules/"
