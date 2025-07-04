@@ -5,7 +5,8 @@ from datetime import datetime
 from collections import Counter
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-from main import modify_frontmatter, convert_path
+
+from utils.mish_mash import modify_frontmatter, convert_path
 
 # 设置中文字体
 plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
