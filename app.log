@@ -49,3 +49,84 @@
 2025-07-05 13:48:52,695 - 每日故事 - INFO - 模型 zhipu 文件后置处理器应用完成
 2025-07-05 13:48:52,696 - 每日故事 - INFO - 所有模型的生成线程已完成
 2025-07-05 13:48:52,696 - 每日故事 - INFO - 应用程序结束
+2025-07-06 07:19:31,174 - 每日故事 - INFO - 今日金山词霸：每个恋爱中的人都是诗人。
+2025-07-06 07:19:31,179 - 每日故事 - ERROR - 加载模型 deepseek_r1 配置时出错: 'API_KEY_DS'
+Traceback (most recent call last):
+  File "/home/runner/work/everyday/everyday/main.py", line 72, in load_model_config
+    module = importlib.import_module(f"model_configs.{module_name}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/work/everyday/everyday/model_configs/deepseek_r1_config.py", line 8, in <module>
+    API_KEY = config["API_KEY_DS"]
+              ~~~~~~^^^^^^^^^^^^^^
+KeyError: 'API_KEY_DS'
+2025-07-06 07:19:31,197 - 每日故事 - ERROR - 加载模型 zhipu 配置时出错: 'API_KEY'
+Traceback (most recent call last):
+  File "/home/runner/work/everyday/everyday/main.py", line 72, in load_model_config
+    module = importlib.import_module(f"model_configs.{module_name}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/work/everyday/everyday/model_configs/zhipu_config.py", line 11, in <module>
+    API_KEY = config["API_KEY"]
+              ~~~~~~^^^^^^^^^^^
+KeyError: 'API_KEY'
+2025-07-06 07:19:31,198 - 每日故事 - ERROR - 加载模型 doubao_think 配置时出错: 'API_KEY_DOUBAO'
+Traceback (most recent call last):
+  File "/home/runner/work/everyday/everyday/main.py", line 72, in load_model_config
+    module = importlib.import_module(f"model_configs.{module_name}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/work/everyday/everyday/model_configs/doubao_think_config.py", line 8, in <module>
+    API_KEY = config["API_KEY_DOUBAO"]
+              ~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'API_KEY_DOUBAO'
+2025-07-06 07:19:31,199 - 每日故事 - ERROR - 加载模型 doubao 配置时出错: 'API_KEY_DOUBAO'
+Traceback (most recent call last):
+  File "/home/runner/work/everyday/everyday/main.py", line 72, in load_model_config
+    module = importlib.import_module(f"model_configs.{module_name}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/work/everyday/everyday/model_configs/doubao_config.py", line 9, in <module>
+    API_KEY = config["API_KEY_DOUBAO"]
+              ~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'API_KEY_DOUBAO'
+2025-07-06 07:19:31,200 - 每日故事 - INFO - 应用程序启动
+2025-07-06 07:19:31,200 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: zhipu, 豆包，最大并发线程数: 4
+2025-07-06 07:19:31,200 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2025-07-06 07:19:31,200 - 每日故事 - ERROR - 模型 zhipu 生成过程中出错: 'NoneType' object is not subscriptable
+2025-07-06 07:19:31,201 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2025-07-06 07:19:31,201 - 每日故事 - ERROR - 模型 豆包 生成过程中出错: 'NoneType' object is not subscriptable
+2025-07-06 07:19:31,201 - 每日故事 - INFO - 所有模型的生成线程已完成
+2025-07-06 07:19:31,201 - 每日故事 - INFO - 应用程序结束
