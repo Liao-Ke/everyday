@@ -1,11 +1,16 @@
-from dotenv import dotenv_values
+import os
+
+from dotenv import load_dotenv
+
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 
-# 获取 .env 文件内容为字典
-config = dotenv_values(".env")
+# 仅在非生产环境加载 .env 文件
+if os.environ.get('ENV') != 'production':
+    load_dotenv()
 
-API_KEY = config["API_KEY_DOUBAO"]
+# 从环境变量获取 API 密钥
+API_KEY = os.getenv("API_KEY_DOUBAO")
 CLIENT_PARAMS = {
     "base_url": "https://ark.cn-beijing.volces.com/api/v3"
 }
