@@ -1,12 +1,14 @@
 import importlib
-from config.logger_setup import setup_logger
 import re
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from queue import Queue
-from openai import APIConnectionError, APIError, APITimeoutError, APIStatusError, RateLimitError
+
+from openai import APIConnectionError, APITimeoutError, APIStatusError, RateLimitError
 from openai import OpenAI
+
+from config.logger_setup import setup_logger
 from utils.metadata_utils import save_chat_metadata
 
 # 获取配置好的日志器
@@ -202,10 +204,11 @@ def run_multi_thread(selected_models, max_workers=4):
 
 
 config_map = {
-    "deepseek": load_model_config("deepseek_r1"),
+    "deepseek": load_model_config("deepseek_v3"),
     "zhipu": load_model_config("zhipu"),
     "豆包-思考": load_model_config("doubao_think"),
-    "豆包": load_model_config("doubao")
+    "豆包": load_model_config("doubao"),
+    "kimi": load_model_config("kimi")
 }
 
 if __name__ == '__main__':
@@ -213,11 +216,11 @@ if __name__ == '__main__':
 
     # 指定要使用的模型
     models_to_use = [
-        # "deepseek",
+        "deepseek",
         "zhipu",
         # "豆包-思考",
-        # "豆包"
-
+        "豆包"
+        # "kimi"
     ]
 
     # 运行多线程生成
