@@ -110,8 +110,6 @@ def modify_frontmatter(file_path, key_path, new_value):
     os.replace(temp_path, file_path)
 
 
-
-
 logger = logging.getLogger('每日故事')
 
 

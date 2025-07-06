@@ -5,7 +5,7 @@ import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from queue import Queue
-from openai import APIConnectionError, APIError
+from openai import APIConnectionError, APIError, APITimeoutError, APIStatusError, RateLimitError
 from openai import OpenAI
 from utils.metadata_utils import save_chat_metadata
 
@@ -15,11 +15,26 @@ logger = setup_logger()
 
 def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: str = str(uuid.uuid4()),
             max_retries=3, initial_backoff=1, max_backoff=10):
+    """
+      调用 OpenAI API 进行聊天对话并获取响应，同时处理重试逻辑。
+
+      Args:
+          api_key (str): 用于访问 AI大模型 的密钥。
+          client_params (dict): 初始化 AI大模型 客户端时使用的参数。
+          chat_params (dict): 调用聊天完成接口时使用的参数。
+          session_id (str, optional): 会话的唯一标识符，默认为一个新生成的 UUID。
+          max_retries (int, optional): 最大重试次数，默认为 3 次。
+          initial_backoff (int, optional): 初始退避时间（秒），默认为 1 秒。
+          max_backoff (int, optional): 最大退避时间（秒），默认为 10 秒。
+
+      Returns:
+          dict | None: 包含响应消息的字典，如果请求失败则返回 None。
+      """
     # 初始化计时器
     start_time = time.time()
     retries = 0
 
-    while retries < max_retries:
+    while retries <= max_retries:
         try:
             client = OpenAI(api_key=api_key, **client_params)
 
@@ -27,7 +42,7 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
                 **chat_params
             )
             # 获取响应内容
-            response_content = response.choices[0].message.to_dict() or ""
+            response_content = response.choices[0].message.model_dump() or ""
             # 记录响应耗时
             response_time = time.time() - start_time
 
@@ -37,12 +52,22 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
 
             return response_content
 
-        except (APIConnectionError, APIError) as e:
+        except (APIConnectionError, APIStatusError, RateLimitError) as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.error(f"API错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
-        except TimeoutError as e:
+        except APITimeoutError as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.error(f"请求超时，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
+        except RateLimitError as e:
+            # 专门处理速率限制错误
+            backoff_time = min(initial_backoff * (2 ** retries) * 2, max_backoff)  # 比普通错误等待更久
+            logger.warning(f"API速率限制错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
+
+            # 尝试从错误信息中提取重试建议时间
+            retry_after = getattr(e, 'retry_after', None)
+            if retry_after and retry_after > backoff_time:
+                logger.info(f"使用API建议的重试时间: {retry_after}秒")
+                backoff_time = retry_after
         except Exception as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.critical(f"严重错误: {str(e)}，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒", exc_info=True)
@@ -122,7 +147,10 @@ def story_generator(model_name, result_queue=None):
         logger.info(f"模型 {model_name} 开始调用AI生成故事")
         r = chat_ai(
             api_key=model_config["api_key"],
-            **params
+            **params,
+            initial_backoff=60,
+            max_backoff=600,
+            max_retries=5
         )
         logger.info(f"模型 {model_name} AI生成故事完成")
         # 检查是否生成失败
@@ -188,7 +216,7 @@ if __name__ == '__main__':
         # "deepseek",
         "zhipu",
         # "豆包-思考",
-        "豆包"
+        # "豆包"
 
     ]
 
