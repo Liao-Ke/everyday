@@ -13,7 +13,7 @@ if os.environ.get('ENV') != 'production':
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_DS")
 CLIENT_PARAMS = {
-    "base_url": "https://api.deepseek.com"
+    "base_url": "https://api.deepseek.com/beta"
 }
 CHAT_PARAMS = {
     "model": "deepseek-chat",
@@ -39,7 +39,8 @@ CHAT_PARAMS = {
         "捕捉人物的典型动作和语言特点，将这些细节融入人物塑造中，使人物言行符合其身份和性格。" }, "内心世界的刻画": { "描述": "通过直接心理描写和间接行为、语言描写，深入揭示人物的内心感受和思想变化。", 
         "创作建议": "运用内心独白、梦境等方式直接揭示人物内心，同时通过行为、语言等间接方式展现其内心世界。" }, "人物的成长与变化": { "描述": 
         "展现人物在经历重大事件后的转变和成长，揭示人性的可塑性和生命的韧性。", "创作建议": "设置一系列事件和挑战，促使人物不断面对和克服困难，展现其成长的过程和轨迹。" } } } }'''},
-        {"role": "user", "content": JINSHAN['note']}
+        {"role": "user", "content": f"创作一篇小说来解读这句话：“{JINSHAN['note']}”，要选择一个合适的标题。"},
+        {"role": "assistant", "content": "# ", "prefix": True}
     ],
     "max_tokens": 8192
 }
