@@ -38,7 +38,7 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
 
     while retries <= max_retries:
         try:
-            client = OpenAI(api_key=api_key, **client_params)
+            client = OpenAI(api_key=api_key, max_retries=max_retries, **client_params)
 
             response = client.chat.completions.create(
                 **chat_params
