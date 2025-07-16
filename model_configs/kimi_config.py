@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 
 from model_configs import JINSHAN
 from preprocessor.params_preprocessor import estimate_tokens
+from processors.file_processors import save_to_md_file
+from processors.format_processors import ensure_first_line_is_h1
 
 # 仅在非生产环境加载 .env 文件
 if os.environ.get('ENV') != 'production':
@@ -15,7 +17,7 @@ CLIENT_PARAMS = {
     "base_url": "https://api.moonshot.cn/v1"
 }
 some_params = {
-    "model": "kimi-latest",
+    "model": "kimi-thinking-preview",
     "messages": [
         {"role": "system", "content": '''{
   "刘慈欣科幻小说风格写作辅助提示词": {
@@ -187,9 +189,14 @@ some_params = {
   }
 }'''},
         {
-          "role": "assistant", "content": "好的，我会根据``刘慈欣科幻小说风格写作辅助提示词``来生成刘慈欣科幻风格的小说并使用Markdown一级标题，整体长度接近 ``3500`` 字。"
+            "role": "assistant", "content": "好的，我会根据``刘慈欣科幻小说风格写作辅助提示词``来生成刘慈欣科幻风格的小说并使用Markdown一级标题，整体长度接近 ``3500`` 字。"
         },
-        {"role": "user", "content": f"请解读“{JINSHAN['note']}”这句话来一篇3500字的小说"}
+        {"role": "user", "content": f"请解读“{JINSHAN['note']}”这句话以写一篇约3500字的小说。请选择合适的标题。请保证字数满足要求。"},
+        {
+            "partial": True,  # <-- 通过 partial 参数，开启 Partial Mode
+            "role": "assistant",  # <-- 我们在用户提问之后添加一条 role=assistant 的消息
+            "content": "# ，",  # <-- 通过 content 把话“喂到 Kimi 大模型嘴里”，让 Kimi 大模型接着这句话继续往下说
+        }
     ]
 }
 kimi_token_count = estimate_tokens(API_KEY, some_params["model"], some_params["messages"],
@@ -205,8 +212,13 @@ PREPROCESSORS = []
 POSTPROCESSORS = [
 
     # format_story
+    ensure_first_line_is_h1,
+
 ]
 
 POSTPROCESSOR_FILES = [
-    lambda r, n: print(n, r["content"])
+    # lambda r, n: print(n, r["content"])
+    # lambda r, n: print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else
+    # print(n, r["content"])
+    save_to_md_file
 ]
