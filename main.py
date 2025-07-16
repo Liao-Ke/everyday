@@ -219,7 +219,7 @@ if __name__ == '__main__':
         "deepseek",
         "zhipu",
         # "豆包-思考",
-        "豆包"
+        "豆包",
         "kimi"
     ]
 
