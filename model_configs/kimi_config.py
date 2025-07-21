@@ -195,7 +195,7 @@ some_params = {
         {
             "partial": True,  # <-- 通过 partial 参数，开启 Partial Mode
             "role": "assistant",  # <-- 我们在用户提问之后添加一条 role=assistant 的消息
-            "content": "# ，",  # <-- 通过 content 把话“喂到 Kimi 大模型嘴里”，让 Kimi 大模型接着这句话继续往下说
+            "content": "# ",  # <-- 通过 content 把话“喂到 Kimi 大模型嘴里”，让 Kimi 大模型接着这句话继续往下说
         }
     ]
 }
