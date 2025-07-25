@@ -208,7 +208,7 @@ config_map = {
     "zhipu": load_model_config("zhipu"),
     "豆包-思考": load_model_config("doubao_think"),
     "豆包": load_model_config("doubao"),
-    "kimi": load_model_config("kimi")
+    # "kimi": load_model_config("kimi")
 }
 
 if __name__ == '__main__':
