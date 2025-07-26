@@ -242,6 +242,7 @@ config_map = {
     "zhipu": load_model_config("zhipu"),
     "豆包-思考": load_model_config("doubao_think"),
     "豆包": load_model_config("doubao"),
+    "qwen": load_model_config("qwen"),
     # "kimi": load_model_config("kimi")
 }
 
@@ -255,6 +256,7 @@ if __name__ == '__main__':
         # "豆包-思考",
         "豆包",
         # "kimi"
+        "qwen"
     ]
 
     # 运行多线程生成
