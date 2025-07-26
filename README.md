@@ -29,12 +29,14 @@ pip install -r requirements.txt
    - [智谱清言API密钥](https://bigmodel.cn/usercenter/proj-mgmt/apikeys)
    - [Kimi API密钥](https://platform.moonshot.cn/console/api-keys)
    - [豆包 API密钥](https://console.volcengine.com/ark)
+   - [通义千问 API密钥](https://bailian.console.aliyun.com)
 2. 创建魔法卷轴（.env文件）：
 ```env
 API_KEY=您的智谱密钥
 API_KEY_DS=您的DeepSeek密钥
 API_KEY_KIMI=您的Kimi密钥
 API_KEY_DOUBAO=您的豆包密钥
+API_KEY_QWEN=您的通义千问密钥
 ```
 
 ### 启动故事熔炉
@@ -65,7 +67,7 @@ everyday/
 │   └── .vitepress/            # 故事展示魔方
 └── .github/workflows/         # 自动化时光机器
 ```
-*提示：完整时空拓扑图请查阅[三维目录结构](#)*
+*提示：完整时空拓扑图请查阅[三维目录结构](README.md)*
 
 ## 🤝 成为故事编织者
 我们欢迎所有形式的艺术共创：
@@ -80,9 +82,9 @@ everyday/
 
 **🌌 特别鸣谢**
 - 智慧之源：[金山词霸每日一句](https://open.iciba.com/index.php?c=wiki)
-- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn) & [Kimi](https://platform.moonshot.cn) & [豆包](https://console.volcengine.com/ark)
+- 灵感催化剂：[DeepSeek](https://platform.deepseek.com) & [智谱AI](https://bigmodel.cn) & [Kimi](https://platform.moonshot.cn) & [豆包](https://console.volcengine.com/ark) & [通义千问](https://bailian.console.aliyun.com)
 - 时空建筑师：[Vitepress](https://vitepress.dev)
 - 自动化工程师：[GitHub Actions](https://github.com/features/actions)
-- 魔法绽放平台：[帽子云](https://maoziyun.com/)
+- 魔法绽放平台：[Cloudflare Pages](https://pages.cloudflare.com)
 
 *让每个平凡的日子，都有不平凡的故事✨*
