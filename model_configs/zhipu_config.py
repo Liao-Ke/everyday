@@ -22,16 +22,20 @@ CHAT_PARAMS = {
         {"role": "system", "content": '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
 """ 输出格式 """
 # 故事的题目
-> 故事的主题
-故事内容'''},
-        {"role": "user", "content": f"我提供的主题是：“{JINSHAN['note']}”"}
+> 故事的主题'''},
+        {"role": "user", "content": f"我提供的主题是：“{JINSHAN['note']}”"},
+        {
+            "role": "assistant",
+            "content": "# ",
+            # "partial": True
+        }
     ]
 }
 PREPROCESSORS = []
 
 POSTPROCESSORS = [
     process_string,
-    lambda r:process_string(r, first_content='"""', last_content='"""'),
+    lambda r: process_string(r, first_content='"""', last_content='"""'),
     ensure_first_line_is_h1,
     insert_content_in_fourth_line,
     # format_story

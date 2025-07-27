@@ -1,5 +1,4 @@
 
-
 from model_configs import JINSHAN
 import logging
 
@@ -67,32 +66,32 @@ def insert_content_in_fourth_line(s):
 
 def process_string(original_str, first_content="```", last_content="```"):
     original_lines = original_str['content'].splitlines()
-    original_line_count = len(original_lines)
 
-    delete_first = False
-    delete_last = False
-
-    # 检查是否需要删除第一行和最后一行
-    if original_line_count >= 1:
+    # 处理第一行
+    if original_lines:
         if first_content in original_lines[0]:
-            delete_first = True
+            # 删除内容并检查是否变为空行
+            original_lines[0] = original_lines[0].replace(first_content, '')
+            logger.info(f"在第一行中删除了内容: '{first_content}'")
+
+            # 检查是否变为空行（考虑空白字符）
+            if not original_lines[0].strip():
+                original_lines.pop(0)
+                logger.info("第一行因内容为空已被移除")
+
+    # 处理最后一行
+    if original_lines:
         if last_content in original_lines[-1]:
-            delete_last = True
+            # 删除内容并检查是否变为空行
+            original_lines[-1] = original_lines[-1].replace(last_content, '')
+            logger.info(f"在最后一行中删除了内容: '{last_content}'")
 
-    # 处理删除操作
-    new_lines = original_lines.copy()
-    if delete_first and len(new_lines) >= 1:
-        new_lines = new_lines[1:]
-    if delete_last and len(new_lines) >= 1:
-        new_lines = new_lines[:-1]
+            # 检查是否变为空行（考虑空白字符）
+            if not original_lines[-1].strip():
+                original_lines.pop()
+                logger.info("最后一行因内容为空已被移除")
 
-    # 生成处理后的字符串
-    processed_str = '\n'.join(new_lines)
-
-    if delete_first:
-        logger.info(f" 删除了第一行: '{first_content}'")
-    if delete_last:
-        logger.info(f"删除了最后一行: '{last_content}'")
-
+    # 重新组合字符串
+    processed_str = '\n'.join(original_lines)
     original_str['content'] = processed_str
     return original_str
