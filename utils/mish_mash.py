@@ -4,6 +4,7 @@ from io import StringIO
 import logging
 import requests
 from ruamel.yaml import YAML
+import secrets
 
 
 def download_image(url, save_dir):
@@ -129,3 +130,43 @@ def get_jinshan():
     except ValueError as e:
         logger.error(f"JSON解析错误: {e}")
         return None
+
+
+def fixed_length_uuid(length):
+    """
+    生成加密安全的指定长度随机标识符（十六进制格式）
+
+    参数:
+        length (int): 要生成的字符串长度（必须大于0）
+
+    返回:
+        str: 指定长度的随机十六进制字符串（小写）
+
+    异常:
+        ValueError: 如果长度参数小于1
+
+    特点:
+        - 仅依赖secrets模块
+        - 完全加密安全
+        - 高效利用随机源
+        - 支持任意长度（包括奇数）
+    """
+    if length < 1:
+        raise ValueError("长度必须大于0")
+
+    # 计算所需字节数（向上取整）
+    num_bytes = (length + 1) // 2
+
+    # 生成安全随机字节
+    random_bytes = secrets.token_bytes(num_bytes)
+
+    # 转换为十六进制字符串
+    hex_str = random_bytes.hex()
+
+    # 处理奇数长度情况
+    if length % 2 == 1:
+        # 使用最后一个字节的高4位生成单个字符
+        last_char = format(random_bytes[-1] >> 4, 'x')  # 'x' 确保小写十六进制
+        return hex_str[:length - 1] + last_char
+
+    return hex_str[:length]

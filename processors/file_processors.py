@@ -2,7 +2,7 @@ import os
 import logging
 import datetime
 
-from utils.mish_mash import modify_frontmatter
+from utils.mish_mash import modify_frontmatter, fixed_length_uuid
 
 logger = logging.getLogger('每日故事')
 
@@ -13,13 +13,13 @@ def get_today_info():
     weekday = today.weekday()
     weekday_names = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
     date_time_str = today.strftime("%Y年/%m月/%d日")
-    time_str = today.strftime("%H:%M:%S")
-    return f"{date_time_str}/{weekday_names[weekday]} {time_str}"
+    time_str = today.strftime("%H-%M-%S")
+    return f"{date_time_str}/{weekday_names[weekday]}_{time_str}"
 
 
 def save_to_md_file(content, model_name):
     try:
-        file_name = f"{get_today_info()}.md"
+        file_name = f"{get_today_info()}.{fixed_length_uuid(3)}.md"
         file_path = f"./story/故事/{file_name}"
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
@@ -30,7 +30,6 @@ def save_to_md_file(content, model_name):
                            f"{content['reasoning_content']}"
                            f"\n</ReasoningChainRenderer>\n"
                            f"\n{content['content']}")
-
             else:
                 file.write(content['content'])
         logger.info(f"内容已成功保存到 {file_path}")
