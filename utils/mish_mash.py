@@ -1,3 +1,4 @@
+import json
 import os
 import uuid
 from io import StringIO
@@ -170,3 +171,111 @@ def fixed_length_uuid(length):
         return hex_str[:length - 1] + last_char
 
     return hex_str[:length]
+
+
+def out_test(r, n):
+    print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else \
+        print(n, r["content"])
+
+
+def web_search(api_key, search_query, search_engine="search_std",
+               search_intent=False, count=10, search_domain_filter=None,
+               search_recency_filter="noLimit", content_size="medium",
+               request_id=None, user_id=None):
+    """
+    调用智谱Web Search API进行网络搜索
+
+    参数说明：
+    - api_key: 字符串，API访问密钥（必填）
+    - search_query: 字符串，搜索内容，不超过70个字符（必填）
+    - search_engine: 字符串，搜索引擎类型，可选值：search_std、search_pro、search_pro_sogou、search_pro_quark（必填）
+    - search_intent: 布尔值，是否进行搜索意图识别，默认False
+    - count: 整数，返回结果条数，1-50之间（默认10）
+    - search_domain_filter: 字符串，限定域名（可选）
+    - search_recency_filter: 字符串，时间范围，可选值：oneDay、oneWeek、oneMonth、oneYear、noLimit（默认noLimit）
+    - content_size: 字符串，内容长度，可选值：medium、high（默认medium）
+    - request_id: 字符串，用户端唯一请求标识（可选）
+    - user_id: 字符串，终端用户唯一ID，6-128个字符（可选）
+
+    返回：
+    - 字典，API返回的搜索结果
+    """
+    # 检查必填参数
+    if not api_key or not search_query:
+        raise ValueError("api_key和search_query为必填参数")
+
+    # 验证count参数范围
+    if not isinstance(count, int) or count < 1 or count > 50:
+        raise ValueError("count参数必须是1-50之间的整数")
+
+    # 验证搜索引擎类型
+    valid_engines = ["search_std", "search_pro", "search_pro_sogou", "search_pro_quark"]
+    if search_engine not in valid_engines:
+        raise ValueError(f"search_engine必须是以下值之一: {', '.join(valid_engines)}")
+
+    # 验证时间范围
+    valid_recency = ["oneDay", "oneWeek", "oneMonth", "oneYear", "noLimit"]
+    if search_recency_filter not in valid_recency:
+        raise ValueError(f"search_recency_filter必须是以下值之一: {', '.join(valid_recency)}")
+
+    # 验证内容长度
+    valid_content_sizes = ["medium", "high"]
+    if content_size not in valid_content_sizes:
+        raise ValueError(f"content_size必须是以下值之一: {', '.join(valid_content_sizes)}")
+
+    # 构建请求URL和头部
+    url = "https://open.bigmodel.cn/api/paas/v4/web_search"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+
+    # 构建请求数据
+    data = {
+        "search_query": search_query,
+        "search_engine": search_engine,
+        "search_intent": search_intent,
+        "count": count,
+        "search_recency_filter": search_recency_filter,
+        "content_size": content_size
+    }
+
+    # 添加可选参数
+    if search_domain_filter:
+        data["search_domain_filter"] = search_domain_filter
+    if request_id:
+        data["request_id"] = request_id
+    if user_id:
+        data["user_id"] = user_id
+
+    try:
+        # 发送POST请求
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response.raise_for_status()  # 检查请求是否成功
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        logger.error(f"请求发生错误：{e}")
+        return None
+    except json.JSONDecodeError:
+        logger.error("响应内容不是有效的JSON格式")
+        return None
+
+
+def remove_leading_empty_line(s: str) -> str:
+    """
+    去除字符串开头的所有空行（仅包含空白字符的行）
+
+    参数:
+        s (str): 输入的字符串
+
+    返回:
+        str: 处理后的字符串，已移除所有开头的空行
+    """
+    lines = s.splitlines(keepends=True)
+    # 跳过所有开头空行
+    start_index = 0
+    for line in lines:
+        if line.strip():  # 遇到非空行时停止
+            break
+        start_index += 1
+    return ''.join(lines[start_index:])

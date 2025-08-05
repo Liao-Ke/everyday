@@ -1,8 +1,10 @@
 import importlib
+import os
 import re
 import time
+import traceback
 import uuid
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from queue import Queue
 
 from openai import APIConnectionError, APITimeoutError, APIStatusError, RateLimitError
@@ -223,13 +225,28 @@ def run_multi_thread(selected_models, max_workers=4):
     result_queue = Queue()
     logger.info(f"开始多线程故事生成，将使用模型: {', '.join(selected_models)}，最大并发线程数: {max_workers}")
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = []
-        for model_name in selected_models:
-            future = executor.submit(story_generator, model_name, result_queue)
-            futures.append(future)
-        for future in futures:
-            future.result()  # 等待所有任务完成
+        # 创建future到模型名的映射
+        # 首先提交所有任务
+        future_to_model = {
+            executor.submit(story_generator, model_name, result_queue): model_name
+            for model_name in selected_models
+        }
+
+        # 所有任务提交完成后，再处理结果
+        for future in as_completed(future_to_model):
+            model_name = future_to_model[future]
+            try:
+                # 获取结果（会重新抛出任务中的异常）
+                future.result()
+            except Exception as e:
+                # 记录详细错误信息
+                error_msg = f"模型 {model_name} 生成故事时出错: {str(e)}\n{traceback.format_exc()}"
+                logger.error(error_msg)
+                # 将错误信息放入结果队列
+                result_queue.put((model_name, {"error": error_msg}))
     logger.info("所有模型的生成线程已完成")
+
+    # 收集所有结果
     model_results = {}
     while not result_queue.empty():
         model_name, result = result_queue.get()
@@ -243,6 +260,7 @@ config_map = {
     "豆包-思考": load_model_config("doubao_think"),
     "豆包": load_model_config("doubao"),
     "qwen": load_model_config("qwen"),
+    "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
     # "kimi": load_model_config("kimi")
 }
 
@@ -256,10 +274,11 @@ if __name__ == '__main__':
         # "豆包-思考",
         "豆包",
         # "kimi"
-        "qwen"
+        "qwen",
+        "zhipu4.5-Flash"
     ]
 
     # 运行多线程生成
-    results = run_multi_thread(models_to_use, max_workers=4)
+    results = run_multi_thread(models_to_use, max_workers=min(32, (os.cpu_count() or 1) * 4))
 
     logger.info("应用程序结束")
