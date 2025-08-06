@@ -2126,3 +2126,23 @@ KeyError: 'API_KEY_DOUBAO'
 2025-08-06 07:24:05,634 - 每日故事 - INFO - 模型 qwen 生成完成
 2025-08-06 07:24:05,634 - 每日故事 - INFO - 所有模型的生成线程已完成
 2025-08-06 07:24:05,634 - 每日故事 - INFO - 应用程序结束
+2025-08-07 07:22:42,240 - 每日故事 - WARNING - 未找到模型 deepseek_v3 的配置文件
+2025-08-07 07:22:42,241 - 每日故事 - WARNING - 未找到模型 zhipu 的配置文件
+2025-08-07 07:22:42,242 - 每日故事 - WARNING - 未找到模型 doubao_think 的配置文件
+2025-08-07 07:22:42,242 - 每日故事 - WARNING - 未找到模型 doubao 的配置文件
+2025-08-07 07:22:42,243 - 每日故事 - WARNING - 未找到模型 qwen 的配置文件
+2025-08-07 07:22:42,243 - 每日故事 - WARNING - 未找到模型 zhipu_4_5_flash 的配置文件
+2025-08-07 07:22:42,243 - 每日故事 - INFO - 应用程序启动
+2025-08-07 07:22:42,243 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek, zhipu, 豆包, qwen, zhipu4.5-Flash，最大并发线程数: 16
+2025-08-07 07:22:42,244 - 每日故事 - INFO - 已启动模型 deepseek 的生成线程
+2025-08-07 07:22:42,244 - 每日故事 - ERROR - 模型 deepseek 生成过程中出错: 'NoneType' object is not subscriptable
+2025-08-07 07:22:42,244 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2025-08-07 07:22:42,244 - 每日故事 - ERROR - 模型 zhipu 生成过程中出错: 'NoneType' object is not subscriptable
+2025-08-07 07:22:42,244 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2025-08-07 07:22:42,245 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2025-08-07 07:22:42,245 - 每日故事 - ERROR - 模型 豆包 生成过程中出错: 'NoneType' object is not subscriptable
+2025-08-07 07:22:42,245 - 每日故事 - INFO - 已启动模型 zhipu4.5-Flash 的生成线程
+2025-08-07 07:22:42,245 - 每日故事 - ERROR - 模型 qwen 生成过程中出错: 'NoneType' object is not subscriptable
+2025-08-07 07:22:42,245 - 每日故事 - ERROR - 模型 zhipu4.5-Flash 生成过程中出错: 'NoneType' object is not subscriptable
+2025-08-07 07:22:42,246 - 每日故事 - INFO - 所有模型的生成线程已完成
+2025-08-07 07:22:42,246 - 每日故事 - INFO - 应用程序结束
