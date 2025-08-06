@@ -3,6 +3,8 @@ import re
 import glob
 from datetime import datetime
 from collections import Counter
+
+import jieba
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
@@ -13,13 +15,16 @@ plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
 
 
 def read_stopwords(file_path):
-    """读取停词文件"""
+    """读取停词文件，包含中英文和符号"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            return [line.strip() for line in f if line.strip()]
+            # 读取所有停用词并转换为小写（英文）和原样（中文）
+            return set([line.strip().lower() if re.match(r'^[a-zA-Z]+$', line.strip())
+                        else line.strip()
+                        for line in f if line.strip()])
     except FileNotFoundError:
         print(f"警告: 停词文件 '{file_path}' 未找到，将使用空停词列表。")
-        return []
+        return set()
 
 
 def clean_markdown(content):
@@ -38,15 +43,42 @@ def clean_markdown(content):
     content = re.sub(r'[`*_~>]', '', content)
     # 移除HTML标签
     content = re.sub(r'<[^>]*>', '', content)
+    # 移除特殊符号但保留中英文
+    content = re.sub(r'[^\w\u4e00-\u9fff\s]', '', content)
     return content
 
 
 def tokenize_text(text, stopwords):
-    """将文本分词并过滤停词"""
-    # 使用正则表达式匹配中文字符和英文单词
-    words = re.findall(r'[\u4e00-\u9fff]+|[a-zA-Z]+', text)
-    # 过滤停词和单个字符
-    return [word for word in words if word.lower() not in stopwords and len(word) > 1]
+    """
+    使用jieba进行中文分词并过滤停词
+    处理中英文混合内容，过滤符号和停用词
+    """
+    # 使用jieba进行精确模式分词
+    words = jieba.lcut(text)
+    filtered_words = []
+
+    for word in words:
+        # 跳过空词
+        if not word.strip():
+            continue
+
+        # 统一处理英文单词：转换为小写
+        if re.fullmatch(r'[a-zA-Z]+', word):
+            word = word.lower()
+
+        # 检查是否为停用词（包括符号）
+        if word in stopwords:
+            continue
+
+        # 过滤纯数字和单个字符
+        if re.fullmatch(r'\d+', word) or len(word) == 1:
+            continue
+
+        # 处理中英文混合词（如"Python编程"）
+        if any(char.isalpha() or '\u4e00' <= char <= '\u9fff' for char in word):
+            filtered_words.append(word)
+
+    return filtered_words
 
 
 def generate_wordcloud(word_freq, output_path):
