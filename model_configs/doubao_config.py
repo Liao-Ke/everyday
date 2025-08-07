@@ -1,13 +1,7 @@
 import os
 
-from dotenv import load_dotenv
-
 from model_configs import JINSHAN
 from processors.file_processors import save_to_md_file
-
-# 仅在非生产环境加载 .env 文件
-if os.environ.get('ENV') != 'production':
-    load_dotenv()
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_DOUBAO")

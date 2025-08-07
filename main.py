@@ -41,6 +41,9 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
 
     while retries <= max_retries:
         try:
+            if retries > 0:
+                logger.info(f"第{retries}次等待结束，开始第 {retries + 1} 次重试")
+
             client = OpenAI(api_key=api_key, **client_params)
 
             response = client.chat.completions.create(
@@ -261,6 +264,7 @@ config_map = {
     "豆包": load_model_config("doubao"),
     "qwen": load_model_config("qwen"),
     "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
+    "kimi-k2": load_model_config("kimi_k2_modelscope"),
     # "kimi": load_model_config("kimi")
 }
 
@@ -275,7 +279,8 @@ if __name__ == '__main__':
         "豆包",
         # "kimi"
         "qwen",
-        "zhipu4.5-Flash"
+        "zhipu4.5-Flash",
+        "kimi-k2"
     ]
 
     # 运行多线程生成

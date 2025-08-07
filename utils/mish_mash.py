@@ -252,7 +252,17 @@ def web_search(api_key, search_query, search_engine="search_std",
         # 发送POST请求
         response = requests.post(url, headers=headers, data=json.dumps(data))
         response.raise_for_status()  # 检查请求是否成功
-        return response.json()
+
+        # 解析响应内容
+        resp_data = response.json()
+        if search_intent and response.json()['search_intent'][0]['intent'] == "SEARCH_NONE":
+            logger.info(f"无搜索意图：{response.json()['search_intent']},将关闭意图识别后重试")
+            return web_search(api_key, search_query, search_engine, False, count, search_domain_filter,
+                              search_recency_filter,
+                              content_size, request_id, user_id)
+
+        logger.info(f"网络搜索成功：{response.json()['search_intent']}")
+        return resp_data
     except requests.exceptions.RequestException as e:
         logger.error(f"请求发生错误：{e}")
         return None

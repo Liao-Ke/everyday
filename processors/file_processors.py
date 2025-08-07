@@ -25,7 +25,7 @@ def save_to_md_file(content, model_name):
         if not os.path.exists(directory):
             os.makedirs(directory)
         with open(file_path, 'w', encoding='utf-8') as file:
-            if 'reasoning_content' in content:
+            if 'reasoning_content' in content and content['reasoning_content']:
                 file.write(f"<ReasoningChainRenderer>\n"
                            f"{content['reasoning_content']}"
                            f"\n</ReasoningChainRenderer>\n"

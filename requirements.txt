@@ -4,3 +4,4 @@ python-dotenv~=0.21.0
 jieba~=0.42.1
 matplotlib~=3.9.2
 wordcloud~=1.9.4
+ruamel.yaml>=0.18.6

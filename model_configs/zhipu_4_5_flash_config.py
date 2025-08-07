@@ -1,28 +1,15 @@
 import json
 import os
 
-from dotenv import load_dotenv
 
-from model_configs import JINSHAN
+from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
-from utils.mish_mash import web_search
 
-# 仅在非生产环境加载 .env 文件
-if os.environ.get('ENV') != 'production':
-    load_dotenv()
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY")
-# 定义搜索查询
-search_query = f"“{JINSHAN['note']}”"
-# 执行网络搜索
-search_result = web_search(
-    api_key=API_KEY,
-    search_query=search_query,
-    search_engine="search_pro",  # 使用高级搜索引擎
-    content_size="high"
-)
+
 CLIENT_PARAMS = {
     "base_url": "https://open.bigmodel.cn/api/paas/v4/"
 }
@@ -56,7 +43,7 @@ CHAT_PARAMS = {
         - 语言感染力可控：保持话语动人，但不可夸张、虚构事实或脱离道德。
 
         ## 参考材料：
-        %s""" % json.dumps(search_result, ensure_ascii=False, indent=2)},
+        %s""" % json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2)},
         {"role": "user",
          "content": f"""创作一篇短篇小说，深入探讨“{JINSHAN['note']}”这句话的深层含义和实际应用。具体要求如下：
 1. 结合指定的参考材料或相关上下文信息；

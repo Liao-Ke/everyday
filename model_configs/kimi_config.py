@@ -1,15 +1,9 @@
 import os
 
-from dotenv import load_dotenv
-
 from model_configs import JINSHAN
 from preprocessor.params_preprocessor import estimate_tokens
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
-
-# 仅在非生产环境加载 .env 文件
-if os.environ.get('ENV') != 'production':
-    load_dotenv()
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_KIMI")
@@ -191,7 +185,8 @@ some_params = {
         {
             "role": "assistant", "content": "好的，我会根据``刘慈欣科幻小说风格写作辅助提示词``来生成刘慈欣科幻风格的小说并使用Markdown一级标题，整体长度接近 ``3500`` 字。"
         },
-        {"role": "user", "content": f"请解读“{JINSHAN['note']}”这句话以写一篇约3500字的小说。请选择合适的标题。请保证字数满足要求。"},
+        {"role": "user",
+         "content": f"请解读“{JINSHAN['note']}”这句话以写一篇约3500字的小说。请选择合适的标题。请保证字数满足要求。"},
         {
             "partial": True,  # <-- 通过 partial 参数，开启 Partial Mode
             "role": "assistant",  # <-- 我们在用户提问之后添加一条 role=assistant 的消息
