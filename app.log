@@ -2463,3 +2463,113 @@ KeyError: 'API_KEY_DOUBAO'
 2025-08-09 07:22:42,898 - 每日故事 - INFO - 模型 kimi-k2 生成完成
 2025-08-09 07:22:42,899 - 每日故事 - INFO - 所有模型的生成线程已完成
 2025-08-09 07:22:42,899 - 每日故事 - INFO - 应用程序结束
+2025-08-10 07:20:42,988 - 每日故事 - INFO - 今日金山词霸：爱是唯一的现实。— 詹姆斯·马修·巴里，《彼得潘》
+2025-08-10 07:20:45,355 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '爱 唯一现实 詹姆斯·马修·巴里 彼得潘', 'query': '爱是唯一的现实。— 詹姆斯·马修·巴里，《彼得潘》'}]
+2025-08-10 07:20:45,360 - 每日故事 - INFO - 应用程序启动
+2025-08-10 07:20:45,361 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek, zhipu, 豆包, qwen, zhipu4.5-Flash, kimi-k2，最大并发线程数: 16
+2025-08-10 07:20:45,361 - 每日故事 - INFO - 已启动模型 deepseek 的生成线程
+2025-08-10 07:20:45,361 - 每日故事 - INFO - 模型 deepseek 开始应用前置处理器
+2025-08-10 07:20:45,361 - 每日故事 - INFO - 模型 deepseek 前置处理器应用完成
+2025-08-10 07:20:45,361 - 每日故事 - INFO - 模型 deepseek 开始调用AI生成故事
+2025-08-10 07:20:45,362 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2025-08-10 07:20:45,363 - 每日故事 - INFO - 模型 zhipu 开始应用前置处理器
+2025-08-10 07:20:45,363 - 每日故事 - INFO - 模型 zhipu 前置处理器应用完成
+2025-08-10 07:20:45,363 - 每日故事 - INFO - 模型 zhipu 开始调用AI生成故事
+2025-08-10 07:20:45,364 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2025-08-10 07:20:45,364 - 每日故事 - INFO - 模型 豆包 开始应用前置处理器
+2025-08-10 07:20:45,364 - 每日故事 - INFO - 模型 豆包 前置处理器应用完成
+2025-08-10 07:20:45,364 - 每日故事 - INFO - 模型 豆包 开始调用AI生成故事
+2025-08-10 07:20:45,364 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2025-08-10 07:20:45,365 - 每日故事 - INFO - 模型 qwen 开始应用前置处理器
+2025-08-10 07:20:45,365 - 每日故事 - INFO - 模型 qwen 前置处理器应用完成
+2025-08-10 07:20:45,365 - 每日故事 - INFO - 模型 qwen 开始调用AI生成故事
+2025-08-10 07:20:45,366 - 每日故事 - INFO - 已启动模型 zhipu4.5-Flash 的生成线程
+2025-08-10 07:20:45,366 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用前置处理器
+2025-08-10 07:20:45,366 - 每日故事 - INFO - 模型 zhipu4.5-Flash 前置处理器应用完成
+2025-08-10 07:20:45,366 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始调用AI生成故事
+2025-08-10 07:20:45,367 - 每日故事 - INFO - 已启动模型 kimi-k2 的生成线程
+2025-08-10 07:20:45,367 - 每日故事 - INFO - 模型 kimi-k2 开始应用前置处理器
+2025-08-10 07:20:45,367 - 每日故事 - INFO - 模型 kimi-k2 前置处理器应用完成
+2025-08-10 07:20:45,367 - 每日故事 - INFO - 模型 kimi-k2 开始调用AI生成故事
+2025-08-10 07:20:50,127 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': '5c11f945-2a0d-41b3-9af3-c3c7ed813bcc'}
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 模型 豆包 AI生成故事完成
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 模型 豆包 开始应用后置处理器
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 模型 豆包 后置处理器应用完成
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 模型 豆包 开始应用文件后置处理器
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/08月/10日/星期日_07-20-57.160.md
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-08-10 07:20:57,630 - 每日故事 - INFO - 模型 豆包 文件后置处理器应用完成
+2025-08-10 07:20:57,631 - 每日故事 - INFO - 模型 豆包 生成完成
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 模型 zhipu AI生成故事完成
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 模型 zhipu 开始应用后置处理器
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 正在应用后置处理器 process_string
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 后置处理器 process_string 已应用
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 在第一行中删除了内容: '"""'
+2025-08-10 07:21:00,112 - 每日故事 - INFO - 第一行因内容为空已被移除
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 在最后一行中删除了内容: '"""'
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 最后一行因内容为空已被移除
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-08-10 07:21:00,113 - 每日故事 - INFO - 正在应用后置处理器 insert_content_in_fourth_line
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 下载图片成功: ./story/images/f9d7185a8b0b47babf01f9467bae744c.jpg
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 后置处理器 insert_content_in_fourth_line 已应用
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 模型 zhipu 后置处理器应用完成
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 模型 zhipu 开始应用文件后置处理器
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-08-10 07:21:01,879 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/08月/10日/星期日_07-21-01.e10.md
+2025-08-10 07:21:01,891 - 每日故事 - INFO - 修改index.md文件成功
+2025-08-10 07:21:01,891 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-08-10 07:21:01,891 - 每日故事 - INFO - 模型 zhipu 文件后置处理器应用完成
+2025-08-10 07:21:01,891 - 每日故事 - INFO - 模型 zhipu 生成完成
+2025-08-10 07:21:22,996 - 每日故事 - INFO - 模型 deepseek AI生成故事完成
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 模型 deepseek 开始应用后置处理器
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 模型 deepseek 后置处理器应用完成
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 模型 deepseek 开始应用文件后置处理器
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/08月/10日/星期日_07-21-22.90c.md
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 模型 deepseek 文件后置处理器应用完成
+2025-08-10 07:21:22,997 - 每日故事 - INFO - 模型 deepseek 生成完成
+2025-08-10 07:21:50,127 - 每日故事 - INFO - 第1次等待结束，开始第 2 次重试
+2025-08-10 07:21:54,143 - 每日故事 - ERROR - API错误，第 2 次重试，将等待 120.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': '3ca9a5ec-6dc5-46de-9726-73a04fa2871e'}
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 模型 qwen AI生成故事完成
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 模型 qwen 开始应用后置处理器
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 模型 qwen 后置处理器应用完成
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 模型 qwen 开始应用文件后置处理器
+2025-08-10 07:22:02,242 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-08-10 07:22:02,243 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/08月/10日/星期日_07-22-02.b97.md
+2025-08-10 07:22:02,243 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-08-10 07:22:02,243 - 每日故事 - INFO - 模型 qwen 文件后置处理器应用完成
+2025-08-10 07:22:02,243 - 每日故事 - INFO - 模型 qwen 生成完成
+2025-08-10 07:23:54,144 - 每日故事 - INFO - 第2次等待结束，开始第 3 次重试
+2025-08-10 07:23:59,070 - 每日故事 - ERROR - API错误，第 3 次重试，将等待 240.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': 'd6296cc9-49ea-48eb-9d3f-aa14eab91719'}
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash AI生成故事完成
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用后置处理器
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash 后置处理器应用完成
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用文件后置处理器
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/08月/10日/星期日_07-26-29.c94.md
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash 文件后置处理器应用完成
+2025-08-10 07:26:29,143 - 每日故事 - INFO - 模型 zhipu4.5-Flash 生成完成
+2025-08-10 07:27:59,071 - 每日故事 - INFO - 第3次等待结束，开始第 4 次重试
+2025-08-10 07:28:03,859 - 每日故事 - ERROR - API错误，第 4 次重试，将等待 480.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': 'e8a274b4-117a-42ab-99de-89665e7c24e9'}
+2025-08-10 07:36:03,859 - 每日故事 - INFO - 第4次等待结束，开始第 5 次重试
+2025-08-10 07:36:07,980 - 每日故事 - ERROR - API错误，第 5 次重试，将等待 600.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': 'ed47580a-9cf0-4bd8-ad74-969635c436f0'}
+2025-08-10 07:36:07,980 - 每日故事 - INFO - 第5次等待结束，开始第 6 次重试
+2025-08-10 07:36:13,205 - 每日故事 - ERROR - API错误，第 6 次重试，将等待 600.00 秒: Error code: 403 - {'error': {'message': 'Your account org-7b56f4f342b94eaebda9de2d7f23ffcf<ak-f3wdbp41ekzi11c739p1> is not active, organization <org-7b56f4f342b94eaebda9de2d7f23ffcf> exceeded current quota, please check your plan and billing details', 'type': 'exceeded_current_quota_error'}, 'request_id': '8ef98791-06a2-473d-97bb-ee6f94aa19cb'}
+2025-08-10 07:36:13,205 - 每日故事 - ERROR - 所有 5 次重试均失败
+2025-08-10 07:36:13,205 - 每日故事 - INFO - 模型 kimi-k2 AI生成故事完成
+2025-08-10 07:36:13,205 - 每日故事 - ERROR - 模型 kimi-k2 生成故事失败，跳过后置处理器
+2025-08-10 07:36:13,205 - 每日故事 - INFO - 模型 kimi-k2 生成完成
+2025-08-10 07:36:13,206 - 每日故事 - INFO - 所有模型的生成线程已完成
+2025-08-10 07:36:13,206 - 每日故事 - INFO - 应用程序结束
