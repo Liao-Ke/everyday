@@ -41,6 +41,7 @@ CHAT_PARAMS = {
     # "max_tokens": 32000 - kimi_token_count,
     "temperature": 0.6,
     "stream": False,
+    "RETRY": False
 }
 
 PREPROCESSORS = []

@@ -38,8 +38,9 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
     start_time = time.time()
     retries = 0
     is_stream = chat_params.get('stream', False)
+    is_retry = chat_params.pop("RETRY", True)
 
-    while retries <= max_retries:
+    while retries <= max_retries and is_retry:
         try:
             if retries > 0:
                 logger.info(f"第{retries}次等待结束，开始第 {retries + 1} 次重试")
