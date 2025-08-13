@@ -1,11 +1,10 @@
 import json
 import os
 
-
 from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
-
+from utils.mish_mash import remove_leading_empty_line
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY")
@@ -54,6 +53,7 @@ CHAT_PARAMS = {
 PREPROCESSORS = []
 
 POSTPROCESSORS = [
+    remove_leading_empty_line,
     ensure_first_line_is_h1
 ]
 

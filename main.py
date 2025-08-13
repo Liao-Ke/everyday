@@ -40,7 +40,7 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
     is_stream = chat_params.get('stream', False)
     is_retry = chat_params.pop("RETRY", True)
 
-    while retries <= max_retries and is_retry:
+    while retries <= (max_retries if is_retry else 0):
         try:
             if retries > 0:
                 logger.info(f"第{retries}次等待结束，开始第 {retries + 1} 次重试")
@@ -106,7 +106,7 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.error(f"请求超时，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
 
-        except (APIConnectionError, APIStatusError, RateLimitError) as e:
+        except (APIConnectionError, APIStatusError) as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.error(f"API错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
 
