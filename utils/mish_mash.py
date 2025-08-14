@@ -271,7 +271,7 @@ def web_search(api_key, search_query, search_engine="search_std",
         return None
 
 
-def remove_leading_empty_line(s: str) -> str:
+def remove_leading_empty_line(d: dict) -> dict:
     """
     去除字符串开头的所有空行（仅包含空白字符的行）
 
@@ -281,11 +281,12 @@ def remove_leading_empty_line(s: str) -> str:
     返回:
         str: 处理后的字符串，已移除所有开头的空行
     """
-    lines = s.splitlines(keepends=True)
+    lines = d['content'].splitlines(keepends=True)
     # 跳过所有开头空行
     start_index = 0
     for line in lines:
         if line.strip():  # 遇到非空行时停止
             break
         start_index += 1
-    return ''.join(lines[start_index:])
+    d['content'] = ''.join(lines[start_index:])
+    return d
