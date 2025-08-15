@@ -265,7 +265,7 @@ config_map = {
     "豆包": load_model_config("doubao"),
     "qwen": load_model_config("qwen"),
     "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
-    "kimi-k2": load_model_config("kimi_k2_modelscope"),
+    "experience-modelscope": load_model_config("experience_modelscope"),
     # "kimi": load_model_config("kimi")
 }
 
@@ -281,7 +281,7 @@ if __name__ == '__main__':
         # "kimi"
         "qwen",
         "zhipu4.5-Flash",
-        "kimi-k2"
+        "experience-modelscope"
     ]
 
     # 运行多线程生成

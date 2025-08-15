@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
@@ -10,13 +11,15 @@ API_KEY = os.getenv("API_KEY_MODELSCOPE")
 CLIENT_PARAMS = {
     "base_url": "https://api-inference.modelscope.cn/v1"
 }
+model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct-2507", "MiniMax/MiniMax-M1-80k",
+              "ZhipuAI/GLM-4.5"]
 some_params = {
-    "model": "moonshotai/Kimi-K2-Instruct",
+    "model": random.choice(model_list),
     "messages": [
         {
             'role': 'system',
-            'content': 'You are Kimi, an AI assistant created by Moonshot '
-                       'AI.请根据以下提供的参考资料（JSON'
+            'content': 'You are assistant, an AI assistant . '
+                       '请根据以下提供的参考资料（JSON'
                        '格式）来回答用户的问题。如果资料中包含相关信息，请优先基于资料内容进行回答，并可以适当补充你的知识。如果资料中没有相关信息，也可以根据你的知识进行回答。'
         },
 
