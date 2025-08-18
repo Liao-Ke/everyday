@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import uuid
 from io import StringIO
 import logging
@@ -290,3 +291,30 @@ def remove_leading_empty_line(d: dict) -> dict:
         start_index += 1
     d['content'] = ''.join(lines[start_index:])
     return d
+
+
+def process_reasoning_content(data_dict):
+    # 检查字典是否有content键且其值为字符串类型
+    if 'content' in data_dict and isinstance(data_dict['content'], str):
+        content = data_dict['content']
+
+        # 正则表达式匹配第一对<think>标签及其内容
+        think_pattern = r'<think>(.*?)</think>'
+        match = re.search(think_pattern, content, re.DOTALL)
+
+        # 提取并存储推理内容
+        reasoning_content = match.group(1) if match else ""
+        data_dict['reasoning_content'] = reasoning_content
+
+        # 从原始内容中移除匹配到的标签及内容
+        if match:
+            # 使用re.sub替换第一个匹配项
+            data_dict['content'] = re.sub(
+                think_pattern,
+                '',
+                content,
+                count=1,
+                flags=re.DOTALL
+            )
+
+    return data_dict

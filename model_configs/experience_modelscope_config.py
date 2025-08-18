@@ -1,10 +1,14 @@
 import json
+import logging
 import os
 import random
 
 from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
+
+logger = logging.getLogger('每日故事')
+
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_MODELSCOPE")
@@ -13,8 +17,11 @@ CLIENT_PARAMS = {
 }
 model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct-2507", "MiniMax/MiniMax-M1-80k",
               "ZhipuAI/GLM-4.5"]
+model_choice = random.choice(model_list)
+
+logger.info(f'体验模型->就决定是你了：{model_choice}')
 some_params = {
-    "model": random.choice(model_list),
+    "model": model_choice,
     "messages": [
         {
             'role': 'system',
@@ -28,7 +35,7 @@ some_params = {
         # {"role": "assistant", "content": "已收到参考资料"},
         {"role": "user",
          "content": f'请根据上述资料，创作一篇以"{JINSHAN.get("note")}"为核心立意的故事，要求通过完整的故事情节体现其寓意，需自拟主标题，'
-                    f'字数控制在2000-3000字范围内,并以markdown格式呈现。'},
+                    f'字数控制在2000-3000字范围内,并以markdown格式呈现。最终只输出故事内容的文本本身，不包括解释或其他任何额外信息。'},
         {
             "role": "assistant",
             "content": "# ",

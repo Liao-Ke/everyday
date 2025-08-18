@@ -1,6 +1,7 @@
+import json
 import os
 
-from model_configs import JINSHAN
+from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 
@@ -23,7 +24,9 @@ CHAT_PARAMS = {
 **请以思想深刻、富有洞见的作者身份进行回应/创作。**
         """},
         # {"role": "user", "content": f"写一篇小说用来解读“{JINSHAN['note']}”这句话。要求：1. 字数在 2333 字左右。2. 自拟标题。"},
-        {"role": "user", "content": f"写一篇小说用来解读“{JINSHAN['note']}”这句话。要求：1. 自拟标题。"},
+        {"role": "user", "content": f"写一篇小说用来解读“{JINSHAN['note']}”这句话。要求：1. 自拟标题。2. 结合指定的参考材料或相关上下文信息。"},
+        {"role": "user", "content": f'以下是关于"{JINSHAN.get("note")}"的参考资料：' +
+                                    json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2)},
         {
             "role": "assistant",
             "content": "# ",

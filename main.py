@@ -1,5 +1,6 @@
 import importlib
 import os
+import random
 import re
 import time
 import traceback
@@ -266,6 +267,7 @@ config_map = {
     "qwen": load_model_config("qwen"),
     "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
     "experience-modelscope": load_model_config("experience_modelscope"),
+    "zhipu-z1": load_model_config("zhipu_z1_flash")
     # "kimi": load_model_config("kimi")
 }
 
@@ -281,8 +283,11 @@ if __name__ == '__main__':
         # "kimi"
         "qwen",
         "zhipu4.5-Flash",
-        "experience-modelscope"
+        "experience-modelscope",
+        "zhipu-z1"
     ]
+
+    random.shuffle(models_to_use)
 
     # 运行多线程生成
     results = run_multi_thread(models_to_use, max_workers=min(32, (os.cpu_count() or 1) * 4))
