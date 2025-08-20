@@ -16,7 +16,7 @@ CLIENT_PARAMS = {
     "base_url": "https://api-inference.modelscope.cn/v1"
 }
 model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct-2507", "MiniMax/MiniMax-M1-80k",
-              "ZhipuAI/GLM-4.5"]
+              "ZhipuAI/GLM-4.5", "moonshotai/Kimi-K2-Instruct"]
 model_choice = random.choice(model_list)
 
 logger.info(f'体验模型->就决定是你了：{model_choice}')
@@ -25,7 +25,7 @@ some_params = {
     "messages": [
         {
             'role': 'system',
-            'content': 'You are assistant, an AI assistant . '
+            'content': 'You are assistant, a helpful assistant . '
                        '请根据以下提供的参考资料（JSON'
                        '格式）来回答用户的问题。如果资料中包含相关信息，请优先基于资料内容进行回答，并可以适当补充你的知识。如果资料中没有相关信息，也可以根据你的知识进行回答。'
         },
