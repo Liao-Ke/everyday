@@ -9,6 +9,7 @@ export default defineConfig({
   lang: 'zh-CN',
   lastUpdated: true,
   cleanUrls: false,
+  srcExclude:["故事/2025年/08月/23日/星期六_07-19-59.6e8.md"],
   sitemap: {
     hostname: 'https://story-aii.pages.dev',
     xslUrl: '/sitemap.xsl',
@@ -135,6 +136,7 @@ export default defineConfig({
       useTitleFromFileHeading: true,
       useTitleFromFrontmatter:true,
       collapsed: true,
+      excludeByGlobPattern:["**/星期六_07-19-59.6e8.md"]
     }]),
 
     socialLinks: [

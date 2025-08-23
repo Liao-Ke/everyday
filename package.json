@@ -4,7 +4,7 @@
     "medium-zoom": "^1.1.0",
     "vite-plugin-compression": "^0.5.1",
     "vitepress": "^1.6.3",
-    "vitepress-sidebar": "^1.31.0"
+    "vitepress-sidebar": "^1.33.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev story",
