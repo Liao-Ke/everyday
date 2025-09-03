@@ -61,6 +61,9 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
                 save_chat_metadata(response_time=response_time, session_id=session_id, response_data=response.to_dict(),
                                    client_params=client_params, chat_params=chat_params)
 
+                if not response_content['content']:
+                    raise ValueError("响应内容为空")
+
                 return response_content
             else:
                 content_chunks = []
@@ -83,6 +86,9 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
                 save_chat_metadata(response_time=response_time, session_id=session_id,
                                    response_data=process_stream_chunks(full_response),
                                    client_params=client_params, chat_params=chat_params)
+
+                if not response_content['content']:
+                    raise ValueError("响应内容为空")
 
                 return response_content
 
@@ -110,6 +116,10 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
         except (APIConnectionError, APIStatusError) as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
             logger.error(f"API错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
+
+        except ValueError as e:
+            backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
+            logger.error(f"值错误: {str(e)}，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒")
 
         except Exception as e:
             backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
