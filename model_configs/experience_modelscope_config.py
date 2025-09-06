@@ -16,7 +16,10 @@ CLIENT_PARAMS = {
     "base_url": "https://api-inference.modelscope.cn/v1"
 }
 model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct-2507", "MiniMax/MiniMax-M1-80k",
-              "ZhipuAI/GLM-4.5", "moonshotai/Kimi-K2-Instruct"]
+              "ZhipuAI/GLM-4.5",
+              # "moonshotai/Kimi-K2-Instruct"
+              "moonshotai/Kimi-K2-Instruct-0905"
+              ]
 model_choice = random.choice(model_list)
 
 logger.info(f'体验模型->就决定是你了：{model_choice}')
