@@ -294,7 +294,7 @@ if __name__ == '__main__':
         "qwen",
         "zhipu4.5-Flash",
         "experience-modelscope",
-        "zhipu-z1"
+        # "zhipu-z1"
     ]
 
     random.shuffle(models_to_use)
