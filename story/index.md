@@ -15,7 +15,7 @@ hero:
       link: /故事/2025年/09月/10日/星期三_07-17-59.ddd.md
     - theme: alt
       text: "词云"
-      link: /词云/2025-09-03.md
+      link: /词云/2025-09-10.md
 
 features:
   - title: 特色功能 A
