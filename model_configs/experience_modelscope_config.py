@@ -20,7 +20,8 @@ model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct
               # "moonshotai/Kimi-K2-Instruct"
               # "moonshotai/Kimi-K2-Instruct-0905",
               "Qwen/Qwen3-Next-80B-A3B-Instruct",
-              "Qwen/Qwen3-Next-80B-A3B-Thinking"
+              # "Qwen/Qwen3-Next-80B-A3B-Thinking"
+              "ZhipuAI/GLM-4.6"
               ]
 model_choice = random.choice(model_list)
 
