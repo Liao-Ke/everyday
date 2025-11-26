@@ -277,7 +277,8 @@ config_map = {
     "qwen": load_model_config("qwen"),
     "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
     "experience-modelscope": load_model_config("experience_modelscope"),
-    "zhipu-z1": load_model_config("zhipu_z1_flash")
+    "zhipu-z1": load_model_config("zhipu_z1_flash"),
+    "gemini": load_model_config("gemini"),
     # "kimi": load_model_config("kimi")
 }
 
@@ -294,6 +295,7 @@ if __name__ == '__main__':
         "qwen",
         "zhipu4.5-Flash",
         "experience-modelscope",
+        "gemini"
         # "zhipu-z1"
     ]
 
