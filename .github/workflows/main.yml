@@ -13,6 +13,7 @@ jobs:
       API_KEY_DOUBAO: ${{ secrets.MY_API_KEY_DOUBAO }}
       API_KEY_QWEN: ${{ secrets.MY_API_KEY_QWEN }}
       API_KEY_MODELSCOPE: ${{ secrets.MY_API_KEY_MODELSCOPE }}
+      API_KEY_GEMINI: ${{ secrets.MY_API_KEY_GEMINI }}
     steps:
       - uses: actions/checkout@v4
         with:
