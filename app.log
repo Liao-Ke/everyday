@@ -15981,3 +15981,127 @@ KeyError: 'API_KEY_DOUBAO'
 2025-12-06 07:22:05,735 - 每日故事 - INFO - 模型 deepseek 生成完成
 2025-12-06 07:22:05,737 - 每日故事 - INFO - 所有模型的生成线程已完成
 2025-12-06 07:22:05,737 - 每日故事 - INFO - 应用程序结束
+2025-12-07 07:19:44,309 - 每日故事 - INFO - 今日金山词霸：围炉煮雪，烹煮一段慢下来的时光。
+2025-12-07 07:19:46,156 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '围炉煮雪 烹煮 慢下来 时光', 'query': '围炉煮雪，烹煮一段慢下来的时光。'}],将关闭意图识别后重试
+2025-12-07 07:19:47,641 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '围炉煮雪 烹煮 慢下来 时光', 'query': '围炉煮雪，烹煮一段慢下来的时光。'}]
+2025-12-07 07:19:47,648 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-235B-A22B-Instruct-2507
+2025-12-07 07:19:47,649 - 每日故事 - INFO - 应用程序启动
+2025-12-07 07:19:47,649 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek, 豆包, qwen, zhipu, zhipu4.5-Flash, gemini, experience-modelscope，最大并发线程数: 16
+2025-12-07 07:19:47,650 - 每日故事 - INFO - 已启动模型 deepseek 的生成线程
+2025-12-07 07:19:47,650 - 每日故事 - INFO - 模型 deepseek 开始应用前置处理器
+2025-12-07 07:19:47,650 - 每日故事 - INFO - 模型 deepseek 前置处理器应用完成
+2025-12-07 07:19:47,650 - 每日故事 - INFO - 模型 deepseek 开始调用AI生成故事
+2025-12-07 07:19:47,651 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2025-12-07 07:19:47,651 - 每日故事 - INFO - 模型 豆包 开始应用前置处理器
+2025-12-07 07:19:47,651 - 每日故事 - INFO - 模型 豆包 前置处理器应用完成
+2025-12-07 07:19:47,651 - 每日故事 - INFO - 模型 豆包 开始调用AI生成故事
+2025-12-07 07:19:47,652 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2025-12-07 07:19:47,652 - 每日故事 - INFO - 模型 qwen 开始应用前置处理器
+2025-12-07 07:19:47,652 - 每日故事 - INFO - 模型 qwen 前置处理器应用完成
+2025-12-07 07:19:47,652 - 每日故事 - INFO - 模型 qwen 开始调用AI生成故事
+2025-12-07 07:19:47,653 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2025-12-07 07:19:47,653 - 每日故事 - INFO - 模型 zhipu 开始应用前置处理器
+2025-12-07 07:19:47,653 - 每日故事 - INFO - 已启动模型 zhipu4.5-Flash 的生成线程
+2025-12-07 07:19:47,653 - 每日故事 - INFO - 模型 zhipu 前置处理器应用完成
+2025-12-07 07:19:47,654 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用前置处理器
+2025-12-07 07:19:47,654 - 每日故事 - INFO - 模型 zhipu 开始调用AI生成故事
+2025-12-07 07:19:47,654 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2025-12-07 07:19:47,654 - 每日故事 - INFO - 模型 zhipu4.5-Flash 前置处理器应用完成
+2025-12-07 07:19:47,655 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始调用AI生成故事
+2025-12-07 07:19:47,655 - 每日故事 - INFO - 模型 gemini 开始应用前置处理器
+2025-12-07 07:19:47,654 - 每日故事 - INFO - 已启动模型 experience-modelscope 的生成线程
+2025-12-07 07:19:47,656 - 每日故事 - INFO - 模型 gemini 前置处理器应用完成
+2025-12-07 07:19:47,656 - 每日故事 - INFO - 模型 experience-modelscope 开始应用前置处理器
+2025-12-07 07:19:47,656 - 每日故事 - INFO - 模型 gemini 开始调用AI生成故事
+2025-12-07 07:19:47,656 - 每日故事 - INFO - 模型 experience-modelscope 前置处理器应用完成
+2025-12-07 07:19:47,657 - 每日故事 - INFO - 模型 experience-modelscope 开始调用AI生成故事
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 AI生成故事完成
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 开始应用后置处理器
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 后置处理器应用完成
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 开始应用文件后置处理器
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-19-58.b2e.md
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 文件后置处理器应用完成
+2025-12-07 07:19:58,788 - 每日故事 - INFO - 模型 豆包 生成完成
+2025-12-07 07:20:01,504 - 每日故事 - WARNING - API速率限制错误，第 1 次重试，将等待 120.00 秒: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://***.dev/***/***/*** To monitor your current usage, head to: https://***.dev/***?tab=*** ', 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 模型 zhipu AI生成故事完成
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 模型 zhipu 开始应用后置处理器
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 正在应用后置处理器 process_string
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 后置处理器 process_string 已应用
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-12-07 07:20:28,134 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-12-07 07:20:28,135 - 每日故事 - INFO - 模型 zhipu 后置处理器应用完成
+2025-12-07 07:20:28,135 - 每日故事 - INFO - 模型 zhipu 开始应用文件后置处理器
+2025-12-07 07:20:28,135 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:20:28,135 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-20-28.04b.md
+2025-12-07 07:20:28,146 - 每日故事 - INFO - 修改index.md文件成功
+2025-12-07 07:20:28,147 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:20:28,147 - 每日故事 - INFO - 模型 zhipu 文件后置处理器应用完成
+2025-12-07 07:20:28,147 - 每日故事 - INFO - 模型 zhipu 生成完成
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen AI生成故事完成
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen 开始应用后置处理器
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen 后置处理器应用完成
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen 开始应用文件后置处理器
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-20-31.636.md
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen 文件后置处理器应用完成
+2025-12-07 07:20:31,498 - 每日故事 - INFO - 模型 qwen 生成完成
+2025-12-07 07:20:34,630 - 每日故事 - INFO - 模型 experience-modelscope AI生成故事完成
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 模型 experience-modelscope 开始应用后置处理器
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 模型 experience-modelscope 后置处理器应用完成
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 模型 experience-modelscope 开始应用文件后置处理器
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-20-34.ecc.md
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 模型 experience-modelscope 文件后置处理器应用完成
+2025-12-07 07:20:34,631 - 每日故事 - INFO - 模型 experience-modelscope 生成完成
+2025-12-07 07:21:18,364 - 每日故事 - INFO - 模型 deepseek AI生成故事完成
+2025-12-07 07:21:18,364 - 每日故事 - INFO - 模型 deepseek 开始应用后置处理器
+2025-12-07 07:21:18,364 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-12-07 07:21:18,364 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 模型 deepseek 后置处理器应用完成
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 模型 deepseek 开始应用文件后置处理器
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-21-18.37f.md
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 模型 deepseek 文件后置处理器应用完成
+2025-12-07 07:21:18,365 - 每日故事 - INFO - 模型 deepseek 生成完成
+2025-12-07 07:22:01,504 - 每日故事 - INFO - 第1次等待结束，开始第 2 次重试
+2025-12-07 07:22:14,648 - 每日故事 - WARNING - API速率限制错误，第 2 次重试，将等待 240.00 秒: Error code: 429 - {'error': {'message': "Quota exceeded for quota metric 'Generate Content API requests per minute' and limit 'GenerateContent request limit per minute for a region' of service '***.***.com' for consumer 'project_number:198352662732'.", 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 模型 zhipu4.5-Flash AI生成故事完成
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用后置处理器
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 正在应用后置处理器 remove_leading_empty_line
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 后置处理器 remove_leading_empty_line 已应用
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 模型 zhipu4.5-Flash 后置处理器应用完成
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用文件后置处理器
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2025年/12月/07日/星期日_07-24-30.21a.md
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2025-12-07 07:24:30,343 - 每日故事 - INFO - 模型 zhipu4.5-Flash 文件后置处理器应用完成
+2025-12-07 07:24:30,344 - 每日故事 - INFO - 模型 zhipu4.5-Flash 生成完成
+2025-12-07 07:26:14,648 - 每日故事 - INFO - 第2次等待结束，开始第 3 次重试
+2025-12-07 07:26:27,787 - 每日故事 - WARNING - API速率限制错误，第 3 次重试，将等待 480.00 秒: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://***.dev/***/***/*** To monitor your current usage, head to: https://***.dev/***?tab=*** ', 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:34:27,788 - 每日故事 - INFO - 第3次等待结束，开始第 4 次重试
+2025-12-07 07:34:41,295 - 每日故事 - WARNING - API速率限制错误，第 4 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'message': "Quota exceeded for quota metric 'Generate Content API requests per minute' and limit 'GenerateContent request limit per minute for a region' of service '***.***.com' for consumer 'project_number:58882963179'.", 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:44:41,295 - 每日故事 - INFO - 第4次等待结束，开始第 5 次重试
+2025-12-07 07:44:54,014 - 每日故事 - WARNING - API速率限制错误，第 5 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://***.dev/***/***/*** To monitor your current usage, head to: https://***.dev/***?tab=*** \n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\nPlease retry in 6.138939464s.', 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:44:54,014 - 每日故事 - INFO - 第5次等待结束，开始第 6 次重试
+2025-12-07 07:45:06,221 - 每日故事 - WARNING - API速率限制错误，第 6 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://***.dev/***/***/*** To monitor your current usage, head to: https://***.dev/***?tab=*** \n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: ***.***.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\nPlease retry in 53.928257928s.', 'type': 'upstream_error', 'param': '', 'code': 429}}
+2025-12-07 07:45:06,221 - 每日故事 - ERROR - 所有 5 次重试均失败
+2025-12-07 07:45:06,221 - 每日故事 - INFO - 模型 gemini AI生成故事完成
+2025-12-07 07:45:06,221 - 每日故事 - ERROR - 模型 gemini 生成故事失败，跳过后置处理器
+2025-12-07 07:45:06,221 - 每日故事 - INFO - 模型 gemini 生成完成
+2025-12-07 07:45:06,222 - 每日故事 - INFO - 所有模型的生成线程已完成
+2025-12-07 07:45:06,222 - 每日故事 - INFO - 应用程序结束
