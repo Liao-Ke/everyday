@@ -33,7 +33,7 @@ POSTPROCESSORS = [
     lambda r: process_string(r, first_content='"""', last_content='"""'),
     lambda r: process_string(r, first_content='> ', last_content='"""'),
     ensure_first_line_is_h1,
-    # insert_content_in_fourth_line,
+    insert_content_in_fourth_line,
     # format_story
 ]
 
