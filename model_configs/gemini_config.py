@@ -11,7 +11,7 @@ CLIENT_PARAMS = {
     "base_url": "https://api.zetatechs.com/v1"
 }
 CHAT_PARAMS = {
-    "model": "gemini-2.5-pro-free",
+    "model": "gemini-2.5-pro",
     "messages": [
         {"role": "system", "content": '''# Role: 创意作文大师
 
