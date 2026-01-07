@@ -81,5 +81,5 @@ if __name__ == "__main__":
         file_path="chat_logs/story_records.json",
         threshold_mb=4.78,
         target_dir="chat_logs/archive",
-        rename_rule="{filename}.{ext}@{timestamp}"
+        rename_rule="{filename}{ext}@{timestamp}"
     )
