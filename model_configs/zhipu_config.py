@@ -11,7 +11,7 @@ CLIENT_PARAMS = {
     "base_url": "https://open.bigmodel.cn/api/paas/v4/"
 }
 CHAT_PARAMS = {
-    "model": "glm-4-flash-250414",
+    "model": "glm-4.7-flash",
     "messages": [
         {"role": "system", "content": '''你现在是一个故事专家，请你根据我提供的主题写一个字数尽可能多（远超 800 字）的故事。按照下面的格式输出
 """ 输出格式 """
