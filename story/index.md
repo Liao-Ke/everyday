@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/03月/25日/星期三_07-35-40.fd6.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-03-18.md
+      link: /词云/2026-03-25.md
 
 features:
   - title: 特色功能 A
