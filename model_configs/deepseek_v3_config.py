@@ -6,12 +6,12 @@ from processors.format_processors import ensure_first_line_is_h1
 
 API_KEY = os.getenv("API_KEY_DS")
 CLIENT_PARAMS = {
-    "base_url": "https://api.deepseek.com/beta"
+    "base_url": "https://api.deepseek.com"
 }
 CHAT_PARAMS = {
-    "model": "deepseek-chat",
+    "model": "deepseek-v4-pro",
     "messages": [
-        {"role": "system", "content": '''此刻，你扮演一位资深的小说创作专家，务必依据《余华小说风格创作指南》，精心创作出你能力范围内篇幅最长的故事(整体长度接近 `3000` 字)：{ 
+        {"role": "system", "content": '''此刻，你扮演一位资深的小说创作专家，务必依据《余华小说风格创作指南》，精心创作出你篇幅尽可能长的故事（字数不少于5000字），最终只输出故事内容的文本本身，不包括解释或其他任何额外信息。：{ 
         "余华小说风格创作指南": { "叙事结构": { "线性叙事为主": { "描述": "以时间顺序推进情节，按照事件发生的先后顺序进行叙述，使故事具有清晰的时间线索和发展脉络。", 
         "创作建议": "首先建立一条清晰的时间主线，然后按照时间顺序依次展开事件，确保情节发展符合逻辑和生活常识。" }, "非线性叙事手法": { "描述": 
         "运用时间跳跃、回忆穿插、事件拼贴等手法，打破传统线性逻辑，形成独特叙事张力。", "创作建议": "在故事中适当插入回忆、梦境或未来想象，通过'现在-过去-现在'的跳跃方式，增强故事的张力和悬念。" }, 
@@ -33,9 +33,10 @@ CHAT_PARAMS = {
         "创作建议": "运用内心独白、梦境等方式直接揭示人物内心，同时通过行为、语言等间接方式展现其内心世界。" }, "人物的成长与变化": { "描述": 
         "展现人物在经历重大事件后的转变和成长，揭示人性的可塑性和生命的韧性。", "创作建议": "设置一系列事件和挑战，促使人物不断面对和克服困难，展现其成长的过程和轨迹。" } } } }'''},
         {"role": "user", "content": f"创作一篇小说来解读这句话：“{JINSHAN['note']}”，要选择一个合适的标题。"},
-        {"role": "assistant", "content": "# ", "prefix": True}
+        # {"role": "assistant", "content": "# ", "prefix": True}
     ],
-    "max_tokens": 8192
+    # "max_tokens": 8192,
+    "extra_body":{"thinking": {"type": "enabled"}}
 }
 PREPROCESSORS = []
 
