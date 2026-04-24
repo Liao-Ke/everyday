@@ -23,8 +23,14 @@ model_list = ["Qwen/Qwen3-235B-A22B-Instruct-2507", "Qwen/Qwen3-30B-A3B-Instruct
               # "Qwen/Qwen3-Next-80B-A3B-Thinking",
               # "ZhipuAI/GLM-4.6",
               # "Menlo/Jan-nano",
-              "ZhipuAI/GLM-4.7",
-              "mistralai/Mistral-Large-Instruct-2407"
+              # "ZhipuAI/GLM-4.7",
+              "mistralai/Mistral-Large-Instruct-2407",
+              
+              "MiniMax/MiniMax-M2.7",
+              "ZhipuAI/GLM-5.1",
+              "ZhipuAI/GLM-5",
+              "MiniMax/MiniMax-M2.5",
+              "XiaomiMiMo/MiMo-V2-Flash"
 
 
               ]
