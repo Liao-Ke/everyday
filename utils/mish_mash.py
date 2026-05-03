@@ -302,19 +302,20 @@ def process_reasoning_content(data_dict):
         think_pattern = r'<think>(.*?)</think>'
         match = re.search(think_pattern, content, re.DOTALL)
 
+        if not match: return data_dict
+
         # 提取并存储推理内容
         reasoning_content = match.group(1) if match else ""
         data_dict['reasoning_content'] = reasoning_content
 
         # 从原始内容中移除匹配到的标签及内容
-        if match:
             # 使用re.sub替换第一个匹配项
-            data_dict['content'] = re.sub(
-                think_pattern,
-                '',
-                content,
-                count=1,
-                flags=re.DOTALL
-            )
+        data_dict['content'] = re.sub(
+            think_pattern,
+            '',
+            content,
+            count=1,
+            flags=re.DOTALL
+        )
 
     return data_dict

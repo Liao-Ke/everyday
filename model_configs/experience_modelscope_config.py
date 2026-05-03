@@ -6,6 +6,7 @@ import random
 from model_configs import JINSHAN, SEARCH_RESULT
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
+from utils.mish_mash import process_reasoning_content
 
 logger = logging.getLogger('每日故事')
 
@@ -74,6 +75,7 @@ CHAT_PARAMS = {
 PREPROCESSORS = []
 
 POSTPROCESSORS = [
+process_reasoning_content,
 
     # format_story
     ensure_first_line_is_h1,
