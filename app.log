@@ -35479,3 +35479,126 @@ TypeError: 'NoneType' object is not subscriptable
 2026-05-14 08:25:45,401 - 每日故事 - INFO - 模型 豆包 生成完成
 2026-05-14 08:25:45,401 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-05-14 08:25:45,401 - 每日故事 - INFO - 应用程序结束
+2026-05-15 07:58:42,936 - 每日故事 - INFO - 今日金山词霸：蔷薇爬满篱笆，开出一朵朵粉色的梦。
+2026-05-15 07:58:44,632 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '蔷薇 爬满篱笆 粉色梦', 'query': '蔷薇爬满篱笆，开出一朵朵粉色的梦。'}],将关闭意图识别后重试
+2026-05-15 07:58:45,998 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '蔷薇 爬满篱笆 粉色梦', 'query': '蔷薇爬满篱笆，开出一朵朵粉色的梦。'}]
+2026-05-15 07:58:46,006 - 每日故事 - INFO - 体验模型->就决定是你了：XiaomiMiMo/MiMo-V2-Flash
+2026-05-15 07:58:46,007 - 每日故事 - INFO - 应用程序启动
+2026-05-15 07:58:46,008 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: experience-modelscope, 豆包, gemini, zhipu4.5-Flash, qwen, deepseek, zhipu，最大并发线程数: 16
+2026-05-15 07:58:46,008 - 每日故事 - INFO - 已启动模型 experience-modelscope 的生成线程
+2026-05-15 07:58:46,008 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2026-05-15 07:58:46,008 - 每日故事 - INFO - 模型 experience-modelscope 开始应用前置处理器
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 模型 豆包 开始应用前置处理器
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 模型 豆包 前置处理器应用完成
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 模型 experience-modelscope 前置处理器应用完成
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 模型 豆包 开始调用AI生成故事
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-05-15 07:58:46,009 - 每日故事 - INFO - 模型 experience-modelscope 开始调用AI生成故事
+2026-05-15 07:58:46,010 - 每日故事 - INFO - 模型 gemini 开始应用前置处理器
+2026-05-15 07:58:46,011 - 每日故事 - INFO - 已启动模型 zhipu4.5-Flash 的生成线程
+2026-05-15 07:58:46,011 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-05-15 07:58:46,011 - 每日故事 - INFO - 模型 gemini 前置处理器应用完成
+2026-05-15 07:58:46,011 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用前置处理器
+2026-05-15 07:58:46,012 - 每日故事 - INFO - 已启动模型 deepseek 的生成线程
+2026-05-15 07:58:46,012 - 每日故事 - INFO - 模型 qwen 开始应用前置处理器
+2026-05-15 07:58:46,012 - 每日故事 - INFO - 模型 gemini 开始调用AI生成故事
+2026-05-15 07:58:46,012 - 每日故事 - INFO - 模型 zhipu4.5-Flash 前置处理器应用完成
+2026-05-15 07:58:46,013 - 每日故事 - INFO - 模型 deepseek 开始应用前置处理器
+2026-05-15 07:58:46,013 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-05-15 07:58:46,013 - 每日故事 - INFO - 模型 qwen 前置处理器应用完成
+2026-05-15 07:58:46,014 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始调用AI生成故事
+2026-05-15 07:58:46,014 - 每日故事 - INFO - 模型 deepseek 前置处理器应用完成
+2026-05-15 07:58:46,014 - 每日故事 - INFO - 模型 zhipu 开始应用前置处理器
+2026-05-15 07:58:46,015 - 每日故事 - INFO - 模型 qwen 开始调用AI生成故事
+2026-05-15 07:58:46,015 - 每日故事 - INFO - 模型 deepseek 开始调用AI生成故事
+2026-05-15 07:58:46,016 - 每日故事 - INFO - 模型 zhipu 前置处理器应用完成
+2026-05-15 07:58:46,017 - 每日故事 - INFO - 模型 zhipu 开始调用AI生成故事
+2026-05-15 07:58:48,051 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 400 - {'error': {'message': 'Model id : XiaomiMiMo/MiMo-V2-Flash , has no provider supported', 'request_id': '233798f9-3179-4abd-8e12-1eb060c8ad2e'}}
+2026-05-15 07:58:48,941 - 每日故事 - WARNING - API速率限制错误，第 1 次重试，将等待 120.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 02177880312872582d9a25dc868c42aa6f70cb2f9d1da6ad91db3', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 07:59:24,137 - 每日故事 - INFO - 模型 gemini AI生成故事完成
+2026-05-15 07:59:24,137 - 每日故事 - INFO - 模型 gemini 开始应用后置处理器
+2026-05-15 07:59:24,137 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-15 07:59:24,137 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-15 07:59:24,137 - 每日故事 - INFO - 模型 gemini 后置处理器应用完成
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 模型 gemini 开始应用文件后置处理器
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/15日/星期五_07-59-24.6d3.md
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 模型 gemini 文件后置处理器应用完成
+2026-05-15 07:59:24,138 - 每日故事 - INFO - 模型 gemini 生成完成
+2026-05-15 07:59:48,051 - 每日故事 - ERROR - 所有 5 次重试均失败
+2026-05-15 07:59:48,052 - 每日故事 - INFO - 模型 experience-modelscope AI生成故事完成
+2026-05-15 07:59:48,052 - 每日故事 - ERROR - 模型 experience-modelscope 生成故事失败，跳过后置处理器
+2026-05-15 07:59:48,052 - 每日故事 - INFO - 模型 experience-modelscope 生成完成
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 模型 zhipu AI生成故事完成
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 模型 zhipu 开始应用后置处理器
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 正在应用后置处理器 process_string
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 后置处理器 process_string 已应用
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-15 07:59:49,162 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-15 07:59:49,163 - 每日故事 - INFO - 正在应用后置处理器 insert_content_in_fourth_line
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 下载图片成功: ./story/images/0b8b8c62b0d24c43beff79ff58cce04d.jpg
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 后置处理器 insert_content_in_fourth_line 已应用
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 模型 zhipu 后置处理器应用完成
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 模型 zhipu 开始应用文件后置处理器
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-15 07:59:51,817 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/15日/星期五_07-59-51.589.md
+2026-05-15 07:59:51,829 - 每日故事 - INFO - 修改index.md文件成功
+2026-05-15 07:59:51,829 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-15 07:59:51,829 - 每日故事 - INFO - 模型 zhipu 文件后置处理器应用完成
+2026-05-15 07:59:51,829 - 每日故事 - INFO - 模型 zhipu 生成完成
+2026-05-15 08:00:12,550 - 每日故事 - INFO - 模型 zhipu4.5-Flash AI生成故事完成
+2026-05-15 08:00:12,550 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用后置处理器
+2026-05-15 08:00:12,550 - 每日故事 - INFO - 正在应用后置处理器 remove_leading_empty_line
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 后置处理器 remove_leading_empty_line 已应用
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 模型 zhipu4.5-Flash 后置处理器应用完成
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用文件后置处理器
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/15日/星期五_08-00-12.5d9.md
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 模型 zhipu4.5-Flash 文件后置处理器应用完成
+2026-05-15 08:00:12,551 - 每日故事 - INFO - 模型 zhipu4.5-Flash 生成完成
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen AI生成故事完成
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen 开始应用后置处理器
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen 后置处理器应用完成
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen 开始应用文件后置处理器
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/15日/星期五_08-00-27.8a2.md
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen 文件后置处理器应用完成
+2026-05-15 08:00:27,199 - 每日故事 - INFO - 模型 qwen 生成完成
+2026-05-15 08:00:48,941 - 每日故事 - INFO - 第1次等待结束，开始第 2 次重试
+2026-05-15 08:00:52,180 - 每日故事 - WARNING - API速率限制错误，第 2 次重试，将等待 240.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 0217788032517148edd2369ecdae8f7c496a12d84e74b7717c79a', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 08:04:49,499 - 每日故事 - INFO - 模型 deepseek AI生成故事完成
+2026-05-15 08:04:49,499 - 每日故事 - INFO - 模型 deepseek 开始应用后置处理器
+2026-05-15 08:04:49,499 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 模型 deepseek 后置处理器应用完成
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 模型 deepseek 开始应用文件后置处理器
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/15日/星期五_08-04-49.70f.md
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 模型 deepseek 文件后置处理器应用完成
+2026-05-15 08:04:49,500 - 每日故事 - INFO - 模型 deepseek 生成完成
+2026-05-15 08:04:52,181 - 每日故事 - INFO - 第2次等待结束，开始第 3 次重试
+2026-05-15 08:04:55,075 - 每日故事 - WARNING - API速率限制错误，第 3 次重试，将等待 480.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 021778803494833265634cfb9c55dca3322eb639399abf11dcf9e', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 08:12:55,075 - 每日故事 - INFO - 第3次等待结束，开始第 4 次重试
+2026-05-15 08:12:58,035 - 每日故事 - WARNING - API速率限制错误，第 4 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 021778803977792134a33f22921f0bc01c0430890f5ffa3534fd0', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 08:22:58,035 - 每日故事 - INFO - 第4次等待结束，开始第 5 次重试
+2026-05-15 08:23:01,140 - 每日故事 - WARNING - API速率限制错误，第 5 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 021778804580952ea8ef9002080ea9c998549e6cf6a195a1feaee', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 08:23:01,140 - 每日故事 - INFO - 第5次等待结束，开始第 6 次重试
+2026-05-15 08:23:04,308 - 每日故事 - WARNING - API速率限制错误，第 6 次重试，将等待 600.00 秒: Error code: 429 - {'error': {'code': 'RateLimitExceeded.EndpointRPMExceeded', 'message': 'The Requests Per Minute (RPM) limit of the associated endpoint for your account has been exceeded, please retry later or contact with administrator if not work afterwards. Request id: 0217788045840190bb38117aea02fc7ff24e6e3c6a99dd030d3ad', 'param': '', 'type': 'TooManyRequests'}}
+2026-05-15 08:23:04,308 - 每日故事 - ERROR - 所有 5 次重试均失败
+2026-05-15 08:23:04,308 - 每日故事 - INFO - 模型 豆包 AI生成故事完成
+2026-05-15 08:23:04,308 - 每日故事 - ERROR - 模型 豆包 生成故事失败，跳过后置处理器
+2026-05-15 08:23:04,308 - 每日故事 - INFO - 模型 豆包 生成完成
+2026-05-15 08:23:04,309 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-05-15 08:23:04,310 - 每日故事 - INFO - 应用程序结束
