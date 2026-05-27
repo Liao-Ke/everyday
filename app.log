@@ -37010,3 +37010,131 @@ TypeError: 'NoneType' object is not subscriptable
 2026-05-26 08:22:33,668 - 每日故事 - INFO - 模型 豆包 生成完成
 2026-05-26 08:22:33,669 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-05-26 08:22:33,669 - 每日故事 - INFO - 应用程序结束
+2026-05-27 08:07:35,326 - 每日故事 - INFO - 今日金山词霸：风捎来更柔软、更青翠的气息。
+2026-05-27 08:07:36,643 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '风捎来 柔软 青翠 气息', 'query': '风捎来更柔软、更青翠的气息。'}],将关闭意图识别后重试
+2026-05-27 08:07:37,894 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '风捎来 柔软 青翠 气息', 'query': '风捎来更柔软、更青翠的气息。'}]
+2026-05-27 08:07:37,901 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M2.5
+2026-05-27 08:07:37,902 - 每日故事 - INFO - 应用程序启动
+2026-05-27 08:07:37,902 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek, qwen, zhipu4.5-Flash, zhipu, gemini, experience-modelscope, 豆包，最大并发线程数: 16
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 已启动模型 deepseek 的生成线程
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 模型 deepseek 开始应用前置处理器
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 模型 deepseek 前置处理器应用完成
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 模型 qwen 开始应用前置处理器
+2026-05-27 08:07:37,904 - 每日故事 - INFO - 模型 qwen 前置处理器应用完成
+2026-05-27 08:07:37,904 - 每日故事 - INFO - 模型 qwen 开始调用AI生成故事
+2026-05-27 08:07:37,903 - 每日故事 - INFO - 模型 deepseek 开始调用AI生成故事
+2026-05-27 08:07:37,904 - 每日故事 - INFO - 已启动模型 zhipu4.5-Flash 的生成线程
+2026-05-27 08:07:37,905 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-05-27 08:07:37,906 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用前置处理器
+2026-05-27 08:07:37,906 - 每日故事 - INFO - 模型 zhipu 开始应用前置处理器
+2026-05-27 08:07:37,906 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-05-27 08:07:37,906 - 每日故事 - INFO - 模型 zhipu4.5-Flash 前置处理器应用完成
+2026-05-27 08:07:37,907 - 每日故事 - INFO - 模型 zhipu 前置处理器应用完成
+2026-05-27 08:07:37,907 - 每日故事 - INFO - 已启动模型 experience-modelscope 的生成线程
+2026-05-27 08:07:37,907 - 每日故事 - INFO - 已启动模型 豆包 的生成线程
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 experience-modelscope 开始应用前置处理器
+2026-05-27 08:07:37,907 - 每日故事 - INFO - 模型 gemini 开始应用前置处理器
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 zhipu 开始调用AI生成故事
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始调用AI生成故事
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 豆包 开始应用前置处理器
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 experience-modelscope 前置处理器应用完成
+2026-05-27 08:07:37,908 - 每日故事 - INFO - 模型 gemini 前置处理器应用完成
+2026-05-27 08:07:37,910 - 每日故事 - INFO - 模型 豆包 前置处理器应用完成
+2026-05-27 08:07:37,910 - 每日故事 - INFO - 模型 experience-modelscope 开始调用AI生成故事
+2026-05-27 08:07:37,910 - 每日故事 - INFO - 模型 gemini 开始调用AI生成故事
+2026-05-27 08:07:37,911 - 每日故事 - INFO - 模型 豆包 开始调用AI生成故事
+2026-05-27 08:07:38,919 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021779840458741593d1c183d006393a9c4d8ceacb21e14b84f81', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:07:39,570 - 每日故事 - CRITICAL - 严重错误: 'NoneType' object is not subscriptable，第 1 次重试，将等待 60.00 秒
+Traceback (most recent call last):
+  File "/home/runner/work/everyday/everyday/main.py", line 58, in chat_ai
+    response_content = response.choices[0].message.model_dump() or ""
+                       ~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 模型 zhipu AI生成故事完成
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 模型 zhipu 开始应用后置处理器
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 正在应用后置处理器 process_string
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 后置处理器 process_string 已应用
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 正在应用后置处理器 <lambda>
+2026-05-27 08:08:16,187 - 每日故事 - INFO - 后置处理器 <lambda> 已应用
+2026-05-27 08:08:16,188 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-27 08:08:16,188 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-27 08:08:16,188 - 每日故事 - INFO - 正在应用后置处理器 insert_content_in_fourth_line
+2026-05-27 08:08:19,325 - 每日故事 - INFO - 下载图片成功: ./story/images/d1b1abd7f64c4c19bc36641b6af43109.jpg
+2026-05-27 08:08:19,326 - 每日故事 - INFO - 后置处理器 insert_content_in_fourth_line 已应用
+2026-05-27 08:08:19,326 - 每日故事 - INFO - 模型 zhipu 后置处理器应用完成
+2026-05-27 08:08:19,326 - 每日故事 - INFO - 模型 zhipu 开始应用文件后置处理器
+2026-05-27 08:08:19,326 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-27 08:08:19,326 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/27日/星期三_08-08-19.bff.md
+2026-05-27 08:08:19,338 - 每日故事 - INFO - 修改index.md文件成功
+2026-05-27 08:08:19,338 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-27 08:08:19,338 - 每日故事 - INFO - 模型 zhipu 文件后置处理器应用完成
+2026-05-27 08:08:19,338 - 每日故事 - INFO - 模型 zhipu 生成完成
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen AI生成故事完成
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen 开始应用后置处理器
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen 后置处理器应用完成
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen 开始应用文件后置处理器
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/27日/星期三_08-08-31.c4b.md
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen 文件后置处理器应用完成
+2026-05-27 08:08:31,452 - 每日故事 - INFO - 模型 qwen 生成完成
+2026-05-27 08:08:38,920 - 每日故事 - INFO - 第1次等待结束，开始第 2 次重试
+2026-05-27 08:08:39,571 - 每日故事 - ERROR - 所有 5 次重试均失败
+2026-05-27 08:08:39,571 - 每日故事 - INFO - 模型 experience-modelscope AI生成故事完成
+2026-05-27 08:08:39,571 - 每日故事 - ERROR - 模型 experience-modelscope 生成故事失败，跳过后置处理器
+2026-05-27 08:08:39,571 - 每日故事 - INFO - 模型 experience-modelscope 生成完成
+2026-05-27 08:08:39,655 - 每日故事 - ERROR - API错误，第 2 次重试，将等待 120.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021779840519526513ce85330429ea14b25f1ce17f48ff93b39c1', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 模型 gemini AI生成故事完成
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 模型 gemini 开始应用后置处理器
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 模型 gemini 后置处理器应用完成
+2026-05-27 08:09:27,782 - 每日故事 - INFO - 模型 gemini 开始应用文件后置处理器
+2026-05-27 08:09:27,783 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-27 08:09:27,783 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/27日/星期三_08-09-27.740.md
+2026-05-27 08:09:27,783 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-27 08:09:27,783 - 每日故事 - INFO - 模型 gemini 文件后置处理器应用完成
+2026-05-27 08:09:27,783 - 每日故事 - INFO - 模型 gemini 生成完成
+2026-05-27 08:09:41,348 - 每日故事 - INFO - 模型 deepseek AI生成故事完成
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 模型 deepseek 开始应用后置处理器
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 模型 deepseek 后置处理器应用完成
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 模型 deepseek 开始应用文件后置处理器
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/27日/星期三_08-09-41.7ad.md
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 模型 deepseek 文件后置处理器应用完成
+2026-05-27 08:09:41,349 - 每日故事 - INFO - 模型 deepseek 生成完成
+2026-05-27 08:09:44,714 - 每日故事 - INFO - 模型 zhipu4.5-Flash AI生成故事完成
+2026-05-27 08:09:44,714 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用后置处理器
+2026-05-27 08:09:44,714 - 每日故事 - INFO - 正在应用后置处理器 remove_leading_empty_line
+2026-05-27 08:09:44,714 - 每日故事 - INFO - 后置处理器 remove_leading_empty_line 已应用
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 正在应用后置处理器 ensure_first_line_is_h1
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 后置处理器 ensure_first_line_is_h1 已应用
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 模型 zhipu4.5-Flash 后置处理器应用完成
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 模型 zhipu4.5-Flash 开始应用文件后置处理器
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 正在应用文件后置处理器 save_to_md_file
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/05月/27日/星期三_08-09-44.cb7.md
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 文件后置处理器 save_to_md_file 已应用
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 模型 zhipu4.5-Flash 文件后置处理器应用完成
+2026-05-27 08:09:44,715 - 每日故事 - INFO - 模型 zhipu4.5-Flash 生成完成
+2026-05-27 08:10:39,655 - 每日故事 - INFO - 第2次等待结束，开始第 3 次重试
+2026-05-27 08:10:40,479 - 每日故事 - ERROR - API错误，第 3 次重试，将等待 240.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021779840640353875f22c5dcf98fc2650ac2583e10a839a7d4e5', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:14:40,479 - 每日故事 - INFO - 第3次等待结束，开始第 4 次重试
+2026-05-27 08:14:41,276 - 每日故事 - ERROR - API错误，第 4 次重试，将等待 480.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 02177984088114023da0b914a891515853fa2b273acf40e104519', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:22:41,276 - 每日故事 - INFO - 第4次等待结束，开始第 5 次重试
+2026-05-27 08:22:42,249 - 每日故事 - ERROR - API错误，第 5 次重试，将等待 600.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021779841362002d45baf856d4467624e6599aa06a9527564e7d6', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:22:42,249 - 每日故事 - INFO - 第5次等待结束，开始第 6 次重试
+2026-05-27 08:22:43,089 - 每日故事 - ERROR - API错误，第 6 次重试，将等待 600.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021779841362955784d9b012837ef9c35d3c5254d94dc1e9f4eb1', 'param': '', 'type': 'Not Found'}}
+2026-05-27 08:22:43,089 - 每日故事 - ERROR - 所有 5 次重试均失败
+2026-05-27 08:22:43,089 - 每日故事 - INFO - 模型 豆包 AI生成故事完成
+2026-05-27 08:22:43,089 - 每日故事 - ERROR - 模型 豆包 生成故事失败，跳过后置处理器
+2026-05-27 08:22:43,089 - 每日故事 - INFO - 模型 豆包 生成完成
+2026-05-27 08:22:43,090 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-05-27 08:22:43,090 - 每日故事 - INFO - 应用程序结束
