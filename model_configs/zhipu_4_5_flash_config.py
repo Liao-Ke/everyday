@@ -57,7 +57,4 @@ PREPROCESSORS = []
 
 POSTPROCESSORS = [remove_leading_empty_line, ensure_first_line_is_h1]
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-    # out_test
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

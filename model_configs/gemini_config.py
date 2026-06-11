@@ -73,18 +73,10 @@ CHAT_PARAMS = {
             "content": f'以下是关于"{JINSHAN.get("note")}"的参考资料：'
             + json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2),
         },
-        # {
-        #     "role": "assistant",
-        #     "content": "# ",
-        #     # "partial": True
-        # }
     ],
 }
 PREPROCESSORS = []
 
 POSTPROCESSORS = [ensure_first_line_is_h1]
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-    # out_test
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

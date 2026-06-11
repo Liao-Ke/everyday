@@ -213,13 +213,7 @@ CHAT_PARAMS = {
 PREPROCESSORS = []
 
 POSTPROCESSORS = [
-    # format_story
     ensure_first_line_is_h1,
 ]
 
-POSTPROCESSOR_FILES = [
-    # lambda r, n: print(n, r["content"])
-    # lambda r, n: print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else
-    # print(n, r["content"])
-    save_to_md_file
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

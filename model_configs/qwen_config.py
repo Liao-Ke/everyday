@@ -24,7 +24,6 @@ CHAT_PARAMS = {
 **请以思想深刻、富有洞见的作者身份进行回应/创作。**
         """,
         },
-        # {"role": "user", "content": f"写一篇小说用来解读“{JINSHAN['note']}”这句话。要求：1. 字数在 2333 字左右。2. 自拟标题。"},
         {
             "role": "user",
             "content": f"写一篇小说用来解读“{JINSHAN['note']}”这句话。要求：1. 自拟标题。2. 结合指定的参考材料或相关上下文信息。",
@@ -37,19 +36,11 @@ CHAT_PARAMS = {
         {
             "role": "assistant",
             "content": "# ",
-            # "partial": True
         },
     ],
-    # "extra_body": {"enable_search": True}
-    # "stream": True
 }
 PREPROCESSORS = []
 
 POSTPROCESSORS = [ensure_first_line_is_h1]
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-    # lambda r, n:
-    # print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else
-    # print(n, r["content"])
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

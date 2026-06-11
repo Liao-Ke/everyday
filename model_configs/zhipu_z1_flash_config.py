@@ -25,7 +25,6 @@ CHAT_PARAMS = {
         {
             "role": "assistant",
             "content": "# 《",
-            # "partial": True
         },
     ],
 }
@@ -33,7 +32,4 @@ PREPROCESSORS = []
 
 POSTPROCESSORS = [process_reasoning_content, remove_leading_empty_line, ensure_first_line_is_h1]
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-    # out_test
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

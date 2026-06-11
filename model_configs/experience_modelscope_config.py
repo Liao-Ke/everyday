@@ -18,14 +18,7 @@ model_list = [
     "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "Qwen/Qwen3-30B-A3B-Instruct-2507",
     "MiniMax/MiniMax-M1-80k",
-    # "ZhipuAI/GLM-4.5",
-    # "moonshotai/Kimi-K2-Instruct",
-    # "moonshotai/Kimi-K2-Instruct-0905",
     "Qwen/Qwen3-Next-80B-A3B-Instruct",
-    # "Qwen/Qwen3-Next-80B-A3B-Thinking",
-    # "ZhipuAI/GLM-4.6",
-    # "Menlo/Jan-nano",
-    # "ZhipuAI/GLM-4.7",
     "mistralai/Mistral-Large-Instruct-2407",
     "MiniMax/MiniMax-M2.7",
     "ZhipuAI/GLM-5.1",
@@ -50,7 +43,6 @@ some_params = {
             "content": f'以下是关于"{JINSHAN.get("note")}"的参考资料：'
             + json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2),
         },
-        # {"role": "assistant", "content": "已收到参考资料"},
         {
             "role": "user",
             "content": f'请根据上述资料，创作一篇以"{JINSHAN.get("note")}"为核心立意的故事，要求通过完整的故事情节体现其寓意，需自拟主标题，'
@@ -59,12 +51,10 @@ some_params = {
         {"role": "assistant", "content": "# ", "partial": True},
     ],
 }
-# kimi_token_count = estimate_tokens(API_KEY, some_params["model"], some_params["messages"],
 #                                    url="https://api.moonshot.cn/v1/tokenizers/estimate-token-count")
 CHAT_PARAMS = {
     **some_params,
     # 修复 max_tokens 格式错误
-    # "max_tokens": 32000 - kimi_token_count,
     "temperature": 0.6,
     "stream": False,
     "RETRY": False,
@@ -74,12 +64,7 @@ PREPROCESSORS = []
 
 POSTPROCESSORS = [
     process_reasoning_content,
-    # format_story
     ensure_first_line_is_h1,
 ]
 
-POSTPROCESSOR_FILES = [
-    # lambda r, n: print(n, r["content"])
-    # out_test
-    save_to_md_file
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

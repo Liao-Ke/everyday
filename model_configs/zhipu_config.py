@@ -26,7 +26,6 @@ CHAT_PARAMS = {
         {
             "role": "assistant",
             "content": "# ",
-            # "partial": True
         },
     ],
 }
@@ -38,7 +37,6 @@ POSTPROCESSORS = [
     lambda r: process_string(r, first_content="> ", last_content='"""'),
     ensure_first_line_is_h1,
     insert_content_in_fourth_line,
-    # format_story
 ]
 
 POSTPROCESSOR_FILES = [save_to_md_file]
