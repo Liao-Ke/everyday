@@ -40,3 +40,5 @@ POSTPROCESSORS = [
 ]
 
 POSTPROCESSOR_FILES = [save_to_md_file]
+
+UPDATE_FRONTMATTER = True
