@@ -1,7 +1,4 @@
-import importlib
 import os
-import random
-import re
 import time
 import traceback
 import uuid
@@ -11,10 +8,15 @@ from queue import Queue
 from openai import APIConnectionError, APIStatusError, APITimeoutError, OpenAI, RateLimitError
 
 from config.logger_setup import setup_logger
+from core.registry import ModelRegistry
 from utils.metadata_utils import process_stream_chunks, save_chat_metadata
 
 # 获取配置好的日志器
 logger = setup_logger()
+
+
+# 可选择禁用的模型列表
+EXCLUDED_MODELS: set[str] = {"doubao_think", "kimi", "zhipu_z1_flash"}
 
 
 def chat_ai(
@@ -45,7 +47,8 @@ def chat_ai(
     start_time = time.time()
     retries = 0
     is_stream = chat_params.get("stream", False)
-    is_retry = chat_params.pop("RETRY", True)
+    params_copy = chat_params.copy()
+    is_retry = params_copy.pop("RETRY", True)
 
     while retries <= (max_retries if is_retry else 0):
         try:
@@ -146,92 +149,38 @@ def chat_ai(
     return None
 
 
-# 动态导入模型配置
-def load_model_config(model_name: str) -> dict | None:
-    """动态加载模型配置文件
-
-    Args:
-        model_name: 模型名称（如 'gpt-4', 'claude-3'）
-
-    Returns:
-        包含配置的字典，或 None（加载失败时）
-    """
-    # 1. 安全处理模块名
-    safe_name = re.sub(r"[^a-zA-Z0-9_]", "", model_name)  # 移除非字母数字字符
-    module_name = f"{safe_name}_config"
+def story_generator(model_name, config, result_queue=None):
     try:
-        # 2. 动态导入配置模块
-        module = importlib.import_module(f"model_configs.{module_name}")
-
-        # 3. 安全获取配置项（带默认值）
-        config = {
-            "api_key": getattr(module, "API_KEY", None),
-            "client_params": getattr(module, "CLIENT_PARAMS", {}),
-            "chat_params": getattr(module, "CHAT_PARAMS", {}),
-            "preprocessors": getattr(module, "PREPROCESSORS", []),
-            "postprocessors": getattr(module, "POSTPROCESSORS", []),
-            "postprocessor_files": getattr(module, "POSTPROCESSOR_FILES", []),
-        }
-
-        # 4. 验证必要配置
-        if not config["api_key"]:
-            logger.error(f"模型 {model_name} 缺少 API_KEY 配置")
-            return None
-
-        # 5. 返回配置字典
-        return config
-
-    except ImportError:
-        logger.warning(f"未找到模型 {model_name} 的配置文件")
-        return None
-    except Exception as e:
-        logger.error(f"加载模型 {model_name} 配置时出错: {str(e)}", exc_info=True)
-        return None
-
-
-def story_generator(model_name, result_queue=None):
-    """故事生成器函数 - 现在可以作为线程执行体"""
-    try:
-        if model_name not in config_map:
-            logger.warning(f"模型 {model_name} 未配置，将跳过")
-            return None
         logger.info(f"已启动模型 {model_name} 的生成线程")
-        model_config = config_map[model_name]
-        params = {"chat_params": model_config["chat_params"], "client_params": model_config["client_params"]}
+        params = {"chat_params": config["CHAT_PARAMS"], "client_params": config["CLIENT_PARAMS"]}
 
-        # 应用前置处理器
         logger.info(f"模型 {model_name} 开始应用前置处理器")
-        for preprocessor in model_config["preprocessors"]:
+        for preprocessor in config.get("PREPROCESSORS", []):
             logger.info(f"正在应用前置处理器 {preprocessor.__name__}")
             params = preprocessor(params)
             logger.info(f"前置处理器 {preprocessor.__name__} 已应用")
         logger.info(f"模型 {model_name} 前置处理器应用完成")
 
-        # 调用AI生成故事
         logger.info(f"模型 {model_name} 开始调用AI生成故事")
-        r = chat_ai(api_key=model_config["api_key"], **params, initial_backoff=60, max_backoff=600, max_retries=5)
+        r = chat_ai(api_key=config["API_KEY"], **params, initial_backoff=60, max_backoff=600, max_retries=5)
         logger.info(f"模型 {model_name} AI生成故事完成")
-        # 检查是否生成失败
         if r is None:
             logger.error(f"模型 {model_name} 生成故事失败，跳过后置处理器")
         else:
-            # 应用后置处理器
             logger.info(f"模型 {model_name} 开始应用后置处理器")
-            for processor in model_config["postprocessors"]:
+            for processor in config.get("POSTPROCESSORS", []):
                 logger.info(f"正在应用后置处理器 {processor.__name__}")
                 r = processor(r)
                 logger.info(f"后置处理器 {processor.__name__} 已应用")
             logger.info(f"模型 {model_name} 后置处理器应用完成")
 
-            # 保存到文件
             logger.info(f"模型 {model_name} 开始应用文件后置处理器")
-            for file_processor in model_config["postprocessor_files"]:
+            for file_processor in config.get("POSTPROCESSOR_FILES", []):
                 logger.info(f"正在应用文件后置处理器 {file_processor.__name__}")
-                file_processor(r, model_name)
+                file_processor(r, config["name"])
                 logger.info(f"文件后置处理器 {file_processor.__name__} 已应用")
             logger.info(f"模型 {model_name} 文件后置处理器应用完成")
 
-        # 如果提供了结果队列，将结果放入队列
         if result_queue is not None:
             result_queue.put((model_name, r))
         logger.info(f"模型 {model_name} 生成完成")
@@ -241,14 +190,13 @@ def story_generator(model_name, result_queue=None):
         return None
 
 
-def run_multi_thread(selected_models, max_workers=4):
+def run_multi_thread(selected_configs: list[tuple[str, dict]], max_workers=4):
+    model_names = [name for name, _ in selected_configs]
     result_queue = Queue()
-    logger.info(f"开始多线程故事生成，将使用模型: {', '.join(selected_models)}，最大并发线程数: {max_workers}")
+    logger.info(f"开始多线程故事生成，将使用模型: {', '.join(model_names)}，最大并发线程数: {max_workers}")
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # 创建future到模型名的映射
-        # 首先提交所有任务
         future_to_model = {
-            executor.submit(story_generator, model_name, result_queue): model_name for model_name in selected_models
+            executor.submit(story_generator, name, config, result_queue): name for name, config in selected_configs
         }
 
         # 所有任务提交完成后，再处理结果
@@ -273,39 +221,15 @@ def run_multi_thread(selected_models, max_workers=4):
     return model_results
 
 
-config_map = {
-    "deepseek": load_model_config("deepseek_v3"),
-    "zhipu": load_model_config("zhipu"),
-    "豆包-思考": load_model_config("doubao_think"),
-    "豆包": load_model_config("doubao"),
-    "qwen": load_model_config("qwen"),
-    "zhipu4.5-Flash": load_model_config("zhipu_4_5_flash"),
-    "experience-modelscope": load_model_config("experience_modelscope"),
-    "zhipu-z1": load_model_config("zhipu_z1_flash"),
-    "gemini": load_model_config("gemini"),
-    # "kimi": load_model_config("kimi")
-}
-
 if __name__ == "__main__":
     logger.info("应用程序启动")
 
-    # 指定要使用的模型
-    models_to_use = [
-        "deepseek",
-        "zhipu",
-        # "豆包-思考",
-        "豆包",
-        # "kimi"
-        "qwen",
-        "zhipu4.5-Flash",
-        "experience-modelscope",
-        "gemini",
-        # "zhipu-z1"
-    ]
+    configs = ModelRegistry.discover()
+    available_models = [name for name in configs if name not in EXCLUDED_MODELS]
+    logger.info(f"可用模型: {', '.join(configs.keys())}, 排除后: {', '.join(available_models)}")
 
-    random.shuffle(models_to_use)
+    selected_configs = [(name, configs[name]) for name in available_models]
 
-    # 运行多线程生成
-    results = run_multi_thread(models_to_use, max_workers=min(32, (os.cpu_count() or 1) * 4))
+    results = run_multi_thread(selected_configs, max_workers=min(32, (os.cpu_count() or 1) * 4))
 
     logger.info("应用程序结束")

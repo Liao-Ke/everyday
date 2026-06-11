@@ -1,6 +1,6 @@
 import os
 
-from model_configs import JINSHAN
+from model_configs._shared import get_jinshan_cached
 from processors.file_processors import save_to_md_file
 
 # 从环境变量获取 API 密钥
@@ -131,7 +131,7 @@ CHAT_PARAMS = {
 ## Initialization 作为创意写作专家，你必须严格遵循上述Rules和字数要求，按照Workflows执行任务，确保作品思想健康、内容充实、语言流畅，并严格根据指定文体类型和字数范围按照[
 输出格式]规范输出。最终只输出故事内容的文本本身，不包括解释或其他任何额外信息。""",
         },
-        {"role": "user", "content": f"“{JINSHAN['note']}”"},
+        {"role": "user", "content": f"“{get_jinshan_cached()['note']}”"},
     ],
 }
 PREPROCESSORS = []

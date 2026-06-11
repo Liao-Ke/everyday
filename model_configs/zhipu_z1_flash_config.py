@@ -1,7 +1,7 @@
 import json
 import os
 
-from model_configs import JINSHAN, SEARCH_RESULT
+from model_configs._shared import get_jinshan_cached, get_search_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 from utils.misc import process_reasoning_content, remove_leading_empty_line
@@ -15,8 +15,8 @@ CHAT_PARAMS = {
     "messages": [
         {
             "role": "user",
-            "content": f'以下是关于"{JINSHAN.get("note")}"的参考资料：'
-            + json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2),
+            "content": f'以下是关于"{get_jinshan_cached().get("note")}"的参考资料：'
+            + json.dumps(get_search_cached(), ensure_ascii=False, indent=2),
         },
         {
             "role": "user",

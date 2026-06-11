@@ -3,7 +3,7 @@ import logging
 import os
 import random
 
-from model_configs import JINSHAN, SEARCH_RESULT
+from model_configs._shared import get_jinshan_cached, get_search_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 from utils.misc import process_reasoning_content
@@ -40,12 +40,12 @@ some_params = {
         },
         {
             "role": "user",
-            "content": f'以下是关于"{JINSHAN.get("note")}"的参考资料：'
-            + json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2),
+            "content": f'以下是关于"{get_jinshan_cached().get("note")}"的参考资料：'
+            + json.dumps(get_search_cached(), ensure_ascii=False, indent=2),
         },
         {
             "role": "user",
-            "content": f'请根据上述资料，创作一篇以"{JINSHAN.get("note")}"为核心立意的故事，要求通过完整的故事情节体现其寓意，需自拟主标题，'
+            "content": f'请根据上述资料，创作一篇以"{get_jinshan_cached().get("note")}"为核心立意的故事，要求通过完整的故事情节体现其寓意，需自拟主标题，'
             f"字数控制在2000-3000字范围内,并以markdown格式呈现。最终只输出故事标题和故事内容的文本本身，不包括解释或其他任何额外信息。",
         },
         {"role": "assistant", "content": "# ", "partial": True},

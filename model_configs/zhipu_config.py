@@ -1,6 +1,6 @@
 import os
 
-from model_configs import JINSHAN
+from model_configs._shared import get_jinshan_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import (
     ensure_first_line_is_h1,
@@ -22,7 +22,7 @@ CHAT_PARAMS = {
 > 故事的主题
 正文''',
         },
-        {"role": "user", "content": f"我提供的主题是：“{JINSHAN['note']}”"},
+        {"role": "user", "content": f"我提供的主题是：“{get_jinshan_cached()['note']}”"},
         {
             "role": "assistant",
             "content": "# ",

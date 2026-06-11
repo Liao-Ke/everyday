@@ -1,7 +1,6 @@
 import os
 
-from model_configs import JINSHAN
-from preprocessor.params_preprocessor import estimate_tokens
+from model_configs._shared import get_jinshan_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 
@@ -189,7 +188,7 @@ some_params = {
         },
         {
             "role": "user",
-            "content": f"请解读“{JINSHAN['note']}”这句话以写一篇约3500字的小说。请选择合适的标题。请保证字数满足要求。",
+            "content": f"请解读“{get_jinshan_cached()['note']}”这句话以写一篇约3500字的小说。请选择合适的标题。请保证字数满足要求。",
         },
         {
             "partial": True,  # <-- 通过 partial 参数，开启 Partial Mode
@@ -198,16 +197,11 @@ some_params = {
         },
     ],
 }
-kimi_token_count = estimate_tokens(
-    API_KEY,
-    some_params["model"],
-    some_params["messages"],
-    url="https://api.moonshot.cn/v1/tokenizers/estimate-token-count",
-)
 CHAT_PARAMS = {
     **some_params,
     # 修复 max_tokens 格式错误
-    "max_tokens": 32000 - kimi_token_count,
+    "max_tokens": 32000,
+    "RETRY": False,
 }
 
 PREPROCESSORS = []

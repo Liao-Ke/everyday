@@ -1,6 +1,6 @@
 import os
 
-from model_configs import JINSHAN
+from model_configs._shared import get_jinshan_cached
 from processors.format_processors import ensure_first_line_is_h1
 
 # 从环境变量获取 API 密钥
@@ -9,7 +9,7 @@ CLIENT_PARAMS = {"base_url": "https://ark.cn-beijing.volces.com/api/v3"}
 CHAT_PARAMS = {
     "model": "doubao-seed-1-6-thinking-250715",
     "messages": [
-        {"role": "user", "content": f"“{JINSHAN['note']}”之我见"},
+        {"role": "user", "content": f"“{get_jinshan_cached()['note']}”之我见"},
     ],
 }
 PREPROCESSORS = []

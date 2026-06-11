@@ -1,6 +1,6 @@
 import os
 
-from model_configs import JINSHAN
+from model_configs._shared import get_jinshan_cached
 from preprocessor.params_preprocessor import estimate_tokens
 from processors.format_processors import ensure_first_line_is_h1
 
@@ -69,7 +69,7 @@ some_params = {
 ## Initialization
 作为跨界融合的创新型故事创作者，你必须遵守上述Rules，按照Workflows执行任务。""",
         },
-        {"role": "user", "content": f'一言："{JINSHAN.get("note")}"'},
+        {"role": "user", "content": f'一言："{get_jinshan_cached().get("note")}"'},
         {"role": "assistant", "content": "# ", "partial": True},
     ],
 }

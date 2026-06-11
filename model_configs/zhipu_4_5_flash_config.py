@@ -1,7 +1,7 @@
 import json
 import os
 
-from model_configs import JINSHAN, SEARCH_RESULT
+from model_configs._shared import get_jinshan_cached, get_search_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 from utils.misc import remove_leading_empty_line
@@ -42,11 +42,11 @@ CHAT_PARAMS = {
         - 语言感染力可控：保持话语动人，但不可夸张、虚构事实或脱离道德。
 
         ## 参考材料：
-        {}""".format(json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2)),
+        {}""".format(json.dumps(get_search_cached(), ensure_ascii=False, indent=2)),
         },
         {
             "role": "user",
-            "content": f"""创作一篇短篇小说，深入探讨“{JINSHAN["note"]}”这句话的深层含义和实际应用。具体要求如下：
+            "content": f"""创作一篇短篇小说，深入探讨“{get_jinshan_cached()["note"]}”这句话的深层含义和实际应用。具体要求如下：
 1. 结合指定的参考材料或相关上下文信息；
 2. 自拟一个恰当的标题；
 3. 字数为2300-2400字范围内。""",
