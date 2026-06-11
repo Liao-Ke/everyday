@@ -1,4 +1,5 @@
 import os
+import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from queue import Queue
@@ -39,11 +40,16 @@ def run_multi_thread(selected_configs: list[tuple[str, dict]], max_workers=4):
 
 
 def _run_single(model_name: str, config: dict, result_queue: Queue):
-    logger.info(f"已启动模型 {model_name} 的生成线程")
+    start = time.time()
+    logger.info(f"[{model_name}] 开始生成")
     r = run_model(config)
+    elapsed = time.time() - start
+    if r is None:
+        logger.error(f"[{model_name}] 生成失败 ({elapsed:.1f}s)")
+    else:
+        logger.info(f"[{model_name}] 生成成功 ({elapsed:.1f}s)")
     if result_queue is not None:
         result_queue.put((model_name, r))
-    logger.info(f"模型 {model_name} 生成完成")
     return r
 
 

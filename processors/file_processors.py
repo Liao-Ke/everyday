@@ -38,9 +38,9 @@ def save_to_md_file(content, model_config):
                 )
             else:
                 file.write(content["content"])
-        logger.info(f"内容已成功保存到 {file_path}")
+        logger.debug(f"[{model_name}] 内容已保存至 {file_path}")
         if update_frontmatter:
             modify_frontmatter("./story/index.md", "hero.actions.0.link", f"/故事/{file_name}")
-            logger.info(f"模型 {model_name} 更新 index.md 成功")
+            logger.info(f"[{model_name}] 更新 index.md 成功")
     except Exception as e:
         logger.error(f"保存文件时出错: {e}")
