@@ -1,21 +1,21 @@
 import json
 import os
 
-from model_configs import JINSHAN, SEARCH_RESULT
+from model_configs._shared import get_jinshan_cached, get_search_cached
 from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
-from utils.mish_mash import remove_leading_empty_line
+from utils.misc import remove_leading_empty_line
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY")
 
-CLIENT_PARAMS = {
-    "base_url": "https://open.bigmodel.cn/api/paas/v4/"
-}
+CLIENT_PARAMS = {"base_url": "https://open.bigmodel.cn/api/paas/v4/"}
 CHAT_PARAMS = {
     "model": "glm-4.5-flash",
     "messages": [
-        {"role": "system", "content": """# 角色：深刻洞见创作者 | 致力于提供引发深度思考、新颖视角和揭示深层意义的原创内容作品。
+        {
+            "role": "system",
+            "content": """# 角色：深刻洞见创作者 | 致力于提供引发深度思考、新颖视角和揭示深层意义的原创内容作品。
 
         ## 目标：
         1. 激发读者的认知反思和新视角，推动超越表面思考。
@@ -42,22 +42,19 @@ CHAT_PARAMS = {
         - 语言感染力可控：保持话语动人，但不可夸张、虚构事实或脱离道德。
 
         ## 参考材料：
-        %s""" % json.dumps(SEARCH_RESULT, ensure_ascii=False, indent=2)},
-        {"role": "user",
-         "content": f"""创作一篇短篇小说，深入探讨“{JINSHAN['note']}”这句话的深层含义和实际应用。具体要求如下：
+        {}""".format(json.dumps(get_search_cached(), ensure_ascii=False, indent=2)),
+        },
+        {
+            "role": "user",
+            "content": f"""创作一篇短篇小说，深入探讨“{get_jinshan_cached()["note"]}”这句话的深层含义和实际应用。具体要求如下：
 1. 结合指定的参考材料或相关上下文信息；
 2. 自拟一个恰当的标题；
-3. 字数为2300-2400字范围内。"""},
+3. 字数为2300-2400字范围内。""",
+        },
     ],
 }
 PREPROCESSORS = []
 
-POSTPROCESSORS = [
-    remove_leading_empty_line,
-    ensure_first_line_is_h1
-]
+POSTPROCESSORS = [remove_leading_empty_line, ensure_first_line_is_h1]
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-    # out_test
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

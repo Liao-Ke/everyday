@@ -6,3 +6,4 @@ cache
 dist
 __pycache__
 .pytest_cache
+.codegraph/

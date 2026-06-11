@@ -1,10 +1,11 @@
-import os
-import logging
 import datetime
+import logging
+import os
 
-from utils.mish_mash import modify_frontmatter, fixed_length_uuid
+from utils.uuid_utils import fixed_length_uuid
+from utils.yaml_utils import modify_frontmatter
 
-logger = logging.getLogger('每日故事')
+logger = logging.getLogger("每日故事")
 
 
 def get_today_info():
@@ -17,24 +18,29 @@ def get_today_info():
     return f"{date_time_str}/{weekday_names[weekday]}_{time_str}"
 
 
-def save_to_md_file(content, model_name):
+def save_to_md_file(content, model_config):
     try:
+        model_name = model_config if isinstance(model_config, str) else model_config.get("name", "unknown")
+        update_frontmatter = isinstance(model_config, dict) and model_config.get("UPDATE_FRONTMATTER", False)
+
         file_name = f"{get_today_info()}.{fixed_length_uuid(3)}.md"
         file_path = f"./story/故事/{file_name}"
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
             os.makedirs(directory)
-        with open(file_path, 'w', encoding='utf-8') as file:
-            if 'reasoning_content' in content and content['reasoning_content']:
-                file.write(f"<ReasoningChainRenderer>\n"
-                           f"{content['reasoning_content']}"
-                           f"\n</ReasoningChainRenderer>\n"
-                           f"\n{content['content']}")
+        with open(file_path, "w", encoding="utf-8") as file:
+            if "reasoning_content" in content and content["reasoning_content"]:
+                file.write(
+                    f"<ReasoningChainRenderer>\n"
+                    f"{content['reasoning_content']}"
+                    f"\n</ReasoningChainRenderer>\n"
+                    f"\n{content['content']}"
+                )
             else:
-                file.write(content['content'])
-        logger.info(f"内容已成功保存到 {file_path}")
-        if model_name == "zhipu":
+                file.write(content["content"])
+        logger.debug(f"[{model_name}] 内容已保存至 {file_path}")
+        if update_frontmatter:
             modify_frontmatter("./story/index.md", "hero.actions.0.link", f"/故事/{file_name}")
-            logger.info(f"修改index.md文件成功")
+            logger.info(f"[{model_name}] 更新 index.md 成功")
     except Exception as e:
         logger.error(f"保存文件时出错: {e}")

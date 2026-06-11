@@ -28,14 +28,7 @@ const toggleShow = () => {
 </script>
 
 <style scoped>
-/* .reasoning-chain { */
-    /* padding: 10px; */
-    /* border: 1px solid #ccc; */
-    /* border-radius: 4px; */
-    /* background-color: #f9f9f9; */
-/* } */
-
-.dark .chain-title{
+.dark .chain-title {
     background-color: rgb(73, 73, 73);
     color: rgb(228 228 231);
 }
@@ -60,25 +53,18 @@ const toggleShow = () => {
     line-height: 18px;
 }
 
-.dark .chain-title:hover{
+.dark .chain-title:hover {
     background-color: rgb(82 82 82);
 }
 
-.chain-title:hover{
+.chain-title:hover {
     background-color: #ededed;
 }
 
-.chain-title .chain-toggle-icon{
+.chain-title .chain-toggle-icon {
     cursor: pointer;
-
-    /* font-size: 10px;
-    width: 10px;
-    height: 10px; */
-    /* transform: rotate(180deg); */
-
     line-height: 0;
     display: inline-flex;
-
     margin-left: 6px;
 }
 
@@ -93,7 +79,7 @@ const toggleShow = () => {
     font-size: 14px;
 
 }
-.dark .chain-steps .chain-separator{
+.dark .chain-steps .chain-separator {
     border-color: #4e4e56;
 }
 
