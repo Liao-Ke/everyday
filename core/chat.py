@@ -31,9 +31,11 @@ def chat_ai(
 
             client = OpenAI(api_key=api_key, **client_params)
 
-            response = client.chat.completions.create(**chat_params)
+            response = client.chat.completions.create(**params_copy)
             response_time = time.time() - start_time
             if not is_stream:
+                if not response.choices or response.choices[0] is None:
+                    raise ValueError("API 返回空响应")
                 response_content = response.choices[0].message.model_dump() or ""
 
                 save_chat_metadata(

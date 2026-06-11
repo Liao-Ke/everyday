@@ -34105,3 +34105,154 @@ TypeError: 'NoneType' object is not subscriptable
 2026-05-03 07:50:22,625 - 每日故事 - INFO - 模型 deepseek 生成完成
 2026-05-03 07:50:22,626 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-05-03 07:50:22,626 - 每日故事 - INFO - 应用程序结束
+2026-06-11 13:45:58,963 - 每日故事 - INFO - 应用程序启动
+2026-06-11 13:45:59,295 - 每日故事 - INFO - 今日金山词霸：门合上了刚才的故事。
+2026-06-11 13:45:59,840 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}],将关闭意图识别后重试
+2026-06-11 13:46:00,771 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}]
+2026-06-11 13:46:00,782 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-235B-A22B-Instruct-2507
+2026-06-11 13:46:01,138 - 每日故事 - INFO - 可用模型: deepseek_r1, deepseek_v3, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu
+2026-06-11 13:46:01,139 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 32
+2026-06-11 13:46:01,139 - 每日故事 - INFO - 已启动模型 deepseek_r1 的生成线程
+2026-06-11 13:46:01,139 - 每日故事 - INFO - 开始处理模型: deepseek_r1
+2026-06-11 13:46:01,139 - 每日故事 - INFO - 已启动模型 deepseek_v3 的生成线程
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 开始处理模型: deepseek_v3
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 已启动模型 doubao 的生成线程
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 已启动模型 experience_modelscope 的生成线程
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 开始处理模型: doubao
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-06-11 13:46:01,140 - 每日故事 - INFO - 开始处理模型: experience_modelscope
+2026-06-11 13:46:01,141 - 每日故事 - INFO - 已启动模型 kimi_k2 的生成线程
+2026-06-11 13:46:01,141 - 每日故事 - INFO - 开始处理模型: gemini
+2026-06-11 13:46:01,141 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-06-11 13:46:01,142 - 每日故事 - INFO - 开始处理模型: kimi_k2
+2026-06-11 13:46:01,142 - 每日故事 - INFO - 已启动模型 zhipu_4_5_flash 的生成线程
+2026-06-11 13:46:01,142 - 每日故事 - INFO - 开始处理模型: qwen
+2026-06-11 13:46:01,142 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-06-11 13:46:01,143 - 每日故事 - INFO - 开始处理模型: zhipu_4_5_flash
+2026-06-11 13:46:01,143 - 每日故事 - INFO - 开始处理模型: zhipu
+2026-06-11 13:46:01,377 - 每日故事 - CRITICAL - 严重错误: Completions.create() got an unexpected keyword argument 'RETRY'，第 1 次重试，将等待 60.00 秒
+Traceback (most recent call last):
+  File "/home/Lsk/Documents/Code/PycharmProjects/everyday/core/chat.py", line 34, in chat_ai
+    response = client.chat.completions.create(**chat_params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Lsk/miniconda3/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: Completions.create() got an unexpected keyword argument 'RETRY'
+2026-06-11 13:46:01,736 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'message': 'Not found the model kimi-k2-0711-preview or Permission denied', 'type': 'resource_not_found_error'}}
+2026-06-11 13:46:01,749 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 0217811567617010e7265ab5c925a85b201dc616c3398bf458c81', 'param': '', 'type': 'Not Found'}}
+2026-06-11 13:46:17,845 - 每日故事 - ERROR - 请求超时，第 1 次重试，将等待 60.00 秒: Request timed out.
+2026-06-11 13:46:49,657 - 每日故事 - INFO - 应用程序启动
+2026-06-11 13:46:49,971 - 每日故事 - INFO - 今日金山词霸：门合上了刚才的故事。
+2026-06-11 13:46:50,346 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}],将关闭意图识别后重试
+2026-06-11 13:46:51,026 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}]
+2026-06-11 13:46:51,029 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-235B-A22B-Instruct-2507
+2026-06-11 13:46:51,379 - 每日故事 - INFO - 可用模型: deepseek_r1, deepseek_v3, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu
+2026-06-11 13:46:51,379 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 32
+2026-06-11 13:46:51,380 - 每日故事 - INFO - 已启动模型 deepseek_r1 的生成线程
+2026-06-11 13:46:51,380 - 每日故事 - INFO - 开始处理模型: deepseek_r1
+2026-06-11 13:46:51,380 - 每日故事 - INFO - 已启动模型 deepseek_v3 的生成线程
+2026-06-11 13:46:51,380 - 每日故事 - INFO - 开始处理模型: deepseek_v3
+2026-06-11 13:46:51,381 - 每日故事 - INFO - 已启动模型 doubao 的生成线程
+2026-06-11 13:46:51,381 - 每日故事 - INFO - 开始处理模型: doubao
+2026-06-11 13:46:51,381 - 每日故事 - INFO - 已启动模型 experience_modelscope 的生成线程
+2026-06-11 13:46:51,382 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-06-11 13:46:51,382 - 每日故事 - INFO - 开始处理模型: experience_modelscope
+2026-06-11 13:46:51,382 - 每日故事 - INFO - 开始处理模型: gemini
+2026-06-11 13:46:51,382 - 每日故事 - INFO - 已启动模型 kimi_k2 的生成线程
+2026-06-11 13:46:51,383 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-06-11 13:46:51,383 - 每日故事 - INFO - 已启动模型 zhipu_4_5_flash 的生成线程
+2026-06-11 13:46:51,383 - 每日故事 - INFO - 开始处理模型: kimi_k2
+2026-06-11 13:46:51,383 - 每日故事 - INFO - 开始处理模型: qwen
+2026-06-11 13:46:51,384 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-06-11 13:46:51,384 - 每日故事 - INFO - 开始处理模型: zhipu_4_5_flash
+2026-06-11 13:46:51,385 - 每日故事 - INFO - 开始处理模型: zhipu
+2026-06-11 13:46:51,561 - 每日故事 - CRITICAL - 严重错误: Completions.create() got an unexpected keyword argument 'RETRY'，第 1 次重试，将等待 60.00 秒
+Traceback (most recent call last):
+  File "/home/Lsk/Documents/Code/PycharmProjects/everyday/core/chat.py", line 34, in chat_ai
+    response = client.chat.completions.create(**chat_params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Lsk/miniconda3/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: Completions.create() got an unexpected keyword argument 'RETRY'
+2026-06-11 13:46:51,851 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 021781156811834ec3db73c4849487ff7f18447ab3797c28abde8', 'param': '', 'type': 'Not Found'}}
+2026-06-11 13:46:51,925 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'message': 'Not found the model kimi-k2-0711-preview or Permission denied', 'type': 'resource_not_found_error'}}
+2026-06-11 13:46:53,405 - 每日故事 - WARNING - API速率限制错误，第 1 次重试，将等待 120.00 秒: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}
+2026-06-11 13:47:07,960 - 每日故事 - ERROR - 请求超时，第 1 次重试，将等待 60.00 秒: Request timed out.
+2026-06-11 13:47:08,728 - 每日故事 - INFO - 后置处理器: ensure_first_line_is_h1
+2026-06-11 13:47:08,729 - 每日故事 - INFO - 文件处理器: save_to_md_file
+2026-06-11 13:47:08,729 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/06月/11日/星期四_13-47-08.437.md
+2026-06-11 13:47:08,729 - 每日故事 - INFO - 模型 deepseek_r1 处理完成
+2026-06-11 13:47:08,729 - 每日故事 - INFO - 模型 deepseek_r1 生成完成
+2026-06-11 13:47:47,426 - 每日故事 - INFO - 后置处理器: ensure_first_line_is_h1
+2026-06-11 13:47:47,426 - 每日故事 - INFO - 文件处理器: save_to_md_file
+2026-06-11 13:47:47,426 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/06月/11日/星期四_13-47-47.c87.md
+2026-06-11 13:47:47,426 - 每日故事 - INFO - 模型 qwen 处理完成
+2026-06-11 13:47:47,426 - 每日故事 - INFO - 模型 qwen 生成完成
+2026-06-11 13:48:02,187 - 每日故事 - INFO - 应用程序启动
+2026-06-11 13:48:02,495 - 每日故事 - INFO - 今日金山词霸：门合上了刚才的故事。
+2026-06-11 13:48:02,983 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}],将关闭意图识别后重试
+2026-06-11 13:48:03,904 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}]
+2026-06-11 13:48:03,907 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M2.5
+2026-06-11 13:48:04,298 - 每日故事 - INFO - 可用模型: deepseek_r1, deepseek_v3, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu
+2026-06-11 13:48:04,299 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_r1, deepseek_v3, doubao, experience_modelscope, gemini, kimi_k2, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 32
+2026-06-11 13:48:04,299 - 每日故事 - INFO - 已启动模型 deepseek_r1 的生成线程
+2026-06-11 13:48:04,299 - 每日故事 - INFO - 开始处理模型: deepseek_r1
+2026-06-11 13:48:04,299 - 每日故事 - INFO - 已启动模型 deepseek_v3 的生成线程
+2026-06-11 13:48:04,300 - 每日故事 - INFO - 已启动模型 doubao 的生成线程
+2026-06-11 13:48:04,300 - 每日故事 - INFO - 开始处理模型: deepseek_v3
+2026-06-11 13:48:04,300 - 每日故事 - INFO - 已启动模型 experience_modelscope 的生成线程
+2026-06-11 13:48:04,300 - 每日故事 - INFO - 开始处理模型: doubao
+2026-06-11 13:48:04,300 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-06-11 13:48:04,301 - 每日故事 - INFO - 已启动模型 kimi_k2 的生成线程
+2026-06-11 13:48:04,301 - 每日故事 - INFO - 开始处理模型: experience_modelscope
+2026-06-11 13:48:04,301 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-06-11 13:48:04,302 - 每日故事 - INFO - 开始处理模型: gemini
+2026-06-11 13:48:04,302 - 每日故事 - INFO - 已启动模型 zhipu_4_5_flash 的生成线程
+2026-06-11 13:48:04,302 - 每日故事 - INFO - 开始处理模型: kimi_k2
+2026-06-11 13:48:04,302 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-06-11 13:48:04,302 - 每日故事 - INFO - 开始处理模型: qwen
+2026-06-11 13:48:04,303 - 每日故事 - INFO - 开始处理模型: zhipu_4_5_flash
+2026-06-11 13:48:04,303 - 每日故事 - INFO - 开始处理模型: zhipu
+2026-06-11 13:48:04,780 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'code': 'InvalidEndpointOrModel.NotFound', 'message': 'The model or endpoint doubao-1-5-pro-32k-character-250228 does not exist or you do not have access to it. Request id: 02178115688475793d2a15ce4e5f6c0a8e1612e74e5f9d71ae6bc', 'param': '', 'type': 'Not Found'}}
+2026-06-11 13:48:04,887 - 每日故事 - ERROR - API错误，第 1 次重试，将等待 60.00 秒: Error code: 404 - {'error': {'message': 'Not found the model kimi-k2-0711-preview or Permission denied', 'type': 'resource_not_found_error'}}
+2026-06-11 13:48:11,114 - 每日故事 - CRITICAL - 严重错误: 'NoneType' object is not subscriptable，第 1 次重试，将等待 60.00 秒
+Traceback (most recent call last):
+  File "/home/Lsk/Documents/Code/PycharmProjects/everyday/core/chat.py", line 37, in chat_ai
+    response_content = response.choices[0].message.model_dump() or ""
+                       ~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-06-11 13:48:17,395 - 每日故事 - INFO - 后置处理器: ensure_first_line_is_h1
+2026-06-11 13:48:17,396 - 每日故事 - INFO - 文件处理器: save_to_md_file
+2026-06-11 13:48:17,396 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/06月/11日/星期四_13-48-17.5e8.md
+2026-06-11 13:48:17,396 - 每日故事 - INFO - 模型 deepseek_r1 处理完成
+2026-06-11 13:48:17,396 - 每日故事 - INFO - 模型 deepseek_r1 生成完成
+2026-06-11 13:48:20,913 - 每日故事 - ERROR - 请求超时，第 1 次重试，将等待 60.00 秒: Request timed out.
+2026-06-11 13:49:50,910 - 每日故事 - INFO - 应用程序启动
+2026-06-11 13:49:51,255 - 每日故事 - INFO - 今日金山词霸：门合上了刚才的故事。
+2026-06-11 13:49:51,691 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}],将关闭意图识别后重试
+2026-06-11 13:49:52,554 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '门合上了刚才的故事。', 'query': '门合上了刚才的故事。'}]
+2026-06-11 13:49:52,563 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M1-80k
+2026-06-11 13:49:52,938 - 每日故事 - INFO - 可用模型: deepseek_r1, deepseek_v3, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_r1, deepseek_v3, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-11 13:49:52,938 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_r1, deepseek_v3, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 32
+2026-06-11 13:49:52,939 - 每日故事 - INFO - 已启动模型 deepseek_r1 的生成线程
+2026-06-11 13:49:52,939 - 每日故事 - INFO - 开始处理模型: deepseek_r1
+2026-06-11 13:49:52,939 - 每日故事 - INFO - 已启动模型 deepseek_v3 的生成线程
+2026-06-11 13:49:52,940 - 每日故事 - INFO - 已启动模型 experience_modelscope 的生成线程
+2026-06-11 13:49:52,942 - 每日故事 - INFO - 开始处理模型: deepseek_v3
+2026-06-11 13:49:52,942 - 每日故事 - INFO - 已启动模型 gemini 的生成线程
+2026-06-11 13:49:52,942 - 每日故事 - INFO - 开始处理模型: experience_modelscope
+2026-06-11 13:49:52,942 - 每日故事 - INFO - 已启动模型 qwen 的生成线程
+2026-06-11 13:49:52,945 - 每日故事 - INFO - 开始处理模型: gemini
+2026-06-11 13:49:52,945 - 每日故事 - INFO - 开始处理模型: qwen
+2026-06-11 13:49:52,946 - 每日故事 - INFO - 已启动模型 zhipu_4_5_flash 的生成线程
+2026-06-11 13:49:52,946 - 每日故事 - INFO - 已启动模型 zhipu 的生成线程
+2026-06-11 13:49:52,947 - 每日故事 - INFO - 开始处理模型: zhipu_4_5_flash
+2026-06-11 13:49:52,947 - 每日故事 - INFO - 开始处理模型: zhipu
+2026-06-11 13:50:08,860 - 每日故事 - INFO - 后置处理器: ensure_first_line_is_h1
+2026-06-11 13:50:08,860 - 每日故事 - INFO - 文件处理器: save_to_md_file
+2026-06-11 13:50:08,861 - 每日故事 - INFO - 内容已成功保存到 ./story/故事/2026年/06月/11日/星期四_13-50-08.241.md
+2026-06-11 13:50:08,861 - 每日故事 - INFO - 模型 deepseek_r1 处理完成
+2026-06-11 13:50:08,861 - 每日故事 - INFO - 模型 deepseek_r1 生成完成
+2026-06-11 13:50:09,570 - 每日故事 - ERROR - 请求超时，第 1 次重试，将等待 60.00 秒: Request timed out.

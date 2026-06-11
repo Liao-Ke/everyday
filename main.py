@@ -9,7 +9,7 @@ from core.registry import ModelRegistry
 
 logger = setup_logger()
 
-EXCLUDED_MODELS: set[str] = {"doubao_think", "kimi", "zhipu_z1_flash"}
+EXCLUDED_MODELS: set[str] = {"doubao_think", "doubao", "kimi", "kimi_k2", "zhipu_z1_flash"}
 
 
 def run_multi_thread(selected_configs: list[tuple[str, dict]], max_workers=4):
