@@ -23,6 +23,9 @@ class ModelRegistry:
                 config = {}
                 for sym in REQUIRED_SYMBOLS:
                     config[sym] = getattr(mod, sym, None)
+                for attr_name in dir(mod):
+                    if attr_name.isupper() and attr_name not in REQUIRED_SYMBOLS and not attr_name.startswith("_"):
+                        config[attr_name] = getattr(mod, attr_name)
                 config["name"] = modname.removesuffix("_config")
                 api_key = config.get("API_KEY")
                 if api_key:
