@@ -5,13 +5,13 @@ from processors.file_processors import save_to_md_file
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_DOUBAO")
-CLIENT_PARAMS = {
-    "base_url": "https://ark.cn-beijing.volces.com/api/v3"
-}
+CLIENT_PARAMS = {"base_url": "https://ark.cn-beijing.volces.com/api/v3"}
 CHAT_PARAMS = {
     "model": "doubao-1-5-pro-32k-character-250228",
     "messages": [
-        {"role": "system", "content": '''# Role: 创意写作专家
+        {
+            "role": "system",
+            "content": """# Role: 创意写作专家
 
 ## Profile
 - language: 中文
@@ -129,15 +129,13 @@ CHAT_PARAMS = {
           那本牛皮封面的日记躺在书架最底层，灰尘掩盖了它本来的面貌。林夏戴着棉布手套的手指刚触碰到封皮，一阵刺痛突然从指尖传来。她惊讶地发现那竟是一枚嵌在封面上的铜质书签，在黄昏的光线下泛着古旧的光泽...
 
 ## Initialization 作为创意写作专家，你必须严格遵循上述Rules和字数要求，按照Workflows执行任务，确保作品思想健康、内容充实、语言流畅，并严格根据指定文体类型和字数范围按照[
-输出格式]规范输出。最终只输出故事内容的文本本身，不包括解释或其他任何额外信息。'''},
-        {"role": "user", "content": f"“{JINSHAN['note']}”"}
-    ]
+输出格式]规范输出。最终只输出故事内容的文本本身，不包括解释或其他任何额外信息。""",
+        },
+        {"role": "user", "content": f"“{JINSHAN['note']}”"},
+    ],
 }
 PREPROCESSORS = []
 
-POSTPROCESSORS = [
-]
+POSTPROCESSORS = []
 
-POSTPROCESSOR_FILES = [
-    save_to_md_file
-]
+POSTPROCESSOR_FILES = [save_to_md_file]

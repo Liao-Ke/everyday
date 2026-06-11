@@ -5,3 +5,7 @@ jieba~=0.42.1
 matplotlib~=3.9.2
 wordcloud~=1.9.4
 ruamel.yaml>=0.18.6
+tqdm>=4.66.0
+pytest>=8.0.0
+pytest-mock>=3.14.0
+ruff>=0.9.0

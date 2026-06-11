@@ -1,7 +1,7 @@
-import os
-import shutil
 import datetime
+import os
 import re
+import shutil
 
 
 def move_file_if_exceeds_threshold(file_path, threshold_mb, target_dir, rename_rule):
@@ -44,7 +44,7 @@ def move_file_if_exceeds_threshold(file_path, threshold_mb, target_dir, rename_r
         existing_files = [f for f in os.listdir(target_dir) if os.path.isfile(os.path.join(target_dir, f))]
         seq = 1
         for f in existing_files:
-            match = re.search(r'^(\d+)_', f)
+            match = re.search(r"^(\d+)_", f)
             if match:
                 seq = max(seq, int(match.group(1)) + 1)
 
@@ -81,5 +81,5 @@ if __name__ == "__main__":
         file_path="chat_logs/story_records.json",
         threshold_mb=4.78,
         target_dir="chat_logs/archive",
-        rename_rule="{filename}{ext}@{timestamp}"
+        rename_rule="{filename}{ext}@{timestamp}",
     )

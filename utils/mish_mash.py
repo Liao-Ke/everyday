@@ -1,12 +1,13 @@
 import json
+import logging
 import os
 import re
+import secrets
 import uuid
 from io import StringIO
-import logging
+
 import requests
 from ruamel.yaml import YAML
-import secrets
 
 
 def download_image(url, save_dir):
@@ -34,14 +35,14 @@ def download_image(url, save_dir):
     file_path = os.path.join(save_dir, unique_file_name)
 
     # 将图片数据写入文件
-    with open(file_path, 'wb') as file:
+    with open(file_path, "wb") as file:
         file.write(response.content)
 
     return file_path
 
 
 def convert_path(path):
-    new_path = path.replace('./story', '')
+    new_path = path.replace("./story", "")
     return new_path
 
 
@@ -60,14 +61,14 @@ def modify_frontmatter(file_path, key_path, new_value):
     yaml.indent(mapping=2, sequence=4, offset=2)  # 保持缩进风格
 
     # 读取文件内容
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, encoding="utf-8") as f:
         content = f.read().splitlines()
 
     # 定位front matter起始和结束位置
     start_idx = None
     end_idx = None
     for i, line in enumerate(content):
-        if line.strip() == '---':
+        if line.strip() == "---":
             if start_idx is None:
                 start_idx = i
             else:
@@ -78,11 +79,11 @@ def modify_frontmatter(file_path, key_path, new_value):
         raise ValueError("未找到有效的YAML front matter")
 
     # 解析YAML内容
-    yaml_content = '\n'.join(content[start_idx + 1:end_idx])
+    yaml_content = "\n".join(content[start_idx + 1 : end_idx])
     data = yaml.load(yaml_content)
 
     # 递归查找并修改配置项
-    keys = key_path.split('.')
+    keys = key_path.split(".")
     current = data
     for key in keys[:-1]:
         if key.isdigit() and isinstance(current, list):
@@ -102,18 +103,18 @@ def modify_frontmatter(file_path, key_path, new_value):
     updated_yaml = stream.getvalue().splitlines()
 
     # 重建文件内容
-    new_content = content[:start_idx] + ['---'] + updated_yaml + ['---'] + content[end_idx + 1:]
+    new_content = content[:start_idx] + ["---"] + updated_yaml + ["---"] + content[end_idx + 1 :]
 
     # 写入文件（使用临时文件避免数据丢失）
-    temp_path = file_path + '.tmp'
-    with open(temp_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(new_content))
+    temp_path = file_path + ".tmp"
+    with open(temp_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(new_content))
 
     # 替换原文件
     os.replace(temp_path, file_path)
 
 
-logger = logging.getLogger('每日故事')
+logger = logging.getLogger("每日故事")
 
 
 def get_jinshan():
@@ -122,10 +123,7 @@ def get_jinshan():
         res.raise_for_status()  # 检查请求是否成功
         data = res.json()
         logger.info(f"今日金山词霸：{data.get('note')}")
-        return {
-            "note": data.get('note'),
-            "fenxiang_img": data.get('fenxiang_img')
-        }
+        return {"note": data.get("note"), "fenxiang_img": data.get("fenxiang_img")}
     except requests.RequestException as e:
         logger.error(f"网络请求错误: {e}")
         return None
@@ -168,21 +166,30 @@ def fixed_length_uuid(length):
     # 处理奇数长度情况
     if length % 2 == 1:
         # 使用最后一个字节的高4位生成单个字符
-        last_char = format(random_bytes[-1] >> 4, 'x')  # 'x' 确保小写十六进制
-        return hex_str[:length - 1] + last_char
+        last_char = format(random_bytes[-1] >> 4, "x")  # 'x' 确保小写十六进制
+        return hex_str[: length - 1] + last_char
 
     return hex_str[:length]
 
 
 def out_test(r, n):
-    print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else \
-        print(n, r["content"])
+    print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else print(
+        n, r["content"]
+    )
 
 
-def web_search(api_key, search_query, search_engine="search_std",
-               search_intent=False, count=10, search_domain_filter=None,
-               search_recency_filter="noLimit", content_size="medium",
-               request_id=None, user_id=None):
+def web_search(
+    api_key,
+    search_query,
+    search_engine="search_std",
+    search_intent=False,
+    count=10,
+    search_domain_filter=None,
+    search_recency_filter="noLimit",
+    content_size="medium",
+    request_id=None,
+    user_id=None,
+):
     """
     调用智谱Web Search API进行网络搜索
 
@@ -226,10 +233,7 @@ def web_search(api_key, search_query, search_engine="search_std",
 
     # 构建请求URL和头部
     url = "https://open.bigmodel.cn/api/paas/v4/web_search"
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
     # 构建请求数据
     data = {
@@ -238,7 +242,7 @@ def web_search(api_key, search_query, search_engine="search_std",
         "search_intent": search_intent,
         "count": count,
         "search_recency_filter": search_recency_filter,
-        "content_size": content_size
+        "content_size": content_size,
     }
 
     # 添加可选参数
@@ -256,11 +260,20 @@ def web_search(api_key, search_query, search_engine="search_std",
 
         # 解析响应内容
         resp_data = response.json()
-        if search_intent and response.json()['search_intent'][0]['intent'] == "SEARCH_NONE":
+        if search_intent and response.json()["search_intent"][0]["intent"] == "SEARCH_NONE":
             logger.info(f"无搜索意图：{response.json()['search_intent']},将关闭意图识别后重试")
-            return web_search(api_key, search_query, search_engine, False, count, search_domain_filter,
-                              search_recency_filter,
-                              content_size, request_id, user_id)
+            return web_search(
+                api_key,
+                search_query,
+                search_engine,
+                False,
+                count,
+                search_domain_filter,
+                search_recency_filter,
+                content_size,
+                request_id,
+                user_id,
+            )
 
         logger.info(f"网络搜索成功：{response.json()['search_intent']}")
         return resp_data
@@ -282,40 +295,35 @@ def remove_leading_empty_line(d: dict) -> dict:
     返回:
         str: 处理后的字符串，已移除所有开头的空行
     """
-    lines = d['content'].splitlines(keepends=True)
+    lines = d["content"].splitlines(keepends=True)
     # 跳过所有开头空行
     start_index = 0
     for line in lines:
         if line.strip():  # 遇到非空行时停止
             break
         start_index += 1
-    d['content'] = ''.join(lines[start_index:])
+    d["content"] = "".join(lines[start_index:])
     return d
 
 
 def process_reasoning_content(data_dict):
     # 检查字典是否有content键且其值为字符串类型
-    if 'content' in data_dict and isinstance(data_dict['content'], str):
-        content = data_dict['content']
+    if "content" in data_dict and isinstance(data_dict["content"], str):
+        content = data_dict["content"]
 
         # 正则表达式匹配第一对<think>标签及其内容
-        think_pattern = r'<think>(.*?)</think>'
+        think_pattern = r"<think>(.*?)</think>"
         match = re.search(think_pattern, content, re.DOTALL)
 
-        if not match: return data_dict
+        if not match:
+            return data_dict
 
         # 提取并存储推理内容
         reasoning_content = match.group(1) if match else ""
-        data_dict['reasoning_content'] = reasoning_content
+        data_dict["reasoning_content"] = reasoning_content
 
         # 从原始内容中移除匹配到的标签及内容
-            # 使用re.sub替换第一个匹配项
-        data_dict['content'] = re.sub(
-            think_pattern,
-            '',
-            content,
-            count=1,
-            flags=re.DOTALL
-        )
+        # 使用re.sub替换第一个匹配项
+        data_dict["content"] = re.sub(think_pattern, "", content, count=1, flags=re.DOTALL)
 
     return data_dict

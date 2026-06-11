@@ -2,14 +2,11 @@ import os
 
 from model_configs import JINSHAN
 from preprocessor.params_preprocessor import estimate_tokens
-from processors.file_processors import save_to_md_file
 from processors.format_processors import ensure_first_line_is_h1
 
 # 从环境变量获取 API 密钥
 API_KEY = os.getenv("API_KEY_KIMI")
-CLIENT_PARAMS = {
-    "base_url": "https://api.moonshot.cn/v1"
-}
+CLIENT_PARAMS = {"base_url": "https://api.moonshot.cn/v1"}
 some_params = {
     "model": "kimi-k2-0711-preview",
     "messages": [
@@ -73,15 +70,15 @@ some_params = {
 作为跨界融合的创新型故事创作者，你必须遵守上述Rules，按照Workflows执行任务。""",
         },
         {"role": "user", "content": f'一言："{JINSHAN.get("note")}"'},
-        {
-            "role": "assistant",
-            "content": "# ",
-            "partial": True
-        }
-    ]
+        {"role": "assistant", "content": "# ", "partial": True},
+    ],
 }
-kimi_token_count = estimate_tokens(API_KEY, some_params["model"], some_params["messages"],
-                                   url="https://api.moonshot.cn/v1/tokenizers/estimate-token-count")
+kimi_token_count = estimate_tokens(
+    API_KEY,
+    some_params["model"],
+    some_params["messages"],
+    url="https://api.moonshot.cn/v1/tokenizers/estimate-token-count",
+)
 CHAT_PARAMS = {
     **some_params,
     # 修复 max_tokens 格式错误
@@ -89,22 +86,22 @@ CHAT_PARAMS = {
     "temperature": 0.7,
     "top_p": 0.75,
     "frequency_penalty": 0.4,
-    "stream": False
+    "stream": False,
 }
 
 PREPROCESSORS = []
 
 POSTPROCESSORS = [
-
     # format_story
     ensure_first_line_is_h1,
-
 ]
 
 POSTPROCESSOR_FILES = [
     # lambda r, n: print(n, r["content"])
-    lambda r, n:
-    print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"]) if "reasoning_content" in r else
-    print(n, r["content"])
+    lambda r, n: (
+        print(n, "<think>", r["reasoning_content"], "</think>\n\n", r["content"])
+        if "reasoning_content" in r
+        else print(n, r["content"])
+    )
     # save_to_md_file
 ]

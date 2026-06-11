@@ -8,37 +8,43 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from queue import Queue
 
-from openai import APIConnectionError, APITimeoutError, APIStatusError, RateLimitError
-from openai import OpenAI
+from openai import APIConnectionError, APIStatusError, APITimeoutError, OpenAI, RateLimitError
 
 from config.logger_setup import setup_logger
-from utils.metadata_utils import save_chat_metadata, process_stream_chunks
+from utils.metadata_utils import process_stream_chunks, save_chat_metadata
 
 # 获取配置好的日志器
 logger = setup_logger()
 
 
-def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: str = str(uuid.uuid4()),
-            max_retries=3, initial_backoff=1, max_backoff=10):
+def chat_ai(
+    api_key: str,
+    client_params: dict,
+    chat_params: dict,
+    session_id: str = str(uuid.uuid4()),
+    max_retries=3,
+    initial_backoff=1,
+    max_backoff=10,
+):
     """
-      调用 OpenAI API 进行聊天对话并获取响应，同时处理重试逻辑。
+    调用 OpenAI API 进行聊天对话并获取响应，同时处理重试逻辑。
 
-      Args:
-          api_key (str): 用于访问 AI大模型 的密钥。
-          client_params (dict): 初始化 AI大模型 客户端时使用的参数。
-          chat_params (dict): 调用聊天完成接口时使用的参数。
-          session_id (str, optional): 会话的唯一标识符，默认为一个新生成的 UUID。
-          max_retries (int, optional): 最大重试次数，默认为 3 次。
-          initial_backoff (int, optional): 初始退避时间（秒），默认为 1 秒。
-          max_backoff (int, optional): 最大退避时间（秒），默认为 10 秒。
+    Args:
+        api_key (str): 用于访问 AI大模型 的密钥。
+        client_params (dict): 初始化 AI大模型 客户端时使用的参数。
+        chat_params (dict): 调用聊天完成接口时使用的参数。
+        session_id (str, optional): 会话的唯一标识符，默认为一个新生成的 UUID。
+        max_retries (int, optional): 最大重试次数，默认为 3 次。
+        initial_backoff (int, optional): 初始退避时间（秒），默认为 1 秒。
+        max_backoff (int, optional): 最大退避时间（秒），默认为 10 秒。
 
-      Returns:
-          dict | None: 包含响应消息的字典，如果请求失败则返回 None。
-      """
+    Returns:
+        dict | None: 包含响应消息的字典，如果请求失败则返回 None。
+    """
     # 初始化计时器
     start_time = time.time()
     retries = 0
-    is_stream = chat_params.get('stream', False)
+    is_stream = chat_params.get("stream", False)
     is_retry = chat_params.pop("RETRY", True)
 
     while retries <= (max_retries if is_retry else 0):
@@ -48,9 +54,7 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
 
             client = OpenAI(api_key=api_key, **client_params)
 
-            response = client.chat.completions.create(
-                **chat_params
-            )
+            response = client.chat.completions.create(**chat_params)
             # 记录响应耗时
             response_time = time.time() - start_time
             if not is_stream:
@@ -58,10 +62,15 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
                 response_content = response.choices[0].message.model_dump() or ""
 
                 # 保存完整的对话记录（包含原始响应）
-                save_chat_metadata(response_time=response_time, session_id=session_id, response_data=response.to_dict(),
-                                   client_params=client_params, chat_params=chat_params)
+                save_chat_metadata(
+                    response_time=response_time,
+                    session_id=session_id,
+                    response_data=response.to_dict(),
+                    client_params=client_params,
+                    chat_params=chat_params,
+                )
 
-                if not response_content['content']:
+                if not response_content["content"]:
                     raise ValueError("响应内容为空")
 
                 return response_content
@@ -77,52 +86,57 @@ def chat_ai(api_key: str, client_params: dict, chat_params: dict, session_id: st
                             if not isinstance(content_chunks, list):
                                 content_chunks = [content_chunks]
                             content_chunks.append(chunk.choices[0].delta.content)
-                        if (hasattr(chunk.choices[0].delta, 'reasoning_content')
-                                and chunk.choices[0].delta.reasoning_content):
+                        if (
+                            hasattr(chunk.choices[0].delta, "reasoning_content")
+                            and chunk.choices[0].delta.reasoning_content
+                        ):
                             reasoning_chunks.append(chunk.choices[0].delta.reasoning_content)
                 response_content = {"content": "".join(content_chunks)}
                 if reasoning_chunks:
                     response_content["reasoning_content"] = "".join(reasoning_chunks)
-                save_chat_metadata(response_time=response_time, session_id=session_id,
-                                   response_data=process_stream_chunks(full_response),
-                                   client_params=client_params, chat_params=chat_params)
+                save_chat_metadata(
+                    response_time=response_time,
+                    session_id=session_id,
+                    response_data=process_stream_chunks(full_response),
+                    client_params=client_params,
+                    chat_params=chat_params,
+                )
 
-                if not response_content['content']:
+                if not response_content["content"]:
                     raise ValueError("响应内容为空")
 
                 return response_content
 
         # 异常处理（按优先级排序）
         except RateLimitError as e:
-
             # 专门处理速率限制错误
 
-            backoff_time = min(initial_backoff * (2 ** retries) * 2, max_backoff)  # 比普通错误等待更久
+            backoff_time = min(initial_backoff * (2**retries) * 2, max_backoff)  # 比普通错误等待更久
 
             logger.warning(f"API速率限制错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
 
             # 尝试从错误信息中提取重试建议时间
 
-            retry_after = getattr(e, 'retry_after', None)
+            retry_after = getattr(e, "retry_after", None)
 
             if retry_after and retry_after > backoff_time:
                 logger.info(f"使用API建议的重试时间: {retry_after}秒")
 
                 backoff_time = retry_after
         except APITimeoutError as e:
-            backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
+            backoff_time = min(initial_backoff * (2**retries), max_backoff)
             logger.error(f"请求超时，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
 
         except (APIConnectionError, APIStatusError) as e:
-            backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
+            backoff_time = min(initial_backoff * (2**retries), max_backoff)
             logger.error(f"API错误，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒: {str(e)}")
 
         except ValueError as e:
-            backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
+            backoff_time = min(initial_backoff * (2**retries), max_backoff)
             logger.error(f"值错误: {str(e)}，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒")
 
         except Exception as e:
-            backoff_time = min(initial_backoff * (2 ** retries), max_backoff)
+            backoff_time = min(initial_backoff * (2**retries), max_backoff)
             logger.critical(f"严重错误: {str(e)}，第 {retries + 1} 次重试，将等待 {backoff_time:.2f} 秒", exc_info=True)
 
         retries += 1
@@ -143,7 +157,7 @@ def load_model_config(model_name: str) -> dict | None:
         包含配置的字典，或 None（加载失败时）
     """
     # 1. 安全处理模块名
-    safe_name = re.sub(r'[^a-zA-Z0-9_]', '', model_name)  # 移除非字母数字字符
+    safe_name = re.sub(r"[^a-zA-Z0-9_]", "", model_name)  # 移除非字母数字字符
     module_name = f"{safe_name}_config"
     try:
         # 2. 动态导入配置模块
@@ -183,10 +197,7 @@ def story_generator(model_name, result_queue=None):
             return None
         logger.info(f"已启动模型 {model_name} 的生成线程")
         model_config = config_map[model_name]
-        params = {
-            "chat_params": model_config["chat_params"],
-            "client_params": model_config["client_params"]
-        }
+        params = {"chat_params": model_config["chat_params"], "client_params": model_config["client_params"]}
 
         # 应用前置处理器
         logger.info(f"模型 {model_name} 开始应用前置处理器")
@@ -198,13 +209,7 @@ def story_generator(model_name, result_queue=None):
 
         # 调用AI生成故事
         logger.info(f"模型 {model_name} 开始调用AI生成故事")
-        r = chat_ai(
-            api_key=model_config["api_key"],
-            **params,
-            initial_backoff=60,
-            max_backoff=600,
-            max_retries=5
-        )
+        r = chat_ai(api_key=model_config["api_key"], **params, initial_backoff=60, max_backoff=600, max_retries=5)
         logger.info(f"模型 {model_name} AI生成故事完成")
         # 检查是否生成失败
         if r is None:
@@ -243,8 +248,7 @@ def run_multi_thread(selected_models, max_workers=4):
         # 创建future到模型名的映射
         # 首先提交所有任务
         future_to_model = {
-            executor.submit(story_generator, model_name, result_queue): model_name
-            for model_name in selected_models
+            executor.submit(story_generator, model_name, result_queue): model_name for model_name in selected_models
         }
 
         # 所有任务提交完成后，再处理结果
@@ -282,7 +286,7 @@ config_map = {
     # "kimi": load_model_config("kimi")
 }
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logger.info("应用程序启动")
 
     # 指定要使用的模型
@@ -295,7 +299,7 @@ if __name__ == '__main__':
         "qwen",
         "zhipu4.5-Flash",
         "experience-modelscope",
-        "gemini"
+        "gemini",
         # "zhipu-z1"
     ]
 

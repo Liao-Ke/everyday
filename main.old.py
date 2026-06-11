@@ -1,15 +1,15 @@
+import datetime
 import json
 import os
-import requests
-from dotenv import load_dotenv
-from openai import APIConnectionError, APIError
-from openai import OpenAI
+import sys
 import time
 import uuid
-import datetime
-import sys
-from ruamel.yaml import YAML
 from io import StringIO
+
+import requests
+from dotenv import load_dotenv
+from openai import APIConnectionError, APIError, OpenAI
+from ruamel.yaml import YAML
 
 
 # 按 Shift+F10 执行或将其替换为您的代码。
@@ -510,7 +510,7 @@ def _save_to_json(data: dict, filename: str):
         # 更健壮的文件读取方式
         if os.path.exists(filename) and os.path.getsize(filename) > 0:
             try:
-                with open(filename, 'r', encoding='utf-8') as f:
+                with open(filename, encoding='utf-8') as f:
                     existing = json.load(f)
             except json.JSONDecodeError as e:
                 print(f"检测到损坏日志文件，尝试修复: {str(e)}")
@@ -714,7 +714,7 @@ def modify_frontmatter(file_path, key_path, new_value):
     yaml.indent(mapping=2, sequence=4, offset=2)  # 保持缩进风格
 
     # 读取文件内容
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, encoding='utf-8') as f:
         content = f.read().splitlines()
 
     # 定位front matter起始和结束位置
