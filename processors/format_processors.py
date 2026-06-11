@@ -1,7 +1,7 @@
 import logging
 
-from model_configs import JINSHAN
-from utils.image_utils import download_image
+from model_configs._shared import get_jinshan_cached
+from utils.image_utils import cached_download
 from utils.yaml_utils import convert_path
 
 logger = logging.getLogger("每日故事")
@@ -52,10 +52,12 @@ def format_story(story):
 
 
 def insert_content_in_fourth_line(s):
-    image_path = download_image(JINSHAN.get("fenxiang_img"), "./story/images")
-    logger.info(f"下载图片成功: {image_path}")
+    jinshan = get_jinshan_cached() or {}
+    image_path = cached_download(jinshan.get("fenxiang_img"), "./story/images")
+    if image_path:
+        logger.info(f"下载图片成功: {image_path}")
     lines = s["content"].splitlines()
-    content = f"\n![{JINSHAN.get('note')}]({convert_path(image_path)})\n"
+    content = f"\n![{jinshan.get('note')}]({convert_path(image_path or '')})\n"
     if len(lines) < 4:
         lines.append(content)
     else:
