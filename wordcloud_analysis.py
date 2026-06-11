@@ -8,7 +8,7 @@ import jieba
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-from utils.mish_mash import convert_path, modify_frontmatter
+from utils.yaml_utils import convert_path, modify_frontmatter
 
 # 设置中文字体
 plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]

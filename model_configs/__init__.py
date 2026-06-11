@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from utils.mish_mash import get_jinshan, web_search
+from utils.web_search import get_jinshan, web_search
 
 # 仅在非生产环境加载 .env 文件
 if os.environ.get("ENV") != "production":

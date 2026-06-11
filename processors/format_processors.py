@@ -1,7 +1,8 @@
 import logging
 
 from model_configs import JINSHAN
-from utils.mish_mash import convert_path, download_image
+from utils.image_utils import download_image
+from utils.yaml_utils import convert_path
 
 logger = logging.getLogger("每日故事")
 
