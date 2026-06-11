@@ -25,6 +25,9 @@ model_list = [
     "ZhipuAI/GLM-5",
     "MiniMax/MiniMax-M2.5",
     "XiaomiMiMo/MiMo-V2-Flash",
+    "nex-agi/Nex-N2-Pro",
+    "inclusionAI/Ring-2.6-1T",
+    "deepseek-ai/DeepSeek-V4-Flash"
 ]
 model_choice = random.choice(model_list)
 
