@@ -2,31 +2,30 @@
 
 
 .medium-zoom-overlay {
-  z-index: 30;
+    z-index: 30;
 }
 
 .medium-zoom-image {
-  z-index: 9999 !important;
-  /* 给的值是21，但是实测盖不住，直接999 */
+    z-index: 9999 !important;
 }
+
 .group:has([role='button']) .VPSidebarItem.level-0 .items {
-  padding-left: 16px !important;
-  border-left: 1px solid var(--vp-c-divider);
-  border-radius: 2px;
-  transition: background-color 0.25s;
+    padding-left: 16px !important;
+    border-left: 1px solid var(--vp-c-divider);
+    border-radius: 2px;
+    transition: background-color 0.25s;
 }
+
 @font-face {
-  font-family: jinkaiFont;
-  src: url("../fonts/jinkai.ttf") format("TrueType");
+    font-family: jinkaiFont;
+    src: url("../fonts/jinkai.ttf") format("TrueType");
 }
 
 :root {
-  --vp-font-family-base: "jinkaiFont";
-  /* --vp-sidebar-width: 343px; */
+    --vp-font-family-base: "jinkaiFont", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
 }
+
 .content {
-  font-size: 18px; /* 你可以根据需要调整这个值 */
+    font-size: clamp(16px, 1.2vw + 14px, 18px);
 }
-/* aside.VPSidebar .text, .VPNavBarTitle span{
-  font-size: 18px;
-} */
+

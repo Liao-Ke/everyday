@@ -18,10 +18,10 @@ hero:
       link: /词云/2026-04-29.md
 
 features:
-  - title: 特色功能 A
-    details: 通过AI生成的故事，带给你不一样的阅读体验
-  - title: 特色功能 B
-    details: 每日更新，保持新鲜感
-  - title: 特色功能 C
-    details: 用户分享与互动，共同创造故事社区
+  - title: 每日更新
+    details: 每天根据金山词霸每日一句，调用多个AI模型生成原创故事，保持新鲜感
+  - title: 多模型创作
+    details: 由 DeepSeek、智谱、豆包、通义千问、Gemini 等多个AI模型分别创作，风格各异
+  - title: 词云分析
+    details: 每周自动生成词云图，可视化展示故事中的高频词汇和主题趋势
 ---
