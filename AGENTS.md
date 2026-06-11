@@ -1,182 +1,91 @@
-# PROJECT KNOWLEDGE BASE
+# 项目知识库 — everyday
 
-**Generated:** 2026-05-03
-**Commit:** d673984
-**Branch:** ai-refactor
+AI 每日故事生成器：获取金山词霸每日一句 → 网络搜索增强 → 7+ AI 模型并行生成 → 保存为日期嵌套 Markdown。前端为 VitePress 静态站点，部署于 Cloudflare Pages。
 
-## OVERVIEW
-AI-powered daily story generator. Fetches 金山词霸 daily quote, enriches via web search, dispatches to 7+ AI models in parallel (ThreadPoolExecutor), saves stories as date-nested markdown. Frontend is VitePress static site deployed on Cloudflare Pages.
+## 命令
 
-**Stack:** Python 3.11 (openai, jieba, wordcloud, ruamel.yaml) + TypeScript/Vue 3 (VitePress)
-
-## STRUCTURE
-```
-everyday/
-├── main.py                     # Entry: multi-threaded story generator
-├── main.old.py                 # Legacy monolith (925 lines), not used
-├── wordcloud_analysis.py       # Weekly word cloud + frequency report
-├── check.py                    # Log file threshold archiver
-├── requirements.txt            # 7 Python deps
-├── package.json                # VitePress + plugins
-├── .env                        # 7 API keys (gitignored)
-├── stopwords_full.txt          # 2992 Chinese/English stopwords
-├── config/
-│   └── logger_setup.py         # Logger '每日故事', file+console
-├── model_configs/              # Plugin-based AI model configs (13 files)
-│   ├── __init__.py             # ACTIVE init: loads .env, fetches Jinshan, web search
-│   └── *_config.py             # Per-model: API_KEY + CLIENT_PARAMS + CHAT_PARAMS + pipelines
-├── preprocessor/
-│   └── params_preprocessor.py  # Token estimation (Kimi only)
-├── processors/
-│   ├── file_processors.py      # save_to_md_file + index.md frontmatter update
-│   └── format_processors.py    # H1 enforcement, image injection, code fence stripping
-├── utils/
-│   ├── mish_mash.py            # Heavy utility hub: download, YAML edit, UUID, web_search
-│   └── metadata_utils.py       # Chat log persistence (append-only JSON + corruption recovery)
-├── story/                      # VitePress site root + generated content
-│   ├── 故事/                   # Stories: {年}年/{月}月/{日}日/{Weekday_HH-MM-SS}.{uuid3}.md
-│   ├── 词云/                   # Weekly word cloud reports (59 markdown files)
-│   ├── images/                 # 474 story JPGs + 59 word cloud PNGs
-│   └── .vitepress/             # VitePress config, custom theme, Vue components
-├── chat_logs/
-│   └── story_records.json      # Append-only JSON array of all API calls
-└── .github/workflows/
-    ├── main.yml                # Daily cron: python main.py (UTC 23:00)
-    ├── wordcloud-analysis.yml  # Weekly cron: python wordcloud_analysis.py (Wed)
-    └── deploy.yml              # Disabled: SSH deploy of VitePress build
-```
-
-## WHERE TO LOOK
-| Task | Location | Notes |
-|------|----------|-------|
-| Add a new AI model | `model_configs/new_config.py` + `main.py:config_map` | See model_configs/AGENTS.md for the 6-symbol contract |
-| Change story formatting | `processors/format_processors.py` | POSTPROCESSORS pipeline |
-| Change file output path/naming | `processors/file_processors.py:save_to_md_file()` | Date-based directory + UUID filename |
-| Debug API calls | `chat_logs/story_records.json` | Full request/response/timing per call |
-| Adjust retry logic | `main.py:chat_ai()` | Exponential backoff, max_retries=5 |
-| Modify VitePress site | `story/.vitepress/config.mts` | Sidebar, search, SEO, compression |
-| Add Vue component | `story/.vitepress/components/` | ReasoningChainRenderer, WordCount |
-| Rotate API keys | `.env` + GitHub Secrets | 7 providers |
-| Archive oversized logs | `python check.py` | Moves story_records.json when >4.78MB |
-
-## CODE MAP
-
-### Entry Points
-| Symbol | Type | Location | Role |
-|--------|------|----------|------|
-| `__name__ == '__main__'` | entry | main.py:285 | Primary: loads configs, runs multi-threaded generation |
-| `__name__ == '__main__'` | entry | wordcloud_analysis.py:182 | Weekly: jieba tokenization → word cloud → report |
-| `__name__ == '__main__'` | entry | check.py:78 | Utility: archive oversized log files |
-| `model_configs.__init__` | init | model_configs/__init__.py | Runs at import: loads .env, fetches Jinshan, web_search |
-
-### Core Pipeline Functions
-| Symbol | Type | Location | Role |
-|--------|------|----------|------|
-| `chat_ai()` | func | main.py:21 | OpenAI-compatible API call with exponential backoff retry |
-| `load_model_config()` | func | main.py:136 | Dynamic import of model_configs/{name}_config.py via importlib |
-| `story_generator()` | func | main.py:178 | Per-model thread: PREPROCESSORS → chat_ai → POSTPROCESSORS → files |
-| `run_multi_thread()` | func | main.py:239 | ThreadPoolExecutor, max_workers=min(32, cpu*4) |
-| `save_to_md_file()` | func | processors/file_processors.py:20 | Date-nested file save + frontmatter update (zhipu only) |
-| `ensure_first_line_is_h1()` | func | processors/format_processors.py:10 | Forces markdown H1 |
-| `get_jinshan()` | func | utils/mish_mash.py:119 | Fetches daily quote from open.iciba.com |
-| `web_search()` | func | utils/mish_mash.py:182 | Zhipu Web Search API for context enrichment |
-| `modify_frontmatter()` | func | utils/mish_mash.py:48 | YAML frontmatter editor via ruamel.yaml |
-
-### Key Module-Level Constants
-| Symbol | Type | Location | Role |
-|--------|------|----------|------|
-| `JINSHAN` | dict | model_configs/__init__.py | Daily quote: {note, fenxiang_img}, computed at import |
-| `SEARCH_RESULT` | dict | model_configs/__init__.py | Web search context for quote, computed at import |
-| `config_map` | dict | main.py:272 | Maps model name → loaded config dict |
-
-## CONVENTIONS
-
-### Import Order
-stdlib → third-party → local. Absolute imports only. No blank lines between groups.
-
-### Naming
-- Files/functions/variables: `snake_case`
-- Constants: `UPPER_SNAKE_CASE`
-- No classes anywhere — purely functional style
-
-### Type Hints
-Python 3.10+ union syntax (`dict | None`). Google-style docstrings with `Args:`/`Returns:`. Used in main.py, metadata_utils.py, check.py. Not in processors, preprocessor, or model configs.
-
-### Error Handling
-Always catch-and-return-None in `chat_ai()`. Exponential backoff: `initial_backoff * 2^retries`, capped at `max_backoff`. RateLimitError gets 2x wait + checks `e.retry_after`. Thread errors collected via `future.result()` + `traceback.format_exc()`.
-
-### Logging
-Logger name: `'每日故事'`. Acquire via `logging.getLogger('每日故事')` in submodules. Format: `%(asctime)s - %(name)s - %(levelname)s - %(message)s`. Levels: info (flow), warning (recoverable), error (failure), critical (unexpected, with exc_info=True).
-
-### File I/O
-Atomic writes: write to `.tmp` → `os.replace(temp, target)`. JSON: read-array → append → rewrite-all. Corrupted JSON: rename to `.corrupted_<timestamp>`, start fresh.
-
-### Strings
-f-strings exclusively. Chinese primary for comments, docstrings, log messages.
-
-## ANTI-PATTERNS (THIS PROJECT)
-
-### NEVER
-- **Commit `.env`** — contains live API keys. Already in `.gitignore`, keep it that way.
-- **Use classes** — project is functional. No OOP patterns.
-- **Use relative imports** — always absolute.
-- **Let exceptions propagate through threads** — always catch in thread target, return None.
-- **Edit `main.old.py`** — dead code, kept for history only.
-- **Hardcode model names** — use config_map keys only.
-
-### AVOID
-- Lambda functions in POSTPROCESSORS/POSTPROCESSOR_FILES — use named functions for readability
-- `chat_params.pop("RETRY")` mutates caller's dict — copy first if needed
-- `random.shuffle(models_to_use)` makes runs non-deterministic — remove for reproducibility
-
-### Known Issues
-- No test infrastructure (no pytest, no test files)
-- No linter/formatter (no ruff, black, mypy)
-- `.env` on disk has API keys (gitignored but present locally)
-- `deploy.yml` disabled via `if: false` — either re-enable or remove
-
-## UNIQUE STYLES
-
-### 1. Active `model_configs/__init__.py`
-Not empty — performs initialization: loads `.env`, fetches Jinshan daily quote via HTTP, runs Zhipu web search. Exports `JINSHAN` and `SEARCH_RESULT` as module-level constants consumed by all config modules. One-time computation at import time.
-
-### 2. Preprocessor/Postprocessor Pipeline
-Each model config defines three lists of callables:
-- `PREPROCESSORS` — transform `params` dict before API call
-- `POSTPROCESSORS` — transform response dict after API call
-- `POSTPROCESSOR_FILES` — persist response to filesystem
-
-Orchestrated by `story_generator()` in main.py. Both named functions and inline lambdas supported.
-
-### 3. Dynamic Model Config Loading
-Models loaded via `importlib.import_module(f"model_configs.{name}_config")`. Each config file exports 6 standardized symbols: `API_KEY`, `CLIENT_PARAMS`, `CHAT_PARAMS`, `PREPROCESSORS`, `POSTPROCESSORS`, `POSTPROCESSOR_FILES`. No registry — discovery is filesystem-based.
-
-### 4. Self-Modifying Frontmatter
-After story generation, `save_to_md_file()` calls `modify_frontmatter()` to update `story/index.md`'s hero action link to the latest story. The doc site homepage auto-updates.
-
-### 5. Dual-Format Story Files
-Stories saved with optional `<ReasoningChainRenderer>` wrapper around AI's chain-of-thought reasoning, followed by the story body. Frontend Vue component renders this as collapsible section.
-
-## COMMANDS
 ```bash
-# Python (使用 conda 虚拟环境，activate 可能需要执行两次)
-conda activate  && conda activate    # 激活虚拟环境
-pip install -r requirements.txt                        # Install deps
-python main.py                                          # Generate stories (needs .env keys)
-python wordcloud_analysis.py                            # Generate word cloud + report
-python check.py                                         # Archive oversized chat logs
-
-# Frontend (VitePress)
-npm install                         # Install Node deps
-npm run docs:dev                    # Dev server → http://localhost:5173
-npm run docs:build                  # Production build → story/.vitepress/dist/
-npm run docs:preview                # Preview production build
+conda activate storygen           # 激活 conda 环境（如命名不同则调整）
+pip install -r requirements.txt   # 安装 Python 依赖
+python main.py                    # 生成故事（需要 .env API 密钥）
+python wordcloud_analysis.py      # 每周词云 + 词频报告
+python check.py                   # 归档超大的 chat_logs
+ruff check .                      # 代码检查
+pytest -v                         # 运行所有测试
+pytest tests/test_pipeline.py -v  # 运行单个测试文件
+npm run docs:dev                  # VitePress 开发服务器
+npm run docs:build                # VitePress 构建
 ```
 
-## NOTES
-- GitHub Actions run daily (23:00 UTC) and weekly (Wed 00:00 UTC) with timezone Asia/Shanghai.
-- All 7 API keys must be set in both `.env` (local) and GitHub Secrets (CI).
-- `story/index.md` hero link auto-updated by `save_to_md_file()` only for `model_name == "zhipu"`.
-- `chat_logs/story_records.json` grows unboundedly — `check.py` monitors and archives at 4.78MB.
-- Cloudflare Pages deployment is configured separately (not via the disabled `deploy.yml`).
-- See `model_configs/AGENTS.md` for the config file contract and how to add new models.
+## 架构
+
+### 入口与流水线
+
+| 文件 | 职责 |
+|------|------|
+| `main.py` | 入口：发现模型配置，排除 `EXCLUDED_MODELS`，ThreadPoolExecutor 并行运行 |
+| `core/registry.py` | `ModelRegistry.discover()` 动态扫描 `model_configs/*_config.py` |
+| `core/chat.py` | `chat_ai()` OpenAI 兼容 API 调用 + 指数退避重试（非流式/流式） |
+| `core/pipeline.py` | `run_model(config)` 编排 PREPROCESSORS → chat → POSTPROCESSORS → 文件 |
+
+### 关键常量
+
+- `JINSHAN` / `SEARCH_RESULT`：通过 `model_configs/_shared.py` 的惰性缓存获取（`get_jinshan_cached()` / `get_search_cached()`）
+- `EXCLUDED_MODELS` in `main.py:13`：排除思维链/思考模型（doubao_think, doubao, kimi, kimi_k2, zhipu_z1_flash）
+
+### 模型配置（Plugin System）
+
+每个文件在 `model_configs/{name}_config.py`，导出 6 个符号：
+
+| 符号 | 说明 |
+|------|------|
+| `API_KEY` | `os.getenv("API_KEY_XXX")` |
+| `CLIENT_PARAMS` | OpenAI client 参数：`base_url` |
+| `CHAT_PARAMS` | Chat 参数：`model`, `messages`, `max_tokens`, `stream`, `extra_body` |
+| `PREPROCESSORS` | `[(dict) -> dict]` — API 调用前转换 |
+| `POSTPROCESSORS` | `[(dict) -> dict]` — API 响应后转换 |
+| `POSTPROCESSOR_FILES` | `[(dict, config_dict) -> None]` — 持久化输出 |
+
+可用处理器函数：
+- `processors.format_processors.ensure_first_line_is_h1` — 强制 H1 标题（VitePress 必需）
+- `processors.format_processors.insert_content_in_fourth_line` — 在第 4 行插入金山配图
+- `processors.format_processors.process_string` — 去除代码块包裹
+- `utils.misc.process_reasoning_content` — 提取 `<think>` 推理内容
+- `utils.misc.remove_leading_empty_line` — 去除前导空行
+- `processors.file_processors.save_to_md_file` — 保存故事到文件
+- `utils.misc.out_test` — 用于调试的 stdout 输出
+
+配置可设 `UPDATE_FRONTMATTER = True` 让 `save_to_md_file` 自动更新 `story/index.md` 首页链接（仅 zhipu 配置启用）。
+
+## 工具模块 (`utils/`)
+
+`mish_mash.py` 已拆分：
+
+| 文件 | 职责 |
+|------|------|
+| `misc.py` | `process_reasoning_content()`, `remove_leading_empty_line()`, `out_test()` |
+| `uuid_utils.py` | `fixed_length_uuid()` 生成定长十六进制 ID |
+| `web_search.py` | `get_jinshan()`, `web_search()` — 金山词霸 + 智谱搜索 API |
+| `yaml_utils.py` | `modify_frontmatter()` — YAML frontmatter 编辑（ruamel.yaml） |
+| `image_utils.py` | `download_image()`, `cached_download()` — 图片下载 + 内存缓存 |
+| `wordcloud_core.py` | 词云生成核心：分词、频率统计、WordCloud 生成、报告 |
+| `metadata_utils.py` | `save_chat_metadata()`, `read_all_metadata()`, `process_stream_chunks()` |
+
+## 约定
+
+- **纯函数式风格**：不使用类（`ModelRegistry` 是目前唯一的例外，用作命名空间）
+- **绝对导入**：禁止相对导入
+- **f-string 优先**：字符串拼接用 f-string，不用 `%` 或 `+`
+- **Logger 名称**：统一 `logging.getLogger("每日故事")`
+- **文件写入**：JSON Lines 追加写入（`chat_logs/story_records.json`），兼容旧 JSON 数组格式
+- **原子写入**：Markdown 文件通过 `.tmp` 临时文件后 `os.replace()`
+
+## 关键注意点
+
+- **不要在导入时发起 HTTP 请求**：`model_configs/__init__.py` 只做 `load_dotenv()`。各 config 文件使用 `get_jinshan_cached()` / `get_search_cached()` 惰性获取共享数据
+- **不要删除 `.env.example`**：它列出了 7 个 API Key 格式
+- **测试模拟 API 密钥**：`tests/conftest.py` 会自动注入 mock 环境变量
+- **`chat_params.pop("RETRY")` 会修改调用方字典**：`chat_ai()` 内部已做 `params_copy`
+- **GitHub Actions**：`main.yml` 每日 23:00 UTC 运行，`wordcloud-analysis.yml` 每周三 00:00 UTC 运行。API 密钥通过 Secrets 注入
+- **Cloudflare Pages**：自动从 `story/` 目录构建部署，不依赖本地 `docs:build`
+- **`check.py`** 可配置阈值、目标目录和重命名规则，用于归档大型日志文件
