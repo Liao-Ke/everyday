@@ -7,8 +7,8 @@ Plugin-based AI model configuration. Each provider gets one `.py` file exposing 
 ```
 model_configs/
 ├── __init__.py                # ACTIVE: loads .env, fetches Jinshan, web search → exports JINSHAN, SEARCH_RESULT
-├── deepseek_v3_config.py      # DeepSeek V4 Pro (余华 style)
-├── deepseek_r1_config.py      # DeepSeek Reasoner
+├── deepseek_v4_pro_config.py    # DeepSeek V4 Pro (余华 style)
+├── deepseek_v4_flash_config.py  # DeepSeek V4 Flash
 ├── zhipu_config.py            # Zhipu GLM-4.7 Flash
 ├── zhipu_4_5_flash_config.py  # Zhipu GLM-4.5 Flash
 ├── zhipu_z1_flash_config.py   # Zhipu GLM-Z1 Flash (reasoning)
@@ -69,7 +69,7 @@ POSTPROCESSOR_FILES = [save_to_md_file]
 - `SEARCH_RESULT: dict` — Zhipu web search results for the daily quote (use `json.dumps()` to inject into prompts)
 
 Not all configs import `SEARCH_RESULT`. Only those needing web context:
-deepseek_v3, qwen, gemini, zhipu_4_5_flash, zhipu_z1_flash, experience_modelscope.
+deepseek_v4_pro, deepseek_v4_flash, qwen, gemini, zhipu_4_5_flash, zhipu_z1_flash, experience_modelscope.
 
 ## PREPROCESSOR / POSTPROCESSOR
 

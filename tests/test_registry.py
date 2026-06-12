@@ -9,10 +9,10 @@ class TestModelRegistry:
         configs = ModelRegistry.discover()
         assert isinstance(configs, dict)
 
-    def test_returns_config_for_deepseek_v3(self):
+    def test_returns_config_for_deepseek_v4_pro(self):
         configs = ModelRegistry.discover()
-        assert "deepseek_v3" in configs
-        assert configs["deepseek_v3"]["API_KEY"] is not None
+        assert "deepseek_v4_pro" in configs
+        assert configs["deepseek_v4_pro"]["API_KEY"] is not None
 
     def test_returns_config_for_zhipu(self):
         configs = ModelRegistry.discover()

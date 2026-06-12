@@ -81,8 +81,8 @@ everyday/
 │   └── registry.py               #   ModelRegistry 自动发现模型配置
 ├── model_configs/                # 插件式模型配置
 │   ├── _shared.py                #   惰性缓存：get_jinshan_cached / get_search_cached
-│   ├── deepseek_v3_config.py     #   DeepSeek V4 Pro（余华风格）
-│   ├── deepseek_r1_config.py     #   DeepSeek Reasoner
+│   ├── deepseek_v4_pro_config.py   #   DeepSeek V4 Pro（余华风格）
+│   ├── deepseek_v4_flash_config.py #   DeepSeek V4 Flash
 │   ├── zhipu_config.py           #   智谱 GLM-4.7 Flash（含配图）
 │   ├── zhipu_4_5_flash_config.py
 │   ├── zhipu_z1_flash_config.py  #   智谱推理模型
