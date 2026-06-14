@@ -39134,3 +39134,31 @@ TypeError: 'NoneType' object is not subscriptable
 2026-06-13 08:22:43,545 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (104.4s)
 2026-06-13 08:22:43,546 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-06-13 08:22:43,546 - 每日故事 - INFO - 应用程序结束
+2026-06-14 08:09:08,220 - 每日故事 - INFO - 应用程序启动
+2026-06-14 08:09:09,750 - 每日故事 - INFO - 今日金山词霸：橡皮擦消耗着自己。
+2026-06-14 08:09:11,470 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '橡皮擦 消耗自己', 'query': '橡皮擦消耗着自己。'}],将关闭意图识别后重试
+2026-06-14 08:09:13,021 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '橡皮擦 消耗自己', 'query': '橡皮擦消耗着自己。'}]
+2026-06-14 08:09:13,025 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-30B-A3B-Instruct-2507
+2026-06-14 08:09:14,850 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-14 08:09:14,850 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-06-14 08:09:14,851 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-06-14 08:09:14,852 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-06-14 08:09:14,852 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-06-14 08:09:14,853 - 每日故事 - INFO - [gemini] 开始生成
+2026-06-14 08:09:14,854 - 每日故事 - INFO - [qwen] 开始生成
+2026-06-14 08:09:14,855 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-06-14 08:09:14,855 - 每日故事 - INFO - [zhipu] 开始生成
+2026-06-14 08:09:30,862 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (16.0s)
+2026-06-14 08:09:41,930 - 每日故事 - INFO - [experience_modelscope] 生成成功 (27.1s)
+2026-06-14 08:09:45,801 - 每日故事 - INFO - [gemini] 生成成功 (30.9s)
+2026-06-14 08:09:52,755 - 每日故事 - INFO - [qwen] 生成成功 (37.9s)
+2026-06-14 08:10:44,892 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (90.0s)
+2026-06-14 08:11:24,854 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (130.0s)
+2026-06-14 08:13:37,779 - 每日故事 - WARNING - [zhipu] RateLimit: 第 1 次重试，等待 120.00s: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}
+2026-06-14 08:15:40,701 - 每日故事 - WARNING - [zhipu] RateLimit: 第 2 次重试，等待 240.00s: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}
+2026-06-14 08:19:43,814 - 每日故事 - WARNING - [zhipu] RateLimit: 第 3 次重试，等待 480.00s: Error code: 429 - {'error': {'code': '1302', 'message': '您的账户已达到速率限制，请您控制请求频率'}}
+2026-06-14 08:31:01,035 - 每日故事 - INFO - 下载图片成功: ./story/images/b24bef8206854ce0bdcdb31edf50c8fc.jpg
+2026-06-14 08:31:01,047 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-06-14 08:31:01,048 - 每日故事 - INFO - [zhipu] 生成成功 (1306.2s)
+2026-06-14 08:31:01,048 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-06-14 08:31:01,048 - 每日故事 - INFO - 应用程序结束
