@@ -39243,3 +39243,31 @@ TypeError: 'NoneType' object is not subscriptable
 2026-06-17 08:20:04,724 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (107.2s)
 2026-06-17 08:20:04,725 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-06-17 08:20:04,725 - 每日故事 - INFO - 应用程序结束
+2026-06-18 08:16:49,296 - 每日故事 - INFO - 应用程序启动
+2026-06-18 08:16:50,773 - 每日故事 - INFO - 今日金山词霸：一个微笑，可以点燃另一颗心。
+2026-06-18 08:16:53,830 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '微笑 点燃心', 'query': '一个微笑，可以点燃另一颗心。'}],将关闭意图识别后重试
+2026-06-18 08:16:55,208 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '微笑 点燃心', 'query': '一个微笑，可以点燃另一颗心。'}]
+2026-06-18 08:16:55,212 - 每日故事 - INFO - 体验模型->就决定是你了：nex-agi/Nex-N2-Pro
+2026-06-18 08:16:56,832 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-18 08:16:56,832 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-06-18 08:16:56,833 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-06-18 08:16:56,833 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-06-18 08:16:56,834 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-06-18 08:16:56,836 - 每日故事 - INFO - [gemini] 开始生成
+2026-06-18 08:16:56,836 - 每日故事 - INFO - [qwen] 开始生成
+2026-06-18 08:16:56,837 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-06-18 08:16:56,838 - 每日故事 - INFO - [zhipu] 开始生成
+2026-06-18 08:17:17,711 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (20.9s)
+2026-06-18 08:17:44,635 - 每日故事 - INFO - 下载图片成功: ./story/images/4d2803d7b5324d3fbccc50c6889b32e3.jpg
+2026-06-18 08:17:44,648 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-06-18 08:17:44,648 - 每日故事 - INFO - [zhipu] 生成成功 (47.8s)
+2026-06-18 08:17:44,838 - 每日故事 - INFO - [qwen] 生成成功 (48.0s)
+2026-06-18 08:18:12,807 - 每日故事 - ERROR - [experience_modelscope] 值错误，第 1 次重试，等待 60.00s: Extra data: line 1 column 169 (char 168)
+2026-06-18 08:18:17,794 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (81.0s)
+2026-06-18 08:18:30,494 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (93.7s)
+2026-06-18 08:18:33,518 - 每日故事 - INFO - [gemini] 生成成功 (96.7s)
+2026-06-18 08:19:12,807 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-06-18 08:19:12,807 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-06-18 08:19:12,807 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (136.0s)
+2026-06-18 08:19:12,808 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-06-18 08:19:12,808 - 每日故事 - INFO - 应用程序结束
