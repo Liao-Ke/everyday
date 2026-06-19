@@ -39271,3 +39271,28 @@ TypeError: 'NoneType' object is not subscriptable
 2026-06-18 08:19:12,807 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (136.0s)
 2026-06-18 08:19:12,808 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-06-18 08:19:12,808 - 每日故事 - INFO - 应用程序结束
+2026-06-19 09:43:15,385 - 每日故事 - INFO - 应用程序启动
+2026-06-19 09:43:16,963 - 每日故事 - INFO - 今日金山词霸：粽叶裹着米香，也裹着千年的想念。
+2026-06-19 09:43:18,801 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '粽叶 米香 千年想念', 'query': '粽叶裹着米香，也裹着千年的想念。'}],将关闭意图识别后重试
+2026-06-19 09:43:21,558 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '粽叶 米香 千年想念', 'query': '粽叶裹着米香，也裹着千年的想念。'}]
+2026-06-19 09:43:21,562 - 每日故事 - INFO - 体验模型->就决定是你了：mistralai/Mistral-Large-Instruct-2407
+2026-06-19 09:43:23,215 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-19 09:43:23,215 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-06-19 09:43:23,215 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-06-19 09:43:23,216 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-06-19 09:43:23,217 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-06-19 09:43:23,218 - 每日故事 - INFO - [gemini] 开始生成
+2026-06-19 09:43:23,219 - 每日故事 - INFO - [qwen] 开始生成
+2026-06-19 09:43:23,219 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-06-19 09:43:23,220 - 每日故事 - INFO - [zhipu] 开始生成
+2026-06-19 09:43:53,527 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (30.3s)
+2026-06-19 09:44:02,342 - 每日故事 - INFO - [gemini] 生成成功 (39.1s)
+2026-06-19 09:44:07,054 - 每日故事 - INFO - [qwen] 生成成功 (43.8s)
+2026-06-19 09:44:24,457 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (61.2s)
+2026-06-19 09:44:24,791 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (61.6s)
+2026-06-19 09:44:29,024 - 每日故事 - INFO - 下载图片成功: ./story/images/d5947eb220a14d2aa805ff7a0d375662.jpg
+2026-06-19 09:44:29,037 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-06-19 09:44:29,037 - 每日故事 - INFO - [zhipu] 生成成功 (65.8s)
+2026-06-19 09:45:23,145 - 每日故事 - INFO - [experience_modelscope] 生成成功 (119.9s)
+2026-06-19 09:45:23,146 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-06-19 09:45:23,146 - 每日故事 - INFO - 应用程序结束
