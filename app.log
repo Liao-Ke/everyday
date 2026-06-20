@@ -39296,3 +39296,34 @@ TypeError: 'NoneType' object is not subscriptable
 2026-06-19 09:45:23,145 - 每日故事 - INFO - [experience_modelscope] 生成成功 (119.9s)
 2026-06-19 09:45:23,146 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-06-19 09:45:23,146 - 每日故事 - INFO - 应用程序结束
+2026-06-20 08:10:13,204 - 每日故事 - INFO - 应用程序启动
+2026-06-20 08:10:14,974 - 每日故事 - INFO - 今日金山词霸：我们太多人没有实现梦想，因为我们活在恐惧中。
+2026-06-20 08:10:16,199 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '梦想 恐惧 实现', 'query': '我们太多人没有实现梦想，因为我们活在恐惧中。'}],将关闭意图识别后重试
+2026-06-20 08:10:17,535 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '梦想 恐惧 实现', 'query': '我们太多人没有实现梦想，因为我们活在恐惧中。'}]
+2026-06-20 08:10:17,539 - 每日故事 - INFO - 体验模型->就决定是你了：deepseek-ai/DeepSeek-V4-Flash
+2026-06-20 08:10:19,031 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-20 08:10:19,031 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-06-20 08:10:19,031 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-06-20 08:10:19,031 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-06-20 08:10:19,032 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-06-20 08:10:19,032 - 每日故事 - INFO - [gemini] 开始生成
+2026-06-20 08:10:19,033 - 每日故事 - INFO - [qwen] 开始生成
+2026-06-20 08:10:19,033 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-06-20 08:10:19,034 - 每日故事 - INFO - [zhipu] 开始生成
+2026-06-20 08:10:20,610 - 每日故事 - ERROR - [experience_modelscope] 值错误，第 1 次重试，等待 60.00s: API 返回空响应
+2026-06-20 08:10:24,166 - 每日故事 - ERROR - [gemini] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'API key expired. Please renew the API key.', 'type': 'upstream_error', 'param': '', 'code': 400}}
+2026-06-20 08:10:35,035 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (16.0s)
+2026-06-20 08:10:50,285 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (31.3s)
+2026-06-20 08:10:58,380 - 每日故事 - INFO - [qwen] 生成成功 (39.3s)
+2026-06-20 08:11:20,610 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-06-20 08:11:20,610 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-06-20 08:11:20,610 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.6s)
+2026-06-20 08:11:51,308 - 每日故事 - ERROR - [gemini] API 错误，第 2 次重试，等待 120.00s: Error code: 400 - {'error': {'message': 'API key expired. Please renew the API key.', 'type': 'upstream_error', 'param': '', 'code': 400}}
+2026-06-20 08:12:12,733 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (113.7s)
+2026-06-20 08:13:57,994 - 每日故事 - ERROR - [gemini] API 错误，第 3 次重试，等待 240.00s: Error code: 400 - {'error': {'message': 'API key expired. Please renew the API key.', 'type': 'upstream_error', 'param': '', 'code': 400}}
+2026-06-20 08:14:07,581 - 每日故事 - INFO - 下载图片成功: ./story/images/8d388c5f66f748ecac3943a1290fd095.jpg
+2026-06-20 08:14:07,593 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-06-20 08:14:07,594 - 每日故事 - INFO - [zhipu] 生成成功 (228.6s)
+2026-06-20 08:18:30,002 - 每日故事 - INFO - [gemini] 生成成功 (491.0s)
+2026-06-20 08:18:30,003 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-06-20 08:18:30,003 - 每日故事 - INFO - 应用程序结束
