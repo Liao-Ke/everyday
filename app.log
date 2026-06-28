@@ -39522,3 +39522,28 @@ TypeError: 'NoneType' object is not subscriptable
 2026-06-27 08:11:31,802 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (87.4s)
 2026-06-27 08:11:31,803 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-06-27 08:11:31,803 - 每日故事 - INFO - 应用程序结束
+2026-06-28 08:04:22,867 - 每日故事 - INFO - 应用程序启动
+2026-06-28 08:04:25,057 - 每日故事 - INFO - 今日金山词霸：屏幕的光照亮了专注的脸。
+2026-06-28 08:04:26,825 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '屏幕光 专注脸 光照亮', 'query': '屏幕的光照亮了专注的脸。'}],将关闭意图识别后重试
+2026-06-28 08:04:29,210 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '屏幕光 专注脸 光照亮', 'query': '屏幕的光照亮了专注的脸。'}]
+2026-06-28 08:04:29,215 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-Next-80B-A3B-Instruct
+2026-06-28 08:04:30,919 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-06-28 08:04:30,919 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-06-28 08:04:30,920 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-06-28 08:04:30,921 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-06-28 08:04:30,921 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-06-28 08:04:30,922 - 每日故事 - INFO - [gemini] 开始生成
+2026-06-28 08:04:30,923 - 每日故事 - INFO - [qwen] 开始生成
+2026-06-28 08:04:30,924 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-06-28 08:04:30,924 - 每日故事 - INFO - [zhipu] 开始生成
+2026-06-28 08:04:44,864 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (13.9s)
+2026-06-28 08:04:45,066 - 每日故事 - INFO - [experience_modelscope] 生成成功 (14.1s)
+2026-06-28 08:05:05,454 - 每日故事 - INFO - [qwen] 生成成功 (34.5s)
+2026-06-28 08:05:07,920 - 每日故事 - INFO - [gemini] 生成成功 (37.0s)
+2026-06-28 08:05:19,036 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (48.1s)
+2026-06-28 08:05:19,620 - 每日故事 - INFO - 下载图片成功: ./story/images/0375c99ce6914ea4b7b02bd8a9cba4d6.jpg
+2026-06-28 08:05:19,632 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-06-28 08:05:19,632 - 每日故事 - INFO - [zhipu] 生成成功 (48.7s)
+2026-06-28 08:05:33,260 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (62.3s)
+2026-06-28 08:05:33,261 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-06-28 08:05:33,261 - 每日故事 - INFO - 应用程序结束
