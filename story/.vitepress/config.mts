@@ -71,23 +71,39 @@ export default defineConfig({
             pattern: 'https://github.com/Liao-Ke/everyday/edit/master/story/:path'
         },
         search: {
-            provider: 'local',
+            provider: 'algolia',
             options: {
+                appId: process.env.ALGOLIA_APP_ID || '',
+                apiKey: process.env.ALGOLIA_API_KEY || '',
+                indexName: process.env.ALGOLIA_INDEX_NAME || '',
                 locales: {
-                    root: {
+                    zh: {
+                        placeholder: '搜索文档',
                         translations: {
                             button: {
                                 buttonText: '搜索',
                                 buttonAriaLabel: '搜索'
                             },
                             modal: {
-                                noResultsText: '无法找到相关结果',
-                                resetButtonTitle: '清除查询条件',
-                                displayDetails: '显示详细信息',
+                                searchBox: {
+                                    resetButtonTitle: '清除查询条件',
+                                    cancelButtonText: '取消'
+                                },
+                                startScreen: {
+                                    recentSearchesTitle: '搜索历史',
+                                    noRecentSearchesText: '没有搜索历史'
+                                },
+                                errorScreen: {
+                                    titleText: '无法获取结果',
+                                    helpText: '你可能需要检查你的网络连接。'
+                                },
                                 footer: {
                                     selectText: '选择',
                                     navigateText: '切换',
-                                    closeText: '取消'
+                                    closeText: '关闭'
+                                },
+                                noResultsScreen: {
+                                    noResultsText: '无法找到相关结果'
                                 }
                             }
                         }

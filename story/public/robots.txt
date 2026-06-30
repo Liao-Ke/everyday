@@ -1,5 +1,8 @@
 # robots.txt for Everyday Story Generator
 
+# Algolia Crawler Verification
+# Algolia-Crawler-Verif: 111040984FDE1974
+
 # 允许所有爬虫访问
 User-agent: *
 
