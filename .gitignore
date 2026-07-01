@@ -4,6 +4,7 @@ node_modules
 .vscode
 cache
 dist
+.temp
 __pycache__
 .pytest_cache
 .codegraph/
