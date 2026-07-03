@@ -39653,3 +39653,28 @@ TypeError: 'NoneType' object is not subscriptable
 2026-07-02 08:11:33,747 - 每日故事 - INFO - [zhipu] 生成成功 (108.3s)
 2026-07-02 08:11:33,748 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-07-02 08:11:33,748 - 每日故事 - INFO - 应用程序结束
+2026-07-03 08:07:22,410 - 每日故事 - INFO - 应用程序启动
+2026-07-03 08:07:23,960 - 每日故事 - INFO - 今日金山词霸：灯泡像黑夜里结出的果实。
+2026-07-03 08:07:25,386 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '灯泡 黑夜 果实', 'query': '灯泡像黑夜里结出的果实。'}],将关闭意图识别后重试
+2026-07-03 08:07:26,667 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '灯泡 黑夜 果实', 'query': '灯泡像黑夜里结出的果实。'}]
+2026-07-03 08:07:26,671 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M1-80k
+2026-07-03 08:07:28,151 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-07-03 08:07:28,151 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-07-03 08:07:28,151 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-07-03 08:07:28,151 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-07-03 08:07:28,153 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-07-03 08:07:28,154 - 每日故事 - INFO - [gemini] 开始生成
+2026-07-03 08:07:28,155 - 每日故事 - INFO - [qwen] 开始生成
+2026-07-03 08:07:28,156 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-07-03 08:07:28,157 - 每日故事 - INFO - [zhipu] 开始生成
+2026-07-03 08:07:54,296 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (26.1s)
+2026-07-03 08:08:04,306 - 每日故事 - INFO - [gemini] 生成成功 (36.2s)
+2026-07-03 08:08:06,875 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (38.7s)
+2026-07-03 08:08:07,870 - 每日故事 - INFO - [experience_modelscope] 生成成功 (39.7s)
+2026-07-03 08:08:53,432 - 每日故事 - INFO - [qwen] 生成成功 (85.3s)
+2026-07-03 08:09:02,393 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (94.2s)
+2026-07-03 08:12:09,311 - 每日故事 - INFO - 下载图片成功: ./story/images/0469239c79254104b320651ad7ca721a.jpg
+2026-07-03 08:12:09,323 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-07-03 08:12:09,323 - 每日故事 - INFO - [zhipu] 生成成功 (281.2s)
+2026-07-03 08:12:09,324 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-07-03 08:12:09,324 - 每日故事 - INFO - 应用程序结束
