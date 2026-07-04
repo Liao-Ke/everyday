@@ -39678,3 +39678,32 @@ TypeError: 'NoneType' object is not subscriptable
 2026-07-03 08:12:09,323 - 每日故事 - INFO - [zhipu] 生成成功 (281.2s)
 2026-07-03 08:12:09,324 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-07-03 08:12:09,324 - 每日故事 - INFO - 应用程序结束
+2026-07-04 08:05:47,554 - 每日故事 - INFO - 应用程序启动
+2026-07-04 08:05:48,751 - 每日故事 - INFO - 今日金山词霸：沉默是轻蔑最完美的表达。
+2026-07-04 08:05:50,295 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '沉默 轻蔑 表达 完美', 'query': '沉默是轻蔑最完美的表达。'}],将关闭意图识别后重试
+2026-07-04 08:05:52,910 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '沉默 轻蔑 表达 完美', 'query': '沉默是轻蔑最完美的表达。'}]
+2026-07-04 08:05:52,914 - 每日故事 - INFO - 体验模型->就决定是你了：nex-agi/Nex-N2-Pro
+2026-07-04 08:05:54,933 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-07-04 08:05:54,933 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-07-04 08:05:54,933 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-07-04 08:05:54,935 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-07-04 08:05:54,936 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-07-04 08:05:54,937 - 每日故事 - INFO - [gemini] 开始生成
+2026-07-04 08:05:54,938 - 每日故事 - INFO - [qwen] 开始生成
+2026-07-04 08:05:54,938 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-07-04 08:05:54,939 - 每日故事 - INFO - [zhipu] 开始生成
+2026-07-04 08:05:56,968 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : nex-agi/Nex-N2-Pro , has no provider supported', 'request_id': '4a8c2785-86db-4f39-b2fa-2f2f2d34c246'}}
+2026-07-04 08:06:12,083 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (17.1s)
+2026-07-04 08:06:43,435 - 每日故事 - INFO - [qwen] 生成成功 (48.5s)
+2026-07-04 08:06:49,468 - 每日故事 - INFO - [gemini] 生成成功 (54.5s)
+2026-07-04 08:06:56,968 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-07-04 08:06:56,968 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-07-04 08:06:56,968 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (62.0s)
+2026-07-04 08:07:09,683 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (74.7s)
+2026-07-04 08:08:10,898 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (136.0s)
+2026-07-04 08:11:08,906 - 每日故事 - ERROR - [zhipu] API 错误，第 1 次重试，等待 60.00s: Error code: 500 - {'error': {'code': '1234', 'message': '网络错误，错误id：20260704080917d1a082473ef64d85，请稍后重试'}}
+2026-07-04 08:14:39,975 - 每日故事 - INFO - 下载图片成功: ./story/images/56f9e6221177498d890b59cdf46b9300.jpg
+2026-07-04 08:14:39,987 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-07-04 08:14:39,987 - 每日故事 - INFO - [zhipu] 生成成功 (525.0s)
+2026-07-04 08:14:39,988 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-07-04 08:14:39,988 - 每日故事 - INFO - 应用程序结束
