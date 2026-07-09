@@ -39817,3 +39817,31 @@ TypeError: 'NoneType' object is not subscriptable
 2026-07-08 08:01:28,266 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (160.3s)
 2026-07-08 08:01:28,267 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-07-08 08:01:28,267 - 每日故事 - INFO - 应用程序结束
+2026-07-09 08:12:27,808 - 每日故事 - INFO - 应用程序启动
+2026-07-09 08:12:28,793 - 每日故事 - INFO - 今日金山词霸：保持好奇，世界永远新鲜。
+2026-07-09 08:12:29,951 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '保持好奇 世界永远新鲜', 'query': '保持好奇，世界永远新鲜。'}],将关闭意图识别后重试
+2026-07-09 08:12:31,387 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '保持好奇 世界永远新鲜', 'query': '保持好奇，世界永远新鲜。'}]
+2026-07-09 08:12:31,391 - 每日故事 - INFO - 体验模型->就决定是你了：ZhipuAI/GLM-5
+2026-07-09 08:12:32,547 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-07-09 08:12:32,548 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-07-09 08:12:32,548 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-07-09 08:12:32,549 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-07-09 08:12:32,550 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-07-09 08:12:32,551 - 每日故事 - INFO - [gemini] 开始生成
+2026-07-09 08:12:32,552 - 每日故事 - INFO - [qwen] 开始生成
+2026-07-09 08:12:32,552 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-07-09 08:12:32,553 - 每日故事 - INFO - [zhipu] 开始生成
+2026-07-09 08:12:33,843 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : ZhipuAI/GLM-5 , has no provider supported', 'request_id': 'd7e9b1c6-6a59-40fa-bffa-ef508c6ad8c5'}}
+2026-07-09 08:13:01,008 - 每日故事 - INFO - 下载图片成功: ./story/images/fdf954abb2b64a7cb5e6367b3eb7e7db.jpg
+2026-07-09 08:13:01,020 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-07-09 08:13:01,020 - 每日故事 - INFO - [zhipu] 生成成功 (28.5s)
+2026-07-09 08:13:03,891 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (31.3s)
+2026-07-09 08:13:16,335 - 每日故事 - INFO - [qwen] 生成成功 (43.8s)
+2026-07-09 08:13:32,032 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (59.5s)
+2026-07-09 08:13:33,844 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-07-09 08:13:33,844 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-07-09 08:13:33,844 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.3s)
+2026-07-09 08:14:16,528 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (104.0s)
+2026-07-09 08:16:01,762 - 每日故事 - INFO - [gemini] 生成成功 (209.2s)
+2026-07-09 08:16:01,763 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-07-09 08:16:01,763 - 每日故事 - INFO - 应用程序结束
