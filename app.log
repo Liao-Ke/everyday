@@ -40374,3 +40374,39 @@ TypeError: 'NoneType' object is not subscriptable
 2026-07-28 08:19:10,751 - 每日故事 - ERROR - [gemini] 生成失败 (909.2s)
 2026-07-28 08:19:10,752 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-07-28 08:19:10,752 - 每日故事 - INFO - 应用程序结束
+2026-07-29 07:58:39,835 - 每日故事 - INFO - 应用程序启动
+2026-07-29 07:58:40,992 - 每日故事 - INFO - 今日金山词霸：等待把时间熬成了糖。
+2026-07-29 07:58:42,453 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '等待 时间熬成糖', 'query': '等待把时间熬成了糖。'}],将关闭意图识别后重试
+2026-07-29 07:58:43,644 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '等待 时间熬成糖', 'query': '等待把时间熬成了糖。'}]
+2026-07-29 07:58:43,647 - 每日故事 - INFO - 体验模型->就决定是你了：ZhipuAI/GLM-5.1
+2026-07-29 07:58:45,109 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-07-29 07:58:45,109 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-07-29 07:58:45,109 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-07-29 07:58:45,110 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-07-29 07:58:45,110 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-07-29 07:58:45,111 - 每日故事 - INFO - [gemini] 开始生成
+2026-07-29 07:58:45,112 - 每日故事 - INFO - [qwen] 开始生成
+2026-07-29 07:58:45,113 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-07-29 07:58:45,114 - 每日故事 - INFO - [zhipu] 开始生成
+2026-07-29 07:58:46,302 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : ZhipuAI/GLM-5.1 , has no provider supported', 'request_id': 'a09ba4b5-12f1-4c84-a2dd-5d24fbbfb9c7'}}
+2026-07-29 07:58:47,899 - 每日故事 - ERROR - [gemini] API 错误，第 1 次重试，等待 60.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607282358477446679438268d9d6xHSIIC9b)', 'type': 'new_api_error'}}
+2026-07-29 07:58:59,792 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (14.7s)
+2026-07-29 07:59:20,387 - 每日故事 - INFO - [qwen] 生成成功 (35.3s)
+2026-07-29 07:59:46,303 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-07-29 07:59:46,303 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-07-29 07:59:46,303 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.2s)
+2026-07-29 07:59:50,041 - 每日故事 - ERROR - [gemini] API 错误，第 2 次重试，等待 120.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607282359498957139748268d9d61zJ1e3S8)', 'type': 'new_api_error'}}
+2026-07-29 08:00:24,867 - 每日故事 - INFO - 下载图片成功: ./story/images/9abd3c12fc0448e89b5731ddb5738848.jpg
+2026-07-29 08:00:24,877 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-07-29 08:00:24,877 - 每日故事 - INFO - [zhipu] 生成成功 (99.8s)
+2026-07-29 08:00:45,864 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (120.8s)
+2026-07-29 08:00:47,608 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (122.5s)
+2026-07-29 08:01:52,086 - 每日故事 - ERROR - [gemini] API 错误，第 3 次重试，等待 240.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607290001519510588598268d9d6b9x68ilk)', 'type': 'new_api_error'}}
+2026-07-29 08:05:54,696 - 每日故事 - ERROR - [gemini] API 错误，第 4 次重试，等待 480.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607290005545379924738268d9d6xGmXe0jo)', 'type': 'new_api_error'}}
+2026-07-29 08:13:56,923 - 每日故事 - ERROR - [gemini] API 错误，第 5 次重试，等待 600.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607290013567676695418268d9d6wze2l7gh)', 'type': 'new_api_error'}}
+2026-07-29 08:13:58,986 - 每日故事 - ERROR - [gemini] API 错误，第 6 次重试，等待 600.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202607290013588404423828268d9d6JZLUHf8t)', 'type': 'new_api_error'}}
+2026-07-29 08:13:58,986 - 每日故事 - ERROR - [gemini] 所有 5 次重试均失败
+2026-07-29 08:13:58,986 - 每日故事 - ERROR - [gemini] 生成失败
+2026-07-29 08:13:58,986 - 每日故事 - ERROR - [gemini] 生成失败 (913.9s)
+2026-07-29 08:13:58,987 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-07-29 08:13:58,987 - 每日故事 - INFO - 应用程序结束
