@@ -40479,3 +40479,37 @@ TypeError: 'NoneType' object is not subscriptable
 2026-07-31 08:18:53,082 - 每日故事 - ERROR - [gemini] 生成失败 (912.9s)
 2026-07-31 08:18:53,082 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-07-31 08:18:53,083 - 每日故事 - INFO - 应用程序结束
+2026-08-01 08:02:47,551 - 每日故事 - INFO - 应用程序启动
+2026-08-01 08:02:48,938 - 每日故事 - INFO - 今日金山词霸：你穿越风暴的无声行进，在大地写下和平。
+2026-08-01 08:02:50,286 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '穿越风暴 无声行进 大地写下和平', 'query': '你穿越风暴的无声行进，在大地写下和平。'}],将关闭意图识别后重试
+2026-08-01 08:02:51,498 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '穿越风暴 无声行进 大地写下和平', 'query': '你穿越风暴的无声行进，在大地写下和平。'}]
+2026-08-01 08:02:51,502 - 每日故事 - INFO - 体验模型->就决定是你了：mistralai/Mistral-Large-Instruct-2407
+2026-08-01 08:02:52,783 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu
+2026-08-01 08:02:52,783 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, gemini, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-08-01 08:02:52,783 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-08-01 08:02:52,784 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-08-01 08:02:52,785 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-08-01 08:02:52,785 - 每日故事 - INFO - [gemini] 开始生成
+2026-08-01 08:02:52,786 - 每日故事 - INFO - [qwen] 开始生成
+2026-08-01 08:02:52,787 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-08-01 08:02:52,788 - 每日故事 - INFO - [zhipu] 开始生成
+2026-08-01 08:02:55,024 - 每日故事 - ERROR - [gemini] API 错误，第 1 次重试，等待 60.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010002548883564448268d9d67diBnkVr)', 'type': 'new_api_error'}}
+2026-08-01 08:02:55,609 - 每日故事 - WARNING - [zhipu] RateLimit: 第 1 次重试，等待 120.00s: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}
+2026-08-01 08:03:10,660 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (17.9s)
+2026-08-01 08:03:55,545 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (62.8s)
+2026-08-01 08:03:57,271 - 每日故事 - ERROR - [gemini] API 错误，第 2 次重试，等待 120.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010003571247434528268d9d6uTBuAQEi)', 'type': 'new_api_error'}}
+2026-08-01 08:04:02,012 - 每日故事 - INFO - [qwen] 生成成功 (69.2s)
+2026-08-01 08:04:21,256 - 每日故事 - INFO - [experience_modelscope] 生成成功 (88.5s)
+2026-08-01 08:05:38,892 - 每日故事 - INFO - 下载图片成功: ./story/images/15e3622db99c4c0192fe15ed4a50a138.jpg
+2026-08-01 08:05:38,901 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-08-01 08:05:38,901 - 每日故事 - INFO - [zhipu] 生成成功 (166.1s)
+2026-08-01 08:05:55,845 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (183.1s)
+2026-08-01 08:05:59,229 - 每日故事 - ERROR - [gemini] API 错误，第 3 次重试，等待 240.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010005591079986618268d9d6N2cIlrMm)', 'type': 'new_api_error'}}
+2026-08-01 08:10:01,132 - 每日故事 - ERROR - [gemini] API 错误，第 4 次重试，等待 480.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010010010646821718268d9d6gyvKTmfi)', 'type': 'new_api_error'}}
+2026-08-01 08:18:03,269 - 每日故事 - ERROR - [gemini] API 错误，第 5 次重试，等待 600.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010018031347329268268d9d6EqYiM1cH)', 'type': 'new_api_error'}}
+2026-08-01 08:18:05,208 - 每日故事 - ERROR - [gemini] API 错误，第 6 次重试，等待 600.00s: Error code: 503 - {'error': {'code': 'model_not_found', 'message': 'No available channel for model gemini-2.5-pro under group auto (distributor) (request id: 202608010018050620982538268d9d6WWK4mi6e)', 'type': 'new_api_error'}}
+2026-08-01 08:18:05,209 - 每日故事 - ERROR - [gemini] 所有 5 次重试均失败
+2026-08-01 08:18:05,209 - 每日故事 - ERROR - [gemini] 生成失败
+2026-08-01 08:18:05,209 - 每日故事 - ERROR - [gemini] 生成失败 (912.4s)
+2026-08-01 08:18:05,209 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-08-01 08:18:05,210 - 每日故事 - INFO - 应用程序结束
