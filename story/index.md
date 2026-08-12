@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/08月/12日/星期三_07-42-04.f4e.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-08-05.md
+      link: /词云/2026-08-12.md
 
 features:
   - title: 每日更新
