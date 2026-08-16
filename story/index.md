@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: "今日故事"
-      link: /故事/2026年/08月/16日/星期日_07-25-00.112.md
+      link: /故事/2026年/08月/17日/星期一_07-21-20.b62.md
     - theme: alt
       text: "词云"
       link: /词云/2026-08-12.md
