@@ -41340,3 +41340,29 @@ TypeError: 'NoneType' object is not subscriptable
 2026-08-25 07:28:53,921 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (224.5s)
 2026-08-25 07:28:53,922 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-08-25 07:28:53,922 - 每日故事 - INFO - 应用程序结束
+2026-08-26 07:25:30,176 - 每日故事 - INFO - 应用程序启动
+2026-08-26 07:25:31,541 - 每日故事 - INFO - 今日金山词霸：我们把自己的碎片，留在爱过的地方。
+2026-08-26 07:25:32,227 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '碎片 爱过的地方', 'query': '我们把自己的碎片，留在爱过的地方。'}],将关闭意图识别后重试
+2026-08-26 07:25:33,169 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '碎片 爱过的地方', 'query': '我们把自己的碎片，留在爱过的地方。'}]
+2026-08-26 07:25:33,173 - 每日故事 - INFO - 体验模型->就决定是你了：deepseek-ai/DeepSeek-V4-Flash
+2026-08-26 07:25:35,089 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-08-26 07:25:35,090 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-08-26 07:25:35,090 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-08-26 07:25:35,091 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-08-26 07:25:35,091 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-08-26 07:25:35,092 - 每日故事 - INFO - [qwen] 开始生成
+2026-08-26 07:25:35,093 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-08-26 07:25:35,094 - 每日故事 - INFO - [zhipu] 开始生成
+2026-08-26 07:25:36,692 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : deepseek-ai/DeepSeek-V4-Flash , has no provider supported', 'request_id': '6263f582-d55a-4692-a40e-97f34046fbf0'}}
+2026-08-26 07:26:12,767 - 每日故事 - INFO - [qwen] 生成成功 (37.7s)
+2026-08-26 07:26:16,092 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (41.0s)
+2026-08-26 07:26:33,527 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (58.4s)
+2026-08-26 07:26:36,693 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-08-26 07:26:36,693 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-08-26 07:26:36,693 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.6s)
+2026-08-26 07:26:52,717 - 每日故事 - INFO - 下载图片成功: ./story/images/6c7b5c898b6840c994b91860902ff577.jpg
+2026-08-26 07:26:52,736 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-08-26 07:26:52,736 - 每日故事 - INFO - [zhipu] 生成成功 (77.6s)
+2026-08-26 07:28:21,960 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (166.9s)
+2026-08-26 07:28:21,960 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-08-26 07:28:21,961 - 每日故事 - INFO - 应用程序结束
