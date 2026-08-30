@@ -41441,3 +41441,26 @@ TypeError: 'NoneType' object is not subscriptable
 2026-08-29 12:07:20,040 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (272.1s)
 2026-08-29 12:07:20,041 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-08-29 12:07:20,041 - 每日故事 - INFO - 应用程序结束
+2026-08-30 09:08:27,492 - 每日故事 - INFO - 应用程序启动
+2026-08-30 09:08:28,708 - 每日故事 - INFO - 今日金山词霸：轻装前行，只带走仍能温暖你的东西。
+2026-08-30 09:08:29,516 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '轻装前行 温暖你的东西', 'query': '轻装前行，只带走仍能温暖你的东西。'}],将关闭意图识别后重试
+2026-08-30 09:08:30,336 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '轻装前行 温暖你的东西', 'query': '轻装前行，只带走仍能温暖你的东西。'}]
+2026-08-30 09:08:30,340 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M1-80k
+2026-08-30 09:08:31,843 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-08-30 09:08:31,843 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-08-30 09:08:31,844 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-08-30 09:08:31,844 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-08-30 09:08:31,844 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-08-30 09:08:31,844 - 每日故事 - INFO - [qwen] 开始生成
+2026-08-30 09:08:31,847 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-08-30 09:08:31,848 - 每日故事 - INFO - [zhipu] 开始生成
+2026-08-30 09:09:03,273 - 每日故事 - INFO - [experience_modelscope] 生成成功 (31.4s)
+2026-08-30 09:09:04,517 - 每日故事 - INFO - [qwen] 生成成功 (32.7s)
+2026-08-30 09:09:10,449 - 每日故事 - INFO - 下载图片成功: ./story/images/293a42366db34a508b578cdeb4c6173d.jpg
+2026-08-30 09:09:10,462 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-08-30 09:09:10,462 - 每日故事 - INFO - [zhipu] 生成成功 (38.6s)
+2026-08-30 09:09:32,046 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (60.2s)
+2026-08-30 09:09:35,228 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (63.4s)
+2026-08-30 09:10:52,258 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (140.4s)
+2026-08-30 09:10:52,259 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-08-30 09:10:52,259 - 每日故事 - INFO - 应用程序结束
