@@ -41588,3 +41588,42 @@ TypeError: 'NoneType' object is not subscriptable
 2026-09-04 08:52:39,026 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (138.6s)
 2026-09-04 08:52:39,026 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-09-04 08:52:39,027 - 每日故事 - INFO - 应用程序结束
+2026-09-05 08:40:35,967 - 每日故事 - INFO - 应用程序启动
+2026-09-05 08:40:36,807 - 每日故事 - INFO - 今日金山词霸：在AI时代，好奇心仍是我们的超能力。
+2026-09-05 08:40:37,317 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': 'ai时代 好奇心 超能力', 'query': '在AI时代，好奇心仍是我们的超能力。'}],将关闭意图识别后重试
+2026-09-05 08:40:38,006 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': 'ai时代 好奇心 超能力', 'query': '在AI时代，好奇心仍是我们的超能力。'}]
+2026-09-05 08:40:38,009 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M1-80k
+2026-09-05 08:40:39,181 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-09-05 08:40:39,181 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-09-05 08:40:39,181 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-09-05 08:40:39,182 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-09-05 08:40:39,183 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-09-05 08:40:39,184 - 每日故事 - INFO - [qwen] 开始生成
+2026-09-05 08:40:39,185 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-09-05 08:40:39,185 - 每日故事 - INFO - [zhipu] 开始生成
+2026-09-05 08:40:39,995 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 1 次重试，等待 60.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:40:40,148 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 1 次重试，等待 60.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:41:11,327 - 每日故事 - INFO - 下载图片成功: ./story/images/ce9b070e67fb4fe984e5ebd58f98c14e.jpg
+2026-09-05 08:41:11,337 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-09-05 08:41:11,338 - 每日故事 - INFO - [zhipu] 生成成功 (32.2s)
+2026-09-05 08:41:14,256 - 每日故事 - INFO - [qwen] 生成成功 (35.1s)
+2026-09-05 08:41:14,640 - 每日故事 - INFO - [experience_modelscope] 生成成功 (35.5s)
+2026-09-05 08:41:40,641 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 2 次重试，等待 120.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:41:40,937 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 2 次重试，等待 120.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:42:49,439 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (130.3s)
+2026-09-05 08:43:41,275 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 3 次重试，等待 240.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:43:41,702 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 3 次重试，等待 240.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:47:41,911 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 4 次重试，等待 480.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:47:42,489 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 4 次重试，等待 480.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:55:42,576 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 5 次重试，等待 600.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:55:43,195 - 每日故事 - ERROR - [deepseek_v4_pro] API 错误，第 6 次重试，等待 600.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:55:43,195 - 每日故事 - ERROR - [deepseek_v4_pro] 所有 5 次重试均失败
+2026-09-05 08:55:43,195 - 每日故事 - ERROR - [deepseek_v4_pro] 生成失败
+2026-09-05 08:55:43,195 - 每日故事 - ERROR - [deepseek_v4_pro] 生成失败 (904.0s)
+2026-09-05 08:55:43,309 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 5 次重试，等待 600.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:55:44,105 - 每日故事 - ERROR - [deepseek_v4_flash] API 错误，第 6 次重试，等待 600.00s: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-05 08:55:44,105 - 每日故事 - ERROR - [deepseek_v4_flash] 所有 5 次重试均失败
+2026-09-05 08:55:44,105 - 每日故事 - ERROR - [deepseek_v4_flash] 生成失败
+2026-09-05 08:55:44,105 - 每日故事 - ERROR - [deepseek_v4_flash] 生成失败 (904.9s)
+2026-09-05 08:55:44,105 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-09-05 08:55:44,106 - 每日故事 - INFO - 应用程序结束
