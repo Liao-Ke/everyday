@@ -41747,3 +41747,31 @@ TypeError: 'NoneType' object is not subscriptable
 2026-09-08 09:13:45,901 - 每日故事 - ERROR - [deepseek_v4_flash] 生成失败 (904.4s)
 2026-09-08 09:13:45,901 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-09-08 09:13:45,901 - 每日故事 - INFO - 应用程序结束
+2026-09-09 09:05:02,011 - 每日故事 - INFO - 应用程序启动
+2026-09-09 09:05:03,185 - 每日故事 - INFO - 今日金山词霸：心保持好奇，书就会一直打开。
+2026-09-09 09:05:03,929 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '心保持好奇 书 打开', 'query': '心保持好奇，书就会一直打开。'}],将关闭意图识别后重试
+2026-09-09 09:05:09,938 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '心保持好奇 书 打开', 'query': '心保持好奇，书就会一直打开。'}]
+2026-09-09 09:05:09,944 - 每日故事 - INFO - 体验模型->就决定是你了：inclusionAI/Ring-2.6-1T
+2026-09-09 09:05:11,212 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-09-09 09:05:11,212 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-09-09 09:05:11,212 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-09-09 09:05:11,213 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-09-09 09:05:11,214 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-09-09 09:05:11,215 - 每日故事 - INFO - [qwen] 开始生成
+2026-09-09 09:05:11,216 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-09-09 09:05:11,216 - 每日故事 - INFO - [zhipu] 开始生成
+2026-09-09 09:05:13,861 - 每日故事 - ERROR - [experience_modelscope] 值错误，第 1 次重试，等待 60.00s: API 返回空响应
+2026-09-09 09:05:53,857 - 每日故事 - ERROR - [zhipu] API 错误，第 1 次重试，等待 60.00s: Error code: 500 - {'error': {'code': '500', 'message': '操作失败'}}
+2026-09-09 09:06:13,861 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-09-09 09:06:13,862 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-09-09 09:06:13,862 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (62.6s)
+2026-09-09 09:06:26,239 - 每日故事 - INFO - [qwen] 生成成功 (75.0s)
+2026-09-09 09:06:45,484 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (94.3s)
+2026-09-09 09:06:48,822 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (97.6s)
+2026-09-09 09:06:56,172 - 每日故事 - WARNING - [zhipu] RateLimit: 第 2 次重试，等待 240.00s: Error code: 429 - {'error': {'code': '1305', 'message': '该模型当前访问量过大，请您稍后再试'}}
+2026-09-09 09:07:29,784 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (138.6s)
+2026-09-09 09:11:46,589 - 每日故事 - INFO - 下载图片成功: ./story/images/b19b2f6cb4ef43b28bb0bb12f0617fbf.jpg
+2026-09-09 09:11:46,601 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-09-09 09:11:46,601 - 每日故事 - INFO - [zhipu] 生成成功 (395.4s)
+2026-09-09 09:11:46,602 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-09-09 09:11:46,602 - 每日故事 - INFO - 应用程序结束
