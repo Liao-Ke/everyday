@@ -41853,3 +41853,29 @@ TypeError: 'NoneType' object is not subscriptable
 2026-09-12 08:59:02,718 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (132.6s)
 2026-09-12 08:59:02,719 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-09-12 08:59:02,719 - 每日故事 - INFO - 应用程序结束
+2026-09-13 08:39:49,501 - 每日故事 - INFO - 应用程序启动
+2026-09-13 08:39:50,405 - 每日故事 - INFO - 今日金山词霸：夜静下来，旧歌就会回来。
+2026-09-13 08:39:51,141 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '夜静下来 旧歌 回来', 'query': '夜静下来，旧歌就会回来。'}],将关闭意图识别后重试
+2026-09-13 08:39:51,898 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '夜静下来 旧歌 回来', 'query': '夜静下来，旧歌就会回来。'}]
+2026-09-13 08:39:51,903 - 每日故事 - INFO - 体验模型->就决定是你了：mistralai/Mistral-Large-Instruct-2407
+2026-09-13 08:39:52,891 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-09-13 08:39:52,891 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-09-13 08:39:52,892 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-09-13 08:39:52,893 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-09-13 08:39:52,893 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-09-13 08:39:52,894 - 每日故事 - INFO - [qwen] 开始生成
+2026-09-13 08:39:52,895 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-09-13 08:39:52,896 - 每日故事 - INFO - [zhipu] 开始生成
+2026-09-13 08:40:22,584 - 每日故事 - INFO - [qwen] 生成成功 (29.7s)
+2026-09-13 08:40:30,842 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (37.9s)
+2026-09-13 08:40:34,887 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (42.0s)
+2026-09-13 08:42:02,875 - 每日故事 - INFO - 下载图片成功: ./story/images/9d809621a32a4a5583e24d288a868753.jpg
+2026-09-13 08:42:02,887 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-09-13 08:42:02,887 - 每日故事 - INFO - [zhipu] 生成成功 (130.0s)
+2026-09-13 08:42:08,116 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (135.2s)
+2026-09-13 08:42:54,707 - 每日故事 - ERROR - [experience_modelscope] 值错误，第 1 次重试，等待 60.00s: API 返回空响应
+2026-09-13 08:43:54,707 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-09-13 08:43:54,708 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-09-13 08:43:54,708 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (241.8s)
+2026-09-13 08:43:54,709 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-09-13 08:43:54,709 - 每日故事 - INFO - 应用程序结束
