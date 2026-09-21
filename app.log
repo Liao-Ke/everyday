@@ -42064,3 +42064,29 @@ TypeError: 'NoneType' object is not subscriptable
 2026-09-20 08:48:26,368 - 每日故事 - INFO - [zhipu] 生成成功 (153.9s)
 2026-09-20 08:48:26,369 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-09-20 08:48:26,369 - 每日故事 - INFO - 应用程序结束
+2026-09-21 08:53:53,681 - 每日故事 - INFO - 应用程序启动
+2026-09-21 08:53:54,630 - 每日故事 - INFO - 今日金山词霸：简洁是智慧的灵魂。
+2026-09-21 08:53:55,432 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '简洁 智慧 灵魂', 'query': '简洁是智慧的灵魂。'}],将关闭意图识别后重试
+2026-09-21 08:53:56,271 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '简洁 智慧 灵魂', 'query': '简洁是智慧的灵魂。'}]
+2026-09-21 08:53:56,274 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-30B-A3B-Instruct-2507
+2026-09-21 08:53:57,635 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-09-21 08:53:57,635 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-09-21 08:53:57,635 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-09-21 08:53:57,635 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-09-21 08:53:57,637 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-09-21 08:53:57,638 - 每日故事 - INFO - [qwen] 开始生成
+2026-09-21 08:53:57,639 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-09-21 08:53:57,639 - 每日故事 - INFO - [zhipu] 开始生成
+2026-09-21 08:53:59,370 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : Qwen/Qwen3-30B-A3B-Instruct-2507 , has no provider supported', 'request_id': '7802faac-79ec-4a62-ba27-7b30d3ead25e'}}
+2026-09-21 08:54:33,462 - 每日故事 - INFO - [qwen] 生成成功 (35.8s)
+2026-09-21 08:54:40,709 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (43.1s)
+2026-09-21 08:54:43,283 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (45.6s)
+2026-09-21 08:54:53,319 - 每日故事 - INFO - 下载图片成功: ./story/images/7e2405ac2f2540ffa73d6f5846d92dfe.jpg
+2026-09-21 08:54:53,331 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-09-21 08:54:53,331 - 每日故事 - INFO - [zhipu] 生成成功 (55.7s)
+2026-09-21 08:54:59,370 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-09-21 08:54:59,371 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-09-21 08:54:59,371 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.7s)
+2026-09-21 08:56:31,216 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (153.6s)
+2026-09-21 08:56:31,217 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-09-21 08:56:31,217 - 每日故事 - INFO - 应用程序结束
