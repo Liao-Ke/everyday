@@ -42242,3 +42242,29 @@ TypeError: 'NoneType' object is not subscriptable
 2026-09-27 09:10:46,674 - 每日故事 - INFO - [zhipu] 生成成功 (137.4s)
 2026-09-27 09:10:46,675 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-09-27 09:10:46,675 - 每日故事 - INFO - 应用程序结束
+2026-09-28 09:26:56,499 - 每日故事 - INFO - 应用程序启动
+2026-09-28 09:26:57,516 - 每日故事 - INFO - 今日金山词霸：这世界与我们纠缠得太深。
+2026-09-28 09:26:58,368 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '这世界 纠缠 太深', 'query': '这世界与我们纠缠得太深。'}],将关闭意图识别后重试
+2026-09-28 09:26:59,211 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '这世界 纠缠 太深', 'query': '这世界与我们纠缠得太深。'}]
+2026-09-28 09:26:59,216 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-Next-80B-A3B-Instruct
+2026-09-28 09:27:00,527 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-09-28 09:27:00,527 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-09-28 09:27:00,528 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-09-28 09:27:00,529 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-09-28 09:27:00,530 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-09-28 09:27:00,531 - 每日故事 - INFO - [qwen] 开始生成
+2026-09-28 09:27:00,532 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-09-28 09:27:00,533 - 每日故事 - INFO - [zhipu] 开始生成
+2026-09-28 09:27:02,529 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : Qwen/Qwen3-Next-80B-A3B-Instruct , has no provider supported', 'request_id': 'f6d6cd28-7e0e-490f-bdda-ad7a4a0ac2cf'}}
+2026-09-28 09:27:47,038 - 每日故事 - INFO - [qwen] 生成成功 (46.5s)
+2026-09-28 09:27:59,600 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (59.1s)
+2026-09-28 09:28:02,529 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-09-28 09:28:02,529 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-09-28 09:28:02,529 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (62.0s)
+2026-09-28 09:28:04,662 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (64.1s)
+2026-09-28 09:28:07,884 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (67.4s)
+2026-09-28 09:28:09,178 - 每日故事 - INFO - 下载图片成功: ./story/images/943649d6d1324fa0a98a22149e48960e.jpg
+2026-09-28 09:28:09,191 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-09-28 09:28:09,191 - 每日故事 - INFO - [zhipu] 生成成功 (68.7s)
+2026-09-28 09:28:09,192 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-09-28 09:28:09,192 - 每日故事 - INFO - 应用程序结束
