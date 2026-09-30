@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/09月/30日/星期三_09-53-39.265.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-09-23.md
+      link: /词云/2026-09-30.md
 
 features:
   - title: 每日更新
