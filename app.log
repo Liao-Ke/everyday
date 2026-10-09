@@ -42525,3 +42525,26 @@ TypeError: 'NoneType' object is not subscriptable
 2026-10-08 10:40:28,821 - 每日故事 - INFO - [zhipu] 生成成功 (306.3s)
 2026-10-08 10:40:28,821 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-10-08 10:40:28,822 - 每日故事 - INFO - 应用程序结束
+2026-10-09 10:49:52,475 - 每日故事 - INFO - 应用程序启动
+2026-10-09 10:49:53,217 - 每日故事 - INFO - 今日金山词霸：好书是一扇随处可开的门。
+2026-10-09 10:49:53,947 - 每日故事 - INFO - 无搜索意图：[{'intent': 'SEARCH_NONE', 'keywords': '好书 随处可开门', 'query': '好书是一扇随处可开的门。'}],将关闭意图识别后重试
+2026-10-09 10:49:54,630 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALWAYS', 'keywords': '好书 随处可开门', 'query': '好书是一扇随处可开的门。'}]
+2026-10-09 10:49:54,635 - 每日故事 - INFO - 体验模型->就决定是你了：mistralai/Mistral-Large-Instruct-2407
+2026-10-09 10:49:55,923 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-10-09 10:49:55,923 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-10-09 10:49:55,924 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-10-09 10:49:55,925 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-10-09 10:49:55,926 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-10-09 10:49:55,927 - 每日故事 - INFO - [qwen] 开始生成
+2026-10-09 10:49:55,927 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-10-09 10:49:55,928 - 每日故事 - INFO - [zhipu] 开始生成
+2026-10-09 10:50:17,763 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (21.8s)
+2026-10-09 10:50:30,505 - 每日故事 - INFO - [qwen] 生成成功 (34.6s)
+2026-10-09 10:50:45,515 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (49.6s)
+2026-10-09 10:50:51,320 - 每日故事 - INFO - 下载图片成功: ./story/images/32e1d9982d6044f6a9b47c2ce0e3ffc1.jpg
+2026-10-09 10:50:51,333 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-10-09 10:50:51,333 - 每日故事 - INFO - [zhipu] 生成成功 (55.4s)
+2026-10-09 10:52:06,276 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (130.3s)
+2026-10-09 10:52:34,091 - 每日故事 - INFO - [experience_modelscope] 生成成功 (158.2s)
+2026-10-09 10:52:34,092 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-10-09 10:52:34,092 - 每日故事 - INFO - 应用程序结束
