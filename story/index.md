@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/10月/14日/星期三_09-41-17.f49.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-10-07.md
+      link: /词云/2026-10-14.md
 
 features:
   - title: 每日更新
