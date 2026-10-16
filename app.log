@@ -42758,3 +42758,36 @@ TypeError: 'NoneType' object is not subscriptable
 2026-10-15 11:01:42,830 - 每日故事 - ERROR - [deepseek_v4_flash] 生成失败 (6306.4s)
 2026-10-15 11:01:42,831 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-10-15 11:01:42,831 - 每日故事 - INFO - 应用程序结束
+2026-10-16 09:01:42,677 - 每日故事 - INFO - 应用程序启动
+2026-10-16 09:01:43,900 - 每日故事 - INFO - 今日金山词霸：一起分享的面包，格外香甜。
+2026-10-16 09:01:45,762 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '一起分享的面包，格外香甜。', 'query': '一起分享的面包，格外香甜。'}]
+2026-10-16 09:01:45,764 - 每日故事 - INFO - 体验模型->就决定是你了：mistralai/Mistral-Large-Instruct-2407
+2026-10-16 09:01:47,400 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu
+2026-10-16 09:01:47,400 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, qwen, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-10-16 09:01:47,401 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-10-16 09:01:47,401 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-10-16 09:01:47,402 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-10-16 09:01:47,402 - 每日故事 - INFO - [qwen] 开始生成
+2026-10-16 09:01:47,403 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-10-16 09:01:47,403 - 每日故事 - INFO - [zhipu] 开始生成
+2026-10-16 09:01:48,667 - 每日故事 - ERROR - [qwen] API 错误，第 1 次重试，等待 60.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-164d3c89-5d86-926f-9340-28ee62801542', 'request_id': '164d3c89-5d86-926f-9340-28ee62801542'}
+2026-10-16 09:01:49,235 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 403 - {'error': {'message': 'For account security, please complete your profile via email verification. ModelScope Magicubes is only available to verified accounts. Please refer to https://modelscope.cn/my/settings/account', 'request_id': 'c5d8efbb-4d3e-432d-91ff-8adbe11bb0da'}}
+2026-10-16 09:02:14,420 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (27.0s)
+2026-10-16 09:02:21,417 - 每日故事 - INFO - 下载图片成功: ./story/images/340994f3d8bf4c0b835f9ec3516424cf.jpg
+2026-10-16 09:02:21,424 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-10-16 09:02:21,424 - 每日故事 - INFO - [zhipu] 生成成功 (34.0s)
+2026-10-16 09:02:49,235 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-10-16 09:02:49,235 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-10-16 09:02:49,235 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.8s)
+2026-10-16 09:02:50,003 - 每日故事 - ERROR - [qwen] API 错误，第 2 次重试，等待 120.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-8c0803a6-5ae3-974c-86b1-c11ed433bfab', 'request_id': '8c0803a6-5ae3-974c-86b1-c11ed433bfab'}
+2026-10-16 09:03:05,951 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (78.6s)
+2026-10-16 09:04:16,598 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (149.2s)
+2026-10-16 09:04:51,140 - 每日故事 - ERROR - [qwen] API 错误，第 3 次重试，等待 240.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-ad95873f-7663-9b71-bac5-324c15a35229', 'request_id': 'ad95873f-7663-9b71-bac5-324c15a35229'}
+2026-10-16 09:08:52,267 - 每日故事 - ERROR - [qwen] API 错误，第 4 次重试，等待 480.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-adaf8096-ad67-99bb-a0a2-980a8b52a0b1', 'request_id': 'adaf8096-ad67-99bb-a0a2-980a8b52a0b1'}
+2026-10-16 09:16:53,560 - 每日故事 - ERROR - [qwen] API 错误，第 5 次重试，等待 600.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-80222944-e1be-9d57-9b42-4c297eefbfd3', 'request_id': '80222944-e1be-9d57-9b42-4c297eefbfd3'}
+2026-10-16 09:16:54,528 - 每日故事 - ERROR - [qwen] API 错误，第 6 次重试，等待 600.00s: Error code: 404 - {'error': {'message': 'Model not exist.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'id': 'chatcmpl-99907f53-593b-9bce-8c54-009168e0ca08', 'request_id': '99907f53-593b-9bce-8c54-009168e0ca08'}
+2026-10-16 09:16:54,528 - 每日故事 - ERROR - [qwen] 所有 5 次重试均失败
+2026-10-16 09:16:54,528 - 每日故事 - ERROR - [qwen] 生成失败
+2026-10-16 09:16:54,528 - 每日故事 - ERROR - [qwen] 生成失败 (907.1s)
+2026-10-16 09:16:54,529 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-10-16 09:16:54,530 - 每日故事 - INFO - 应用程序结束
