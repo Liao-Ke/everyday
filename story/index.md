@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/10月/27日/星期二_09-54-17.eec.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-10-21.md
+      link: /词云/2026-10-28.md
 
 features:
   - title: 每日更新
