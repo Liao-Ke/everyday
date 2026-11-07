@@ -43434,3 +43434,34 @@ TypeError: 'NoneType' object is not subscriptable
 2026-11-05 12:08:14,734 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: ，最大并发线程数: 16
 2026-11-05 12:08:14,734 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-11-05 12:08:14,734 - 每日故事 - INFO - 应用程序结束
+2026-11-07 10:34:47,863 - 每日故事 - INFO - 应用程序启动
+2026-11-07 10:38:48,734 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:38:48,735 - 每日故事 - WARNING - 加载模型配置 deepseek_v4_flash_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 10:42:49,543 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:42:49,544 - 每日故事 - WARNING - 加载模型配置 deepseek_v4_pro_config 失败: 'NoneType' object has no attribute 'get'
+2026-11-07 10:46:50,393 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:46:50,394 - 每日故事 - WARNING - 加载模型配置 doubao_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 10:50:51,211 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:50:51,212 - 每日故事 - WARNING - 加载模型配置 doubao_think_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 10:50:51,213 - 每日故事 - INFO - 体验模型->就决定是你了：MiniMax/MiniMax-M2.7
+2026-11-07 10:54:52,080 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:54:52,081 - 每日故事 - WARNING - 加载模型配置 experience_modelscope_config 失败: 'NoneType' object has no attribute 'get'
+2026-11-07 10:58:52,904 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 10:58:52,905 - 每日故事 - WARNING - 加载模型配置 gemini_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 11:02:53,749 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:02:53,750 - 每日故事 - WARNING - 加载模型配置 kimi_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 11:06:54,610 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:06:54,611 - 每日故事 - WARNING - 加载模型配置 kimi_k2_config 失败: 'NoneType' object has no attribute 'get'
+2026-11-07 11:10:55,461 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:10:55,462 - 每日故事 - WARNING - 加载模型配置 qwen_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 11:14:56,451 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:18:57,264 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:18:57,265 - 每日故事 - WARNING - 加载模型配置 zhipu_4_5_flash_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 11:22:58,163 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:22:58,164 - 每日故事 - WARNING - 加载模型配置 zhipu_config 失败: 'NoneType' object is not subscriptable
+2026-11-07 11:26:59,054 - 每日故事 - ERROR - 网络请求错误: 504 Server Error: Gateway Time-out for url: https://open.iciba.com/dsapi/
+2026-11-07 11:26:59,055 - 每日故事 - WARNING - 加载模型配置 zhipu_z1_flash_config 失败: 'NoneType' object has no attribute 'get'
+2026-11-07 11:26:59,055 - 每日故事 - INFO - 可用模型: , 排除后: 
+2026-11-07 11:26:59,055 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: ，最大并发线程数: 16
+2026-11-07 11:26:59,055 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-11-07 11:26:59,055 - 每日故事 - INFO - 应用程序结束
