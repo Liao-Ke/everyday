@@ -88,4 +88,5 @@ npm run docs:build                # VitePress 构建
 - **`chat_params.pop("RETRY")` 会修改调用方字典**：`chat_ai()` 内部已做 `params_copy`
 - **GitHub Actions**：`main.yml` 每日 23:00 UTC 运行，`wordcloud-analysis.yml` 每周三 00:00 UTC 运行。API 密钥通过 Secrets 注入
 - **Cloudflare Pages**：自动从 `story/` 目录构建部署，不依赖本地 `docs:build`
+- **金山词霸接口回退**：`get_jinshan()` 先请求 `open.iciba.com/dsapi`（近年常 504/超时），失败后自动回退 `sentence.iciba.com/index.php`（该接口要传 `title` 日期，按**北京时间** +8 取，不用机器本地时间，否则 CI 的 UTC 机器会取到昨天的句子；它也不返回 `fenxiang_img`，用 `picture2`/`picture` 兜底）；两个接口都失败返回 `None`
 - **`check.py`** 可配置阈值、目标目录和重命名规则，用于归档大型日志文件
