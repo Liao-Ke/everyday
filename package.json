@@ -2,9 +2,10 @@
   "type": "module",
   "overrides": {
     "postcss": "^8.5.23",
-    "js-yaml": "^3.15.1",
-    "brace-expansion": "^5.0.9",
-    "vite": "^6.4.3"
+    "js-yaml": "^3.15.2",
+    "brace-expansion": "^5.0.12",
+    "vite": "^6.4.4",
+    "source-map-js": "^1.2.2"
   },
   "devDependencies": {
     "medium-zoom": "^1.1.0",
