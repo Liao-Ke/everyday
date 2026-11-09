@@ -43501,3 +43501,27 @@ TypeError: 'NoneType' object is not subscriptable
 2026-11-08 10:20:54,816 - 每日故事 - ERROR - [qwen] 生成失败 (908.6s)
 2026-11-08 10:20:54,817 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-11-08 10:20:54,818 - 每日故事 - INFO - 应用程序结束
+2026-11-09 10:26:15,989 - 每日故事 - INFO - 应用程序启动
+2026-11-09 10:26:31,539 - 每日故事 - WARNING - 金山词霸接口 open.iciba.com/dsapi 不可用：HTTPSConnectionPool(host='open.iciba.com', port=443): Read timed out. (read timeout=15)，尝试下一个接口
+2026-11-09 10:26:32,132 - 每日故事 - INFO - 今日金山词霸（sentence.iciba.com/index.php）：敢于爱自己，如同爱清晨的太阳。
+2026-11-09 10:26:33,836 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '敢于爱自己，如同爱清晨的太阳。', 'query': '敢于爱自己，如同爱清晨的太阳。'}]
+2026-11-09 10:26:33,839 - 每日故事 - INFO - 体验模型->就决定是你了：ZhipuAI/GLM-5.1
+2026-11-09 10:26:35,109 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu
+2026-11-09 10:26:35,110 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-11-09 10:26:35,111 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-11-09 10:26:35,111 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-11-09 10:26:35,112 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-11-09 10:26:35,112 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-11-09 10:26:35,113 - 每日故事 - INFO - [zhipu] 开始生成
+2026-11-09 10:26:36,289 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : ZhipuAI/GLM-5.1 , has no provider supported', 'request_id': '4f6bdb91-62ea-49c9-8138-bb4115d4302d'}}
+2026-11-09 10:27:34,300 - 每日故事 - INFO - 下载图片成功: ./story/images/3c7b8f871d094643975b3b3f8e9a810f.jpg
+2026-11-09 10:27:34,310 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-11-09 10:27:34,310 - 每日故事 - INFO - [zhipu] 生成成功 (59.2s)
+2026-11-09 10:27:36,290 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-11-09 10:27:36,290 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-11-09 10:27:36,290 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.2s)
+2026-11-09 10:27:43,368 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (68.3s)
+2026-11-09 10:27:56,070 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (81.0s)
+2026-11-09 10:28:21,426 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (106.3s)
+2026-11-09 10:28:21,427 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-11-09 10:28:21,427 - 每日故事 - INFO - 应用程序结束
