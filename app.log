@@ -43525,3 +43525,26 @@ TypeError: 'NoneType' object is not subscriptable
 2026-11-09 10:28:21,426 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (106.3s)
 2026-11-09 10:28:21,427 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-11-09 10:28:21,427 - 每日故事 - INFO - 应用程序结束
+2026-11-10 12:30:54,636 - 每日故事 - INFO - 应用程序启动
+2026-11-10 12:30:55,521 - 每日故事 - INFO - 今日金山词霸（open.iciba.com/dsapi）：霜耐心地给沉睡的大地刷上银色。
+2026-11-10 12:30:57,565 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '霜耐心地给沉睡的大地刷上银色。', 'query': '霜耐心地给沉睡的大地刷上银色。'}]
+2026-11-10 12:30:57,569 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-235B-A22B-Instruct-2507
+2026-11-10 12:30:58,579 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu
+2026-11-10 12:30:58,579 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-11-10 12:30:58,579 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-11-10 12:30:58,580 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-11-10 12:30:58,582 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-11-10 12:30:58,582 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-11-10 12:30:58,583 - 每日故事 - INFO - [zhipu] 开始生成
+2026-11-10 12:30:59,929 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : Qwen/Qwen3-235B-A22B-Instruct-2507 , has no provider supported', 'request_id': '4102a764-2cb5-4c65-9614-396c43e722f5'}}
+2026-11-10 12:31:59,929 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-11-10 12:31:59,929 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-11-10 12:31:59,929 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.3s)
+2026-11-10 12:32:04,947 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (66.4s)
+2026-11-10 12:32:27,668 - 每日故事 - INFO - 下载图片成功: ./story/images/d18b7e7acbab42d28dfc98b38fe1ec71.jpg
+2026-11-10 12:32:27,681 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-11-10 12:32:27,681 - 每日故事 - INFO - [zhipu] 生成成功 (89.1s)
+2026-11-10 12:32:44,210 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (105.6s)
+2026-11-10 12:33:55,993 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (177.4s)
+2026-11-10 12:33:55,993 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-11-10 12:33:55,993 - 每日故事 - INFO - 应用程序结束
