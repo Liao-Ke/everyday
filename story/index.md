@@ -15,7 +15,7 @@ hero:
       link: /故事/2026年/11月/11日/星期三_10-36-09.c1f.md
     - theme: alt
       text: "词云"
-      link: /词云/2026-11-04.md
+      link: /词云/2026-11-11.md
 
 features:
   - title: 每日更新
