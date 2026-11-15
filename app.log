@@ -43642,3 +43642,26 @@ TypeError: 'NoneType' object is not subscriptable
 2026-11-14 10:58:06,604 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (109.1s)
 2026-11-14 10:58:06,604 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-11-14 10:58:06,604 - 每日故事 - INFO - 应用程序结束
+2026-11-15 10:26:15,699 - 每日故事 - INFO - 应用程序启动
+2026-11-15 10:26:16,620 - 每日故事 - INFO - 今日金山词霸（open.iciba.com/dsapi）：夜虽长，小欢喜也一样的多。
+2026-11-15 10:26:17,965 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '夜虽长，小欢喜也一样的多。', 'query': '夜虽长，小欢喜也一样的多。'}]
+2026-11-15 10:26:17,968 - 每日故事 - INFO - 体验模型->就决定是你了：ZhipuAI/GLM-5
+2026-11-15 10:26:19,228 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu
+2026-11-15 10:26:19,229 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-11-15 10:26:19,229 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-11-15 10:26:19,229 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-11-15 10:26:19,230 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-11-15 10:26:19,231 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-11-15 10:26:19,231 - 每日故事 - INFO - [zhipu] 开始生成
+2026-11-15 10:26:20,531 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : ZhipuAI/GLM-5 , has no provider supported', 'request_id': '6afc982a-7969-4c0f-8377-980223386b2d'}}
+2026-11-15 10:26:58,383 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (39.2s)
+2026-11-15 10:27:20,531 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-11-15 10:27:20,531 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-11-15 10:27:20,531 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.3s)
+2026-11-15 10:27:45,814 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (86.6s)
+2026-11-15 10:28:28,861 - 每日故事 - INFO - 下载图片成功: ./story/images/2af9a7ccd918439e89e1f9df8a91b6ab.jpg
+2026-11-15 10:28:28,871 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-11-15 10:28:28,871 - 每日故事 - INFO - [zhipu] 生成成功 (129.6s)
+2026-11-15 10:29:05,308 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (166.1s)
+2026-11-15 10:29:05,309 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-11-15 10:29:05,309 - 每日故事 - INFO - 应用程序结束
