@@ -43903,3 +43903,26 @@ TypeError: 'NoneType' object is not subscriptable
 2026-11-25 13:17:58,257 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (145.8s)
 2026-11-25 13:17:58,257 - 每日故事 - INFO - 所有模型的生成线程已完成
 2026-11-25 13:17:58,258 - 每日故事 - INFO - 应用程序结束
+2026-11-26 12:43:53,759 - 每日故事 - INFO - 应用程序启动
+2026-11-26 12:43:54,816 - 每日故事 - INFO - 今日金山词霸（open.iciba.com/dsapi）：感恩的心，从不过季。
+2026-11-26 12:43:56,716 - 每日故事 - INFO - 网络搜索成功：[{'intent': 'SEARCH_ALL', 'keywords': '感恩的心，从不过季。', 'query': '感恩的心，从不过季。'}]
+2026-11-26 12:43:56,719 - 每日故事 - INFO - 体验模型->就决定是你了：Qwen/Qwen3-235B-A22B-Instruct-2507
+2026-11-26 12:43:58,352 - 每日故事 - INFO - 可用模型: deepseek_v4_flash, deepseek_v4_pro, doubao, doubao_think, experience_modelscope, gemini, kimi, kimi_k2, qwen, zhipu_4_5_flash, zhipu, zhipu_z1_flash, 排除后: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu
+2026-11-26 12:43:58,352 - 每日故事 - INFO - 开始多线程故事生成，将使用模型: deepseek_v4_flash, deepseek_v4_pro, experience_modelscope, zhipu_4_5_flash, zhipu，最大并发线程数: 16
+2026-11-26 12:43:58,352 - 每日故事 - INFO - [deepseek_v4_flash] 开始生成
+2026-11-26 12:43:58,367 - 每日故事 - INFO - [deepseek_v4_pro] 开始生成
+2026-11-26 12:43:58,368 - 每日故事 - INFO - [experience_modelscope] 开始生成
+2026-11-26 12:43:58,368 - 每日故事 - INFO - [zhipu_4_5_flash] 开始生成
+2026-11-26 12:43:58,369 - 每日故事 - INFO - [zhipu] 开始生成
+2026-11-26 12:44:00,083 - 每日故事 - ERROR - [experience_modelscope] API 错误，第 1 次重试，等待 60.00s: Error code: 400 - {'error': {'message': 'Model id : Qwen/Qwen3-235B-A22B-Instruct-2507 , has no provider supported', 'request_id': 'a209f070-9ade-4680-aa80-e6883a23627c'}}
+2026-11-26 12:44:57,692 - 每日故事 - INFO - 下载图片成功: ./story/images/29a70b516e684a1eb514bb4271ff443c.jpg
+2026-11-26 12:44:57,701 - 每日故事 - INFO - [zhipu] 更新 index.md 成功
+2026-11-26 12:44:57,701 - 每日故事 - INFO - [zhipu] 生成成功 (59.3s)
+2026-11-26 12:45:00,083 - 每日故事 - ERROR - [experience_modelscope] 所有 5 次重试均失败
+2026-11-26 12:45:00,083 - 每日故事 - ERROR - [experience_modelscope] 生成失败
+2026-11-26 12:45:00,083 - 每日故事 - ERROR - [experience_modelscope] 生成失败 (61.7s)
+2026-11-26 12:45:04,731 - 每日故事 - INFO - [deepseek_v4_flash] 生成成功 (66.4s)
+2026-11-26 12:45:05,832 - 每日故事 - INFO - [deepseek_v4_pro] 生成成功 (67.5s)
+2026-11-26 12:45:26,135 - 每日故事 - INFO - [zhipu_4_5_flash] 生成成功 (87.8s)
+2026-11-26 12:45:26,135 - 每日故事 - INFO - 所有模型的生成线程已完成
+2026-11-26 12:45:26,135 - 每日故事 - INFO - 应用程序结束
